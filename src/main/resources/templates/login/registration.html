@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>회원가입 페이지</title>
+</head>
+<body>
+<form th:action="@{/login}" method="get">
+    <button class="btn btn-md btn-warning btn-block" type="submit">Go To Login Page</button>
+</form>
+            <form autocomplete="off" action="#" th:action="@{/registration}" th:object="${user}" method="post" role="form">
+                <h2>회원가입</h2>
+                <label th:if="${#fields.hasErrors('loginId')}" th:errors="*{loginId}"></label>
+                <input type="text" th:field="*{loginId}" placeholder="LoginId"/>
+                <label th:if="${#fields.hasErrors('userName')}" th:errors="*{userName}"></label>
+                <input type="text" th:field="*{userName}" placeholder="UserName"/>
+                <input type="password" th:field="*{password}" placeholder="Password"/>
+                <label th:if="${#fields.hasErrors('password')}" th:errors="*{password}"></label>
+                <input type="password" th:field="*{passwordConfirm}" placeholder="Password Confirm"/>
+                <label th:if="${#fields.hasErrors('passwordConfirm')}" th:errors="*{passwordConfirm}"></label>
+                <button type="submit">Register User</button>
+                <span th:utext="${successMessage}"></span>
+            </form>
+
+</body>
+</html>

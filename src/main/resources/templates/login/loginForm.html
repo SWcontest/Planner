@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>로그인 페이지</title>
+</head>
+<body>
+<form th:action="@{/registration}" method="get">
+    <button type="submit">회원가입</button>
+</form>
+
+<form th:action="@{/login}" method="POST" id="login_form" name="login_form">
+    <br/>
+    <input type="text" id="loginId" name="loginId"  th:placeholder="LoginId"/> <br/>
+    <input type="password" th:placeholder="Password" id="password" name="password"/> <br />
+
+    <div align="center" th:if="${param.error}">
+        <p style="font-size: 20px; color: #FF1C19;">아이디 패스워드가 올바르지 않거나 비활성화된 회원입니다.</p>
+    </div>
+    <div align="center" th:if="${param.authError}">
+        <p style="font-size: 20px; color: #FF1C19;">만료된 토큰이거나 토큰값을 갱신하여 주시길 바랍니다.</p>
+    </div>
+    <button name="Submit" value="Login" type="Submit" th:text="Login"></button>
+</form>
+</body>
+</html>
