@@ -20,8 +20,10 @@
     <link rel="stylesheet" href="../../css/vertical-layout-light/style.css">
     <!-- endinject -->
     <link rel="shortcut icon" href="../../images/favicon.png"/>
-    <link rel="stylesheet" href="../../css/new.css">
     <link rel="stylesheet" href="../../css/calendar.css">
+    <link rel="stylesheet" href="../../css/new.css">
+
+
 </head>
 
 <body>
@@ -331,7 +333,7 @@
                     </a>
                 </li>
                 <li class="nav-item" href="#form-elements" aria-expanded="false" aria-controls="form-elements">
-                    <a class="nav-link" href="pages/add_schedule/add_schedule.html">
+                    <a class="nav-link" href="../add_schedule/add_schedule.html">
                         <i class="icon-columns menu-icon"></i>
                         <span class="menu-title">일정등록</span>
                     </a>
@@ -345,9 +347,11 @@
                     </a>
                     <div class="collapse" id="ui-basic">
                         <ul class="nav flex-column sub-menu">
-                            <li class="nav-item"><a class="nav-link" href="../week_schedule/week_schedule.html">요일별 일정</a>
+                            <li class="nav-item"><a class="nav-link" href="../week_schedule/week_schedule.html">요일별
+                                일정</a>
                             </li>
-                            <li class="nav-item"><a class="nav-link" href="../schedule_root/schedule_root.html">일정 경로</a>
+                            <li class="nav-item"><a class="nav-link" href="../schedule_root/schedule_root.html">일정
+                                경로</a>
                             </li>
                             <li class="nav-item"><a class="nav-link" href="pages/ui-features/typography.html">대중교통
                                 안내</a></li>
@@ -378,9 +382,9 @@
             </ul>
         </nav>
 
-        <!-- partial -->
+        <!--(끝)사이드바-->
 
-        <!--일정 경로 : 첫 시작 & 요일 선택하기-->
+        <!--마이페이지 : 지난 일정 열람 : 페이지 이름 넣기-->
         <div class="main-panel">
             <div class="content-wrapper">
                 <div class="col-md-12 grid-margin">
@@ -398,58 +402,84 @@
 
                     </div>
                 </div>
-                <!--(끝)일정 경로 : 요일 선택하기-->
+                <!--(끝)마이페이지 : 지난 일정 열람 : 페이지 이름 넣기-->
 
 
-
-
-                <!--지난 일정 열람 : 지난 일정 달력으로 보여주기-->
-                <div class="col-md-12 grid-margin stretch-card">
+                <!--지난 일정 열람 : 지난 일정 보여주기-->
+                <div class="col-md-8 grid-margin stretch-card">
                     <div class="card">
-                        <div class="main">
-                            <div class="container">
-                                <div class="my-calendar clearfix">
-                                    <div class="clicked-date">
-                                        <div class="cal-day"></div>
-                                        <div class="cal-date"></div>
-                                    </div>
-                                    <div class="calendar-box">
-                                        <div class="ctr-box clearfix">
-                                            <button type="button" title="prev" class="btn-cal prev">
-                                            </button>
-                                            <span class="cal-month"></span>
-                                            <span class="cal-year"></span>
-                                            <button type="button" title="next" class="btn-cal next">
-                                            </button>
+                        <div class="card-body">
+                            <h4 class="card-title">지난 일정 열람</h4>
+                                <!-- 지난 일정 열람 : 달력 시작-->
+                                <div class="calender-container">
+                                    <div class="my-calendar clearfix">
+                                        <div class="clicked-date">
+                                            <div class="cal-day"></div>
+                                            <div class="cal-date"></div>
                                         </div>
-                                        <table class="cal-table">
+                                        <div class="calendar-box">
+                                            <div class="ctr-box clearfix">
+                                                <button type="button" title="prev" class="btn-cal prev">
+                                                </button>
+                                                <span class="cal-month"></span>
+                                                <span class="cal-year"></span>
+                                                <button type="button" title="next" class="btn-cal next">
+                                                </button>
+                                            </div>
+                                            <table class="cal-table">
+                                                <thead>
+                                                <tr>
+                                                    <th>S</th>
+                                                    <th>M</th>
+                                                    <th>T</th>
+                                                    <th>W</th>
+                                                    <th>T</th>
+                                                    <th>F</th>
+                                                    <th>S</th>
+                                                </tr>
+                                                </thead>
+                                                <tbody class="cal-body"></tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                    </div>
+                        <!--(끝)지난 일정 열람 : 달력 시작-->
+                        <div class="col-md-7 grid-margin stretch-card" >
+                            <div class="card">
+                                <div class="card-body">
+                                    <h4 class="card-title">해당 날짜 일정</h4>
+                                    <div class="table-responsive">
+                                        <table class="table">
                                             <thead>
                                             <tr>
-                                                <th>S</th>
-                                                <th>M</th>
-                                                <th>T</th>
-                                                <th>W</th>
-                                                <th>T</th>
-                                                <th>F</th>
-                                                <th>S</th>
+                                                <th>일정이름</th>
+                                                <th>위치</th>
+                                                <th>시간</th>
                                             </tr>
                                             </thead>
-                                            <tbody class="cal-body"></tbody>
+                                            <tbody>
+                                            <tr>
+                                                <td>장보기</td>
+                                                <td>이마트</td>
+                                                <td>오후 05:00</td>
+                                            </tr>
+                                            </tbody>
                                         </table>
                                     </div>
                                 </div>
-                                <!-- // .my-calendar -->
                             </div>
                         </div>
-                    </div>
+
+                        <!--지난 일정 열람 : 해당 날짜의 일정 보여주기-->
+
+
                 </div>
-                <!--(끝)일정 경로 : 그날 일정 보여주기-->
-
-
+                <!--지난 일정 열람 : 지난 일정 보여주기-->
 
 
             </div>
-
 
 
             <!-- partial:partials/_footer.html -->
@@ -492,7 +522,7 @@
 <script src="../../js/dashboard.js"></script>
 <script src="../../js/Chart.roundedBarCharts.js"></script>
 <!-- End custom js for this page-->
-<script src="calendar.js"></script>
+<script src="../../js/calendar.js"></script>
 <script src="main.js"></script>
 </body>
 
