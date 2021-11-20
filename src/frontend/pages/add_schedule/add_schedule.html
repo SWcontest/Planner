@@ -426,69 +426,70 @@
 
                                         <!--요일 선택-->
                                         <div class="form-group">
-                                            <h6>요일선택</h6>
-                                            <div class="chooseDate">
-                                                <button
-                                                        type="button"
-                                                        id="mon"
-                                                        class="btn btn-danger btn-rounded btn-icon"
-                                                        style="background-color: red; border: 1px solid red"
-                                                >
-                                                    월
-                                                </button>
-                                                <button
-                                                        type="button"
-                                                        id="tue"
-                                                        class="btn btn-danger btn-rounded btn-icon"
-                                                        style="background-color: #FF5D05  ; border: 1px solid #FF5D05"
-                                                >
-                                                    화
-                                                </button>
-                                                <button
-                                                        type="button"
-                                                        id="wed"
-                                                        class="btn btn-danger btn-rounded btn-icon"
-                                                        style="background-color: #4E71D9  ; border: 1px solid #4E71D9"
-                                                >
-                                                    수
-                                                </button>
-                                                <button
-                                                        type="button"
-                                                        id="thu"
-                                                        class="btn btn-danger btn-rounded btn-icon"
-                                                        style="background-color: #5FA55A  ; border: 1px solid #5FA55A"
+                                            <h6>날짜 선택</h6>
+                                            <input type="date">
+<!--                                            <div class="chooseDate">-->
+<!--                                                <button-->
+<!--                                                        type="button"-->
+<!--                                                        id="mon"-->
+<!--                                                        class="btn btn-danger btn-rounded btn-icon"-->
+<!--                                                        style="background-color: red; border: 1px solid red"-->
+<!--                                                >-->
+<!--                                                    월-->
+<!--                                                </button>-->
+<!--                                                <button-->
+<!--                                                        type="button"-->
+<!--                                                        id="tue"-->
+<!--                                                        class="btn btn-danger btn-rounded btn-icon"-->
+<!--                                                        style="background-color: #FF5D05  ; border: 1px solid #FF5D05"-->
+<!--                                                >-->
+<!--                                                    화-->
+<!--                                                </button>-->
+<!--                                                <button-->
+<!--                                                        type="button"-->
+<!--                                                        id="wed"-->
+<!--                                                        class="btn btn-danger btn-rounded btn-icon"-->
+<!--                                                        style="background-color: #4E71D9  ; border: 1px solid #4E71D9"-->
+<!--                                                >-->
+<!--                                                    수-->
+<!--                                                </button>-->
+<!--                                                <button-->
+<!--                                                        type="button"-->
+<!--                                                        id="thu"-->
+<!--                                                        class="btn btn-danger btn-rounded btn-icon"-->
+<!--                                                        style="background-color: #5FA55A  ; border: 1px solid #5FA55A"-->
 
-                                                >
-                                                    목
-                                                </button>
-                                                <button
-                                                        type="button"
-                                                        id="fri"
-                                                        class="btn btn-danger btn-rounded btn-icon"
-                                                        style="background-color: #927A6D ; border: 1px solid #927A6D"
+<!--                                                >-->
+<!--                                                    목-->
+<!--                                                </button>-->
+<!--                                                <button-->
+<!--                                                        type="button"-->
+<!--                                                        id="fri"-->
+<!--                                                        class="btn btn-danger btn-rounded btn-icon"-->
+<!--                                                        style="background-color: #927A6D ; border: 1px solid #927A6D"-->
 
-                                                >
-                                                    금
-                                                </button>
-                                                <button
-                                                        type="button"
-                                                        id="sat"
-                                                        class="btn btn-danger btn-rounded btn-icon"
-                                                        style="background-color: #BB85EA ; border: 1px solid #BB85EA"
+<!--                                                >-->
+<!--                                                    금-->
+<!--                                                </button>-->
+<!--                                                <button-->
+<!--                                                        type="button"-->
+<!--                                                        id="sat"-->
+<!--                                                        class="btn btn-danger btn-rounded btn-icon"-->
+<!--                                                        style="background-color: #BB85EA ; border: 1px solid #BB85EA"-->
 
-                                                >
-                                                    토
-                                                </button>
-                                                <button
-                                                        type="button"
-                                                        id="sun"
-                                                        class="btn btn-danger btn-rounded btn-icon"
-                                                        style="background-color:#D98B84; border: 1px solid #D98B84"
+<!--                                                >-->
+<!--                                                    토-->
+<!--                                                </button>-->
+<!--                                                <button-->
+<!--                                                        type="button"-->
+<!--                                                        id="sun"-->
+<!--                                                        class="btn btn-danger btn-rounded btn-icon"-->
+<!--                                                        style="background-color:#D98B84; border: 1px solid #D98B84"-->
 
-                                                >
-                                                    일
-                                                </button>
-                                            </div>
+<!--                                                >-->
+<!--                                                    일-->
+<!--                                                </button>-->
+<!--                                            </div>-->
                                         </div>
 
                                         <!--일정 시작 시간-->
@@ -580,6 +581,10 @@
                                                 <i class="remove ti-close"></i>
                                             </li>
                                         </ul>
+                                    </div>
+                                    <div class="add-items d-flex mb-0 mt-2">
+                                        <input type="text" class="form-control todo-list-input"  placeholder="Add new task">
+                                        <button class="add btn btn-icon text-primary todo-list-add-btn bg-transparent"><i class="icon-circle-plus"></i></button>
                                     </div>
                                 </div>
                             </div>
