@@ -349,8 +349,8 @@
                             </li>
                             <li class="nav-item"><a class="nav-link" href="schedule_root.html">일정 경로</a>
                             </li>
-                            <li class="nav-item"><a class="nav-link" href="pages/ui-features/typography.html">대중교통
-                                안내</a></li>
+<!--                            <li class="nav-item"><a class="nav-link" href="pages/ui-features/typography.html">대중교통-->
+<!--                                안내</a></li>-->
                         </ul>
                     </div>
                 </li>
@@ -481,18 +481,18 @@
                                     <!--표 내부는 이런식으로 하면 될 거 같아서 예시로 둠-->
                                     <tbody>
                                     <tr>
-                                        <td>장보기</td>
-                                        <td>이마트</td>
-                                        <td>오후 05:00</td>
-                                        <td>1시간</td>
-                                        <td class="font-weight-bold">4</td>
-                                    </tr>
-                                    <tr>
                                         <td>세탁소 들리기</td>
                                         <td>크린토피아</td>
                                         <td>오전 11:00</td>
                                         <td>30분</td>
                                         <td class="font-weight-bold">1</td>
+                                    </tr>
+                                    <tr>
+                                        <td>헬스장가기</td>
+                                        <td>헬스장</td>
+                                        <td>오후 01:00</td>
+                                        <td>1시간 30분</td>
+                                        <td class="font-weight-bold">2</td>
                                     </tr>
                                     <tr>
                                         <td>강의 듣기</td>
@@ -502,12 +502,15 @@
                                         <td class="font-weight-bold">3</td>
                                     </tr>
                                     <tr>
-                                        <td>헬스장가기</td>
-                                        <td>헬스장</td>
-                                        <td>오후 01:00</td>
-                                        <td>1시간 30분</td>
-                                        <td class="font-weight-bold">2</td>
+                                        <td>장보기</td>
+                                        <td>이마트</td>
+                                        <td>오후 05:00</td>
+                                        <td>1시간</td>
+                                        <td class="font-weight-bold">4</td>
                                     </tr>
+
+
+
                                     </tbody>
                                 </table>
                             </div>
@@ -518,14 +521,15 @@
 
 
                 <!--일정 경로 : 지도 위 최단 거리 구해주기-->
-                <div class="col-md-12 grid-margin stretch-card">
+                <div class="row">
+                <div class="col-md-6 grid-margin stretch-card">
                     <div class="card">
                         <div class="card-body">
                             <div class="d-flex justify-content-between">
                                 <p class="card-title">최단 일정 경로</p>
                                 </div>
 
-                            <div id="map" style="width:1100px;height:600px;">
+                            <div id="map" style="width:600px;height:600px;">
                             </div>
                             <script type="text/javascript"
                                     src="//dapi.kakao.com/v2/maps/sdk.js?appkey=d1048c35e643665be4a212b55b9d45b5&libraries=services,clusterer,drawing"></script>
@@ -543,8 +547,18 @@
                 </div>
                 <!--(끝)일정 경로 : 지도 위 최단 거리 구해주기-->
 
+                <div class="col-md-6 grid-margin stretch-card">
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="d-flex justify-content-between">
+                                <p class="card-title">대중교통 안내</p>
+                            </div>
+                            여기다가 대중교통 정보 사기 쳐서,,,,,,,,,,,,넣으면 될듯!!
+                        </div>
+                    </div>
+                </div>
             </div>
-
+            </div>
 
 
             <!-- partial:partials/_footer.html -->
