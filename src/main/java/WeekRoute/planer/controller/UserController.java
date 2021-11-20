@@ -1,8 +1,10 @@
 package WeekRoute.planer.controller;
 
-import WeekRoute.planer.domain.member.User;
+import WeekRoute.planer.domain.user.User;
+import WeekRoute.planer.domain.user.UserPrincipal;
 import WeekRoute.planer.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -17,7 +19,7 @@ public class UserController {
     private UserService userService;
 
     @GetMapping(value = {"/", "login"})
-    public String getLoginPage() {
+    public String getLoginPage(@AuthenticationPrincipal UserPrincipal user) {
         return "login/loginForm";
     }
 
@@ -48,9 +50,8 @@ public class UserController {
             userService.saveUser(user);
             modelAndView.addObject("successMessage", "User has been registered successfully");
             modelAndView.addObject("user", new User());
-            modelAndView.setViewName("/login/registration");
+            modelAndView.setViewName("/login");
         }
-
         return modelAndView;
     }
 

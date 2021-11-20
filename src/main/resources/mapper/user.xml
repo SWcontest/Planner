@@ -4,7 +4,7 @@
 
 <mapper namespace="WeekRoute.planer.mapper.UserMapper">
 
-    <resultMap id="User" type="WeekRoute.planer.domain.member.User">
+    <resultMap id="User" type="WeekRoute.planer.domain.user.User">
         <result property="id" column="user_id" />
         <result property="active" column="active" />
         <result property="loginId" column="login_id" />
@@ -27,7 +27,7 @@
 
     </select>
 
-    <insert id="setUserInfo" parameterType="WeekRoute.planer.domain.member.User" useGeneratedKeys="true" keyProperty="param.id">
+    <insert id="setUserInfo" parameterType="WeekRoute.planer.domain.user.User" useGeneratedKeys="true" keyProperty="param.id">
         INSERT INTO user
         (
             active, login_id, user_name, password

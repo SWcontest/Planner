@@ -1,9 +1,9 @@
 package WeekRoute.planer.service;
 
-import WeekRoute.planer.domain.member.UserPrincipal;
-import WeekRoute.planer.domain.member.Role;
-import WeekRoute.planer.domain.member.User;
-import WeekRoute.planer.domain.member.UserRole;
+import WeekRoute.planer.domain.user.UserPrincipal;
+import WeekRoute.planer.domain.user.Role;
+import WeekRoute.planer.domain.user.User;
+import WeekRoute.planer.domain.user.UserRole;
 import WeekRoute.planer.mapper.RoleMapper;
 import WeekRoute.planer.mapper.UserMapper;
 import WeekRoute.planer.mapper.UserRoleMapper;
@@ -38,7 +38,7 @@ public class UserService implements UserDetailsService {
         user.setActive(1);
         userMapper.setUserInfo(user);
 
-        Role role = roleMapper.getRoleInfo("USER");
+        Role role = roleMapper.getRoleInfo("ADMIN");
 
         UserRole userRole = new UserRole();
         userRole.setRoleId(role.getId());

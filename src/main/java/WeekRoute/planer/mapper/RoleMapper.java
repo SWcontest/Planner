@@ -1,6 +1,6 @@
 package WeekRoute.planer.mapper;
 
-import WeekRoute.planer.domain.member.Role;
+import WeekRoute.planer.domain.user.Role;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Component;

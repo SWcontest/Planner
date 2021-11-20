@@ -4,7 +4,7 @@
 
 <mapper namespace="WeekRoute.planer.mapper.RoleMapper">
 
-    <resultMap id="Role" type="WeekRoute.planer.domain.member.Role">
+    <resultMap id="Role" type="WeekRoute.planer.domain.user.Role">
         <result property="id" column="role_id" />
         <result property="role" column="role" />
     </resultMap>
