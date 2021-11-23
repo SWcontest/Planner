@@ -18,10 +18,15 @@ public class PlanController {
 
     /**
      *
-     * @return 일정추가
+     * @param user
+     * @param request
+     * @return 오늘의 일정페이지
      */
-    @GetMapping("plan/add_schedule")
-    public String add_schedule() {
+    @GetMapping("page/todaySchedule")
+    public String all_schedule(@AuthenticationPrincipal UserPrincipal user, HttpServletRequest request) {
+        String id = user.getId();
+        int day = Integer.parseInt(request.getParameter("day"));
+        List<Plan> route = planService.getPlanList(id, day);
         return "";
     }
 
@@ -31,11 +36,45 @@ public class PlanController {
      * @param request
      * @return 오늘의 일정페이지
      */
-    @GetMapping("plan/todaySchedule")
-    public String all_schedule(@AuthenticationPrincipal UserPrincipal user, HttpServletRequest request) {
-        String id = user.getId();
-        int day = Integer.parseInt(request.getParameter("day"));
-        List<Plan> route = planService.getPlanList(id, day);
-        return "";
+    @GetMapping("plan/add_schedule")
+    public String add_schedule(@AuthenticationPrincipal UserPrincipal user, HttpServletRequest request) {
+
+        return "pages/add_schedule/add_schedule.html";
+    }
+
+    /**
+     *
+     * @param user
+     * @param request
+     * @return 전체일정 페이지
+     */
+    @GetMapping("plan/week_schedule")
+    public String week_schedule(@AuthenticationPrincipal UserPrincipal user, HttpServletRequest request) {
+
+        return "pages/week_schedule/week_schedule.html";
+    }
+
+    /**
+     *
+     * @param user
+     * @param request
+     * @return 지난일정 페이지
+     */
+    @GetMapping("plan/past_schedule")
+    public String past_schedule(@AuthenticationPrincipal UserPrincipal user, HttpServletRequest request) {
+
+        return "pages/past_schedule/past_schedule.html";
+    }
+
+    /**
+     *
+     * @param user
+     * @param request
+     * @return 일정경로 페이지
+     */
+    @GetMapping("plan/schedule_root")
+    public String schedule_root(@AuthenticationPrincipal UserPrincipal user, HttpServletRequest request) {
+
+        return "pages/schedule_root/schedule_root.html";
     }
 }
