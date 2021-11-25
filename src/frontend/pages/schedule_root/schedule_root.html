@@ -473,7 +473,7 @@
                         <div class="card-body">
                             <p class="card-title mb-0">일정 자세히 보기</p>
                             <div class="table-responsive">
-                                <table class="table table-striped table-borderless">
+                                <table class="table table-striped table-borderless" id="plan_detail">
                                     <thead>
                                     <tr>
                                         <th>일정 이름</th>
@@ -632,7 +632,7 @@
                                 var iwRemoveable = true;
 
                                 var iwContent ='<div style="width: 350px">'+
-                                    '<button type="button" id="mon" class="btn btn-danger btn-rounded btn-icon" style="background-color: red; border: 1px solid red">\n' +
+                                    '<button type="button" id="mon" class="btn btn-danger btn-rounded btn-icon" onclick="mon_click()" style="background-color: red; border: 1px solid red">\n' +
                                     '월 </button>\n' +
                                     '<button type="button" id="tue" class="btn btn-danger btn-rounded btn-icon" style="background-color: #FF5D05 ; border: 1px solid #FF5D05" onclick="location.href=\'tue.html\'">\n' +
                                     '화 </button>\n' +
@@ -678,7 +678,56 @@
                                         infowindow.open(map, marker);
                                     };
                                 }
-                            </script>
+
+                                function mon_click() {
+                                    polyline.setMap(null);
+                                    marker.setMap(null);
+                                    // 마커가 표시될 위치입니다
+
+                                    var marker5 = new kakao.maps.Marker({
+                                        position: positions[3].latlng, // 마커를 표시할 위치
+                                    });
+
+
+                                    var linePath = [
+                                        new kakao.maps.LatLng(33.49300696630641, 126.51221789708927),
+                                        new kakao.maps.LatLng(33.49617682451363, 126.53612710442246),
+                                        new kakao.maps.LatLng(33.49502795424776, 126.54784996095842),
+                                        new kakao.maps.LatLng(33.499559979698255, 126.53116842010202),
+                                        new kakao.maps.LatLng(33.51863686299385, 126.52031636910279)
+                                    ];
+
+                                    var polyline5 = new kakao.maps.Polyline({
+                                        path: linePath, // 선을 구성하는 좌표배열 입니다
+                                        strokeWeight: 5, // 선의 두께 입니다
+                                        strokeColor: 'red', // 선의 색깔입니다
+                                        strokeOpacity: 0.7, // 선의 불투명도 입니다 1에서 0 사이의 값이며 0에 가까울수록 투명합니다
+                                        strokeStyle: 'solid' // 선의 스타일입니다
+                                    });
+                                    marker5.setMap(map);
+                                    polyline5.setMap(map);
+                                    infowindow.close();
+
+                                    var table = document.getElementById("plan_detail");
+                                    var newRow = table.insertRow(3);
+
+                                    // 새 행(Row)에 Cell 추가
+                                    var newCell1 = newRow.insertCell(0);
+                                    var newCell2 = newRow.insertCell(1);
+                                    var newCell3 = newRow.insertCell(2);
+                                    var newCell4 = newRow.insertCell(3);
+                                    var newCell5 = newRow.insertCell(4);
+
+                                    // Cell에 텍스트 추가
+                                    newCell1.innerText = '미정 일정';
+                                    newCell2.innerText = '한마음 병원';
+                                    newCell3.innerText = '미정';
+                                    newCell4.innerText = '1시간';
+                                    newCell5.innerText = '미정일정';
+
+                                    table.rows[4]
+                                }
+                           </script>
                         </div>
                     </div>
                     <!--(끝)일정 경로 : 지도 위 최단 거리 구해주기-->
