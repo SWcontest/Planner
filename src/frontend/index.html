@@ -413,48 +413,39 @@
                                     <!--표 내부-->
                                     <tbody>
                                     <tr>
-                                        <td>장보기</td>
+                                        <td>책 반납하기</td>
                                         <td class="font-weight-bold">1</td>
-                                        <td>제주 제주시 탑동로 38</td>
-                                        <td>10:30</td>
+                                        <td>제주 제주시 연삼로 218</td>
+                                        <td>오전 11:00</td>
                                         <td class="font-weight-medium">
                                             <div class="badge badge-success">완료</div>
                                         </td>
                                     </tr>
                                     <tr>
-                                        <td>운동하기</td>
+                                        <td>멀미약 사기</td>
                                         <td class="font-weight-bold">2</td>
-                                        <td>제주 제주시 동광로 105 1,2,3층</td>
-                                        <td> </td>
+                                        <td>제주특별자치도 제주시 아라일동 제주대학로 102</td>
+                                        <td>미정</td>
                                         <td class="font-weight-medium">
                                             <div class="badge badge-success">완료</div>
                                         </td>
                                     </tr>
                                     <tr>
-                                        <td>스터디</td>
+                                        <td>감기</td>
                                         <td class="font-weight-bold">3</td>
-                                        <td>제주 제주시 아라이동  2436</td>
-                                        <td>13:00</td>
-                                        <td class="font-weight-medium">
-                                            <div class="badge badge-success">완료</div>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>머리 자르기</td>
-                                        <td class="font-weight-bold">4</td>
-                                        <td>제주 제주시 인다2길 6 1층</td>
-                                        <td> </td>
+                                        <td>제주특별자치도 제주시 아라이동 제주대학로 105-1</td>
+                                        <td>미정</td>
                                         <td class="font-weight-medium">
                                             <div class="badge badge-danger">미완료</div>
                                         </td>
                                     </tr>
                                     <tr>
-                                        <td>영화 보기</td>
-                                        <td class="font-weight-bold">5</td>
-                                        <td>제주 제주시 서광로 288</td>
-                                        <td>19:50</td>
+                                        <td>서울가기</td>
+                                        <td class="font-weight-bold">4</td>
+                                        <td>제주특별자치도 제주시 공항로 2</td>
+                                        <td>오후 05:00</td>
                                         <td class="font-weight-medium">
-                                            <div class="badge badge-success">완료</div>
+                                            <div class="badge badge-danger">미완료</div>
                                         </td>
                                     </tr>
                                     </tbody>
@@ -483,11 +474,144 @@
                             <script>
                                 var container = document.getElementById('map');
                                 var options = {
-                                    center: new kakao.maps.LatLng(33.450701, 126.570667),
-                                    level: 3
+                                    center: new kakao.maps.LatLng(33.48210002528953, 126.52661128239373),
+                                    level: 7
                                 };
 
-                                var map = new kakao.maps.Map(container, options);
+                                var map = new kakao.maps.Map(container, options); // 지도를 생성합니다
+
+                                // 마커가 표시될 위치입니다
+                                var markerPosition  = new kakao.maps.LatLng(33.45740959255173, 126.56023838303933);
+
+                                // 마커를 생성합니다
+                                var marker = new kakao.maps.Marker({
+                                    position: markerPosition
+                                });
+                                // 마커가 표시될 위치입니다
+                                var markerPosition2  = new kakao.maps.LatLng(33.46022086189557, 126.56119111695283);
+
+                                // 마커를 생성합니다
+                                var marker2 = new kakao.maps.Marker({
+                                    position: markerPosition2
+                                });
+
+                                // 마커가 표시될 위치입니다
+                                var markerPosition3 = new kakao.maps.LatLng(33.466952523048214, 126.54528631746679);
+
+                                // 마커를 생성합니다
+                                var marker3 = new kakao.maps.Marker({
+                                    position: markerPosition3
+                                });
+
+                                // 마커가 표시될 위치입니다
+                                var markerPosition4 = new kakao.maps.LatLng(33.50679045802733, 126.49298418174813);
+
+                                // 마커를 생성합니다
+                                var marker4 = new kakao.maps.Marker({
+                                    position: markerPosition4
+                                });
+
+                                // 마커가 지도 위에 표시되도록 설정합니다
+                                marker.setMap(map);
+                                marker2.setMap(map);
+                                marker3.setMap(map);
+                                marker4.setMap(map);
+
+                                var linePath = [
+                                    new kakao.maps.LatLng(33.45740959255173, 126.56023838303933),
+                                    new kakao.maps.LatLng(33.46022086189557, 126.56119111695283),
+                                    new kakao.maps.LatLng(33.466952523048214, 126.54528631746679),
+                                    new kakao.maps.LatLng(33.50679045802733, 126.49298418174813)
+                                ];
+
+                                var polyline = new kakao.maps.Polyline({
+                                    path: linePath, // 선을 구성하는 좌표배열 입니다
+                                    strokeWeight: 5, // 선의 두께 입니다
+                                    strokeColor: '#FF5D05', // 선의 색깔입니다
+                                    strokeOpacity: 0.7, // 선의 불투명도 입니다 1에서 0 사이의 값이며 0에 가까울수록 투명합니다
+                                    strokeStyle: 'solid' // 선의 스타일입니다
+                                });
+
+                                polyline.setMap(map);
+
+                                var imageSrc = 'https://i.ibb.co/t8n2DW7/map-pin-2.png', // 마커이미지의 주소입니다
+                                    imageSize = new kakao.maps.Size(40,55); // 마커이미지의 크기입니다
+                                imageOption = {offset: new kakao.maps.Point(27, 69)}; // 마커이미지의 옵션입니다. 마커의 좌표와 일치시킬 이미지 안에서의 좌표를 설정합니다.
+
+
+                                //회색마커
+                                var positions = [
+                                    {
+                                        title: '카카오',
+                                        latlng: new kakao.maps.LatLng(33.51088772003216, 126.51325876616964)
+                                    },
+                                    {
+                                        title: '생태연못',
+                                        latlng: new kakao.maps.LatLng(33.505269764507176, 126.54377157476685)
+                                    },
+                                    {
+                                        title: '텃밭',
+                                        latlng: new kakao.maps.LatLng(33.5010712635577, 126.51927023143702)
+                                    },
+                                    {
+                                        title: '근린공원',
+                                        latlng: new kakao.maps.LatLng(33.49502795424776, 126.54784996095842)
+                                    }
+                                ];
+
+                                // 마커 이미지의 이미지 주소입니다
+                                var imageSrc = "https://i.ibb.co/t8n2DW7/map-pin-2.png";
+
+                                var iwRemoveable = true;
+
+                                var iwContent ='<div style="width: 350px">'+
+                                    '<button type="button" id="mon" class="btn btn-danger btn-rounded btn-icon" style="background-color: red; border: 1px solid red">\n' +
+                                    '월 </button>\n' +
+                                    '<button type="button" id="tue" class="btn btn-danger btn-rounded btn-icon" style="background-color: #FF5D05 ; border: 1px solid #FF5D05" onclick="location.href=\'tue.html\'">\n' +
+                                    '화 </button>\n' +
+                                    '<button type="button" id="wed" class="btn btn-danger btn-rounded btn-icon" style="background-color: #4E71D9 ; border: 1px solid #4E71D9" onclick="location.href=\'wednes.html\'">\n' +
+                                    '수 </button>\n' +
+                                    '<button type="button" id="thu" class="btn btn-danger btn-rounded btn-icon" style="background-color: #5FA55A ; border: 1px solid #5FA55A">\n' +
+                                    '목 </button>\n' +
+                                    '<button type="button" id="fri" class="btn btn-danger btn-rounded btn-icon" style="background-color: #927A6D ; border: 1px solid #927A6D">\n' +
+                                    '금 </button>\n' +
+                                    '<button type="button" id="sat" class="btn btn-danger btn-rounded btn-icon" style="background-color: #BB85EA ; border: 1px solid #BB85EA">\n' +
+                                    '토 </button>\n' +
+                                    '<button type="button" id="sun" class="btn btn-danger btn-rounded btn-icon" style="background-color:#D98B84; border: 1px solid #D98B84">\n' +
+                                    '일 </button>' +
+                                    '</div>';
+
+                                for (var i = 0; i < positions.length; i++) {
+
+                                    // 마커 이미지의 이미지 크기 입니다
+                                    var imageSize = new kakao.maps.Size(40, 50);
+
+                                    // 마커 이미지를 생성합니다
+                                    var markerImage = new kakao.maps.MarkerImage(imageSrc, imageSize);
+
+                                    // 마커를 생성합니다
+                                    var marker = new kakao.maps.Marker({
+                                        map: map, // 마커를 표시할 지도
+                                        position: positions[i].latlng, // 마커를 표시할 위치
+                                        title: positions[i].title, // 마커의 타이틀, 마커에 마우스를 올리면 타이틀이 표시됩니다
+                                        image: markerImage, // 마커 이미지
+                                        clickable: true
+                                    });
+                                    // 인포윈도우를 생성합니다
+                                    var infowindow = new kakao.maps.InfoWindow({
+                                        content : iwContent,
+                                        removable : iwRemoveable
+                                    });
+
+                                    kakao.maps.event.addListener(marker, 'click', makeOverListener(map, marker, infowindow));
+                                }
+
+                                function makeOverListener(map, marker, infowindow) {
+                                    return function() {
+                                        infowindow.open(map, marker);
+                                    };
+                                }
+
                             </script>
                         </div>
                     </div>
