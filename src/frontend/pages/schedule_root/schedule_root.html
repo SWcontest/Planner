@@ -532,78 +532,88 @@
                                 <div id="map" style="width:100%;height:550px;"></div>
                                 <script type="text/javascript"
                                         src="https://dapi.kakao.com/v2/maps/sdk.js?appkey=d33139d3a4306bea9928208736884b2f&libraries=drawing"></script>
-                                <script>
-                                    var mapContainer = document.getElementById('map'), // 지도를 표시할 div
-                                        mapOption = {
-                                            center: new kakao.maps.LatLng(33.49927523032624, 126.52983583833799), // 지도의 중심좌표
-                                            level: 5 // 지도의 확대 레벨
-                                        };
-
-                                    var map = new kakao.maps.Map(mapContainer, mapOption); // 지도를 생성합니다
-
-                                    //회색마커
-                                    var positions = [
-                                        {
-                                            title: '카카오',
-                                            latlng: new kakao.maps.LatLng(33.51088772003216, 126.51325876616964)
-                                        },
-                                        {
-                                            title: '생태연못',
-                                            latlng: new kakao.maps.LatLng(33.505269764507176, 126.54377157476685)
-                                        },
-                                        {
-                                            title: '텃밭',
-                                            latlng: new kakao.maps.LatLng(33.5010712635577, 126.51927023143702)
-                                        },
-                                        {
-                                            title: '근린공원',
-                                            latlng: new kakao.maps.LatLng(33.49502795424776, 126.54784996095842)
-                                        }
-                                    ];
-
-                                    // 마커 이미지의 이미지 주소입니다
-                                    var imageSrc = "https://i.ibb.co/t8n2DW7/map-pin-2.png";
 
 
-                                    for (var i = 0; i < positions.length; i++) {
+                            <script>
+                                var container = document.getElementById('map');
+                                var options = {
+                                    center: new kakao.maps.LatLng(33.48557677873433, 126.41057002936363),
+                                    level: 4
+                                };
 
-                                        // 마커 이미지의 이미지 크기 입니다
-                                        var imageSize = new kakao.maps.Size(40, 55);
+                                var map = new kakao.maps.Map(container, options); // 지도를 생성합니다
 
-                                        // 마커 이미지를 생성합니다
-                                        var markerImage = new kakao.maps.MarkerImage(imageSrc, imageSize);
+                                // 마커가 표시될 위치입니다
+                                var markerPosition  = new kakao.maps.LatLng(33.48607683870235, 126.4137303347637);
 
-                                        // 마커를 생성합니다
-                                        var marker = new kakao.maps.Marker({
-                                            map: map, // 마커를 표시할 지도
-                                            position: positions[i].latlng, // 마커를 표시할 위치
-                                            title: positions[i].title, // 마커의 타이틀, 마커에 마우스를 올리면 타이틀이 표시됩니다
-                                            image: markerImage // 마커 이미지
-                                        });
-                                    }
+                                // 마커를 생성합니다
+                                var marker = new kakao.maps.Marker({
+                                    position: markerPosition
+                                });
+                                // 마커가 표시될 위치입니다
+                                var markerPosition2  = new kakao.maps.LatLng(33.485822569770086, 126.41342512018306);
 
+                                // 마커를 생성합니다
+                                var marker2 = new kakao.maps.Marker({
+                                    position: markerPosition2
+                                });
 
-                                    var linePath = [
-                                        new kakao.maps.LatLng(33.49300696630641, 126.51221789708927),
-                                        new kakao.maps.LatLng(33.49216558460701, 126.5149000719437),
-                                        new kakao.maps.LatLng(33.499559979698255, 126.53116842010202),
-                                        new kakao.maps.LatLng(33.51863686299385, 126.52031636910279)
+                                // 마커가 표시될 위치입니다
+                                var markerPosition3 = new kakao.maps.LatLng(33.48542869906245, 126.40793195590955);
 
-                                    ];
+                                // 마커를 생성합니다
+                                var marker3 = new kakao.maps.Marker({
+                                    position: markerPosition3
+                                });
 
-                                    // 지도에 표시할 선을 생성합니다
-                                    var polyline = new kakao.maps.Polyline({
-                                        path: linePath, // 선을 구성하는 좌표배열 입니다
-                                        strokeWeight: 5, // 선의 두께 입니다
-                                        strokeColor: 'red', // 선의 색깔입니다
-                                        strokeOpacity: 0.7, // 선의 불투명도 입니다 1에서 0 사이의 값이며 0에 가까울수록 투명합니다
-                                        strokeStyle: 'solid' // 선의 스타일입니다
-                                    });
+                                // 마커가 표시될 위치입니다
+                                var markerPosition4 = new kakao.maps.LatLng(33.48545949088601, 126.48101631540176);
 
-                                    // 지도에 선을 표시합니다
-                                    polyline.setMap(map);
-                                </script>
-                            </div>
+                                // 마커를 생성합니다
+                                var marker4 = new kakao.maps.Marker({
+                                    position: markerPosition4
+                                });
+
+                                // 마커가 지도 위에 표시되도록 설정합니다
+                                marker.setMap(map);
+                                marker2.setMap(map);
+                                marker3.setMap(map);
+                                marker4.setMap(map);
+
+                                var linePath = [
+                                    new kakao.maps.LatLng(33.48607683870235, 126.4137303347637),
+                                    new kakao.maps.LatLng(33.485822569770086, 126.41342512018306),
+                                    new kakao.maps.LatLng(33.48542869906245, 126.40793195590955),
+                                    new kakao.maps.LatLng(33.48545949088601, 126.48101631540176)
+                                ];
+
+                                var polyline = new kakao.maps.Polyline({
+                                    path: linePath, // 선을 구성하는 좌표배열 입니다
+                                    strokeWeight: 5, // 선의 두께 입니다
+                                    strokeColor: '#238cfa', // 선의 색깔입니다
+                                    strokeOpacity: 0.7, // 선의 불투명도 입니다 1에서 0 사이의 값이며 0에 가까울수록 투명합니다
+                                    strokeStyle: 'solid' // 선의 스타일입니다
+                                });
+
+                                polyline.setMap(map);
+
+                                var imageSrc = '../../images/map-marker-1_icon-icons.com_56710.png', // 마커이미지의 주소입니다
+                                    imageSize = new kakao.maps.Size(36, 36); // 마커이미지의 크기입니다
+                                    imageOption = {offset: new kakao.maps.Point(27, 69)}; // 마커이미지의 옵션입니다. 마커의 좌표와 일치시킬 이미지 안에서의 좌표를 설정합니다.
+
+                                // 마커의 이미지정보를 가지고 있는 마커이미지를 생성합니다
+                                var markerImage = new kakao.maps.MarkerImage(imageSrc, imageSize, imageOption),
+                                    markerPosition = new kakao.maps.LatLng(33.48627453934302, 126.4124398570613); // 마커가 표시될 위치입니다
+
+                                // 마커를 생성합니다
+                                var marker = new kakao.maps.Marker({
+                                    position: markerPosition,
+                                    image: markerImage // 마커이미지 설정
+                                });
+
+                                // 마커가 지도 위에 표시되도록 설정합니다
+                                marker.setMap(map);
+                            </script>
                         </div>
                     </div>
                     <!--(끝)일정 경로 : 지도 위 최단 거리 구해주기-->
@@ -614,8 +624,9 @@
                                 <div class="d-flex justify-content-between">
                                     <p class="card-title">대중교통 안내</p>
                                 </div>
-                                여기다가 대중교통 정보 사기 쳐서,,,,,,,,,,,,넣으면 될듯!!
+                                <img src="../../images/pic.JPG"/>
                             </div>
+
                         </div>
                     </div>
                 </div>
