@@ -473,7 +473,7 @@
                         <div class="card-body">
                             <p class="card-title mb-0">일정 자세히 보기</p>
                             <div class="table-responsive">
-                                <table class="table table-striped table-borderless">
+                                <table class="table table-striped table-borderless" id="plan_detail">
                                     <thead>
                                     <tr>
                                         <th>일정 이름</th>
@@ -707,8 +707,27 @@
                                     marker5.setMap(map);
                                     polyline5.setMap(map);
                                     infowindow.close();
+
+                                    var table = document.getElementById("plan_detail");
+                                    var newRow = table.insertRow(3);
+
+                                    // 새 행(Row)에 Cell 추가
+                                    var newCell1 = newRow.insertCell(0);
+                                    var newCell2 = newRow.insertCell(1);
+                                    var newCell3 = newRow.insertCell(2);
+                                    var newCell4 = newRow.insertCell(3);
+                                    var newCell5 = newRow.insertCell(4);
+
+                                    // Cell에 텍스트 추가
+                                    newCell1.innerText = '미정 일정';
+                                    newCell2.innerText = '한마음 병원';
+                                    newCell3.innerText = '미정';
+                                    newCell4.innerText = '1시간';
+                                    newCell5.innerText = '미정일정';
+
+                                    table.rows[4]
                                 }
-                            </script>
+                           </script>
                         </div>
                     </div>
                     <!--(끝)일정 경로 : 지도 위 최단 거리 구해주기-->
