@@ -632,7 +632,7 @@
                                 var iwRemoveable = true;
 
                                 var iwContent ='<div style="width: 350px">'+
-                                    '<button type="button" id="mon" class="btn btn-danger btn-rounded btn-icon" style="background-color: red; border: 1px solid red">\n' +
+                                    '<button type="button" id="mon" class="btn btn-danger btn-rounded btn-icon" onclick="mon_click()" style="background-color: red; border: 1px solid red">\n' +
                                     '월 </button>\n' +
                                     '<button type="button" id="tue" class="btn btn-danger btn-rounded btn-icon" style="background-color: #FF5D05 ; border: 1px solid #FF5D05" onclick="location.href=\'tue.html\'">\n' +
                                     '화 </button>\n' +
@@ -677,6 +677,36 @@
                                     return function() {
                                         infowindow.open(map, marker);
                                     };
+                                }
+
+                                function mon_click() {
+                                    polyline.setMap(null);
+                                    marker.setMap(null);
+                                    // 마커가 표시될 위치입니다
+
+                                    var marker5 = new kakao.maps.Marker({
+                                        position: positions[3].latlng, // 마커를 표시할 위치
+                                    });
+
+
+                                    var linePath = [
+                                        new kakao.maps.LatLng(33.49300696630641, 126.51221789708927),
+                                        new kakao.maps.LatLng(33.49617682451363, 126.53612710442246),
+                                        new kakao.maps.LatLng(33.49502795424776, 126.54784996095842),
+                                        new kakao.maps.LatLng(33.499559979698255, 126.53116842010202),
+                                        new kakao.maps.LatLng(33.51863686299385, 126.52031636910279)
+                                    ];
+
+                                    var polyline5 = new kakao.maps.Polyline({
+                                        path: linePath, // 선을 구성하는 좌표배열 입니다
+                                        strokeWeight: 5, // 선의 두께 입니다
+                                        strokeColor: 'red', // 선의 색깔입니다
+                                        strokeOpacity: 0.7, // 선의 불투명도 입니다 1에서 0 사이의 값이며 0에 가까울수록 투명합니다
+                                        strokeStyle: 'solid' // 선의 스타일입니다
+                                    });
+                                    marker5.setMap(map);
+                                    polyline5.setMap(map);
+                                    infowindow.close();
                                 }
                             </script>
                         </div>
