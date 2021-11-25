@@ -486,35 +486,19 @@
                   <!--표 내부는 이런식으로 하면 될 거 같아서 예시로 둠-->
                   <tbody>
                   <tr>
-                    <td>세탁소 들리기</td>
+                    <td>현장실습</td>
                     <td>제주 제주시 연삼로 218</td>
-                    <td>오전 11:00</td>
-                    <td>30분</td>
+                    <td>미정</td>
+                    <td>2시간 30분</td>
                     <td class="font-weight-bold">1</td>
                   </tr>
                   <tr>
-                    <td>헬스장가기</td>
-                    <td>제주 제주시 연삼로 424</td>
-                    <td>오후 01:00</td>
+                    <td>과사 방문</td>
+                    <td>제주특별자치도 제주시 제주대학로 102 제주대학교) 공과대학 4호관</td>
+                    <td>미정</td>
                     <td>1시간 30분</td>
                     <td class="font-weight-bold">2</td>
                   </tr>
-                  <tr>
-                    <td>강의 듣기</td>
-                    <td>제주 제주시 중앙로 236</td>
-                    <td>오후 03:00</td>
-                    <td>1시간</td>
-                    <td class="font-weight-bold">3</td>
-                  </tr>
-                  <tr>
-                    <td>장보기</td>
-                    <td>제주 제주시 탑동로 38</td>
-                    <td>오후 05:00</td>
-                    <td>1시간</td>
-                    <td class="font-weight-bold">4</td>
-                  </tr>
-
-
                   </tbody>
                 </table>
               </div>
@@ -540,60 +524,40 @@
                 <script>
                   var container = document.getElementById('map');
                   var options = {
-                    center: new kakao.maps.LatLng(33.49927523032624, 126.52983583833799),
+                    center: new kakao.maps.LatLng(33.452821209381565, 126.567937437734185),
                     level: 6
                   };
 
                   var map = new kakao.maps.Map(container, options); // 지도를 생성합니다
 
                   // 마커가 표시될 위치입니다
-                  var markerPosition  = new kakao.maps.LatLng(33.49300696630641, 126.51221789708927);
+                  var markerPosition  = new kakao.maps.LatLng(33.45077649447139, 126.57058450450796);
 
                   // 마커를 생성합니다
                   var marker = new kakao.maps.Marker({
                     position: markerPosition
                   });
                   // 마커가 표시될 위치입니다
-                  var markerPosition2  = new kakao.maps.LatLng(33.49216558460701, 126.5149000719437);
+                  var markerPosition2  = new kakao.maps.LatLng(33.45486592429174, 126.56529037096041);
 
                   // 마커를 생성합니다
                   var marker2 = new kakao.maps.Marker({
                     position: markerPosition2
                   });
 
-                  // 마커가 표시될 위치입니다
-                  var markerPosition3 = new kakao.maps.LatLng(33.499559979698255, 126.53116842010202);
-
-                  // 마커를 생성합니다
-                  var marker3 = new kakao.maps.Marker({
-                    position: markerPosition3
-                  });
-
-                  // 마커가 표시될 위치입니다
-                  var markerPosition4 = new kakao.maps.LatLng(33.51863686299385, 126.52031636910279);
-
-                  // 마커를 생성합니다
-                  var marker4 = new kakao.maps.Marker({
-                    position: markerPosition4
-                  });
-
                   // 마커가 지도 위에 표시되도록 설정합니다
                   marker.setMap(map);
                   marker2.setMap(map);
-                  marker3.setMap(map);
-                  marker4.setMap(map);
 
                   var linePath = [
-                    new kakao.maps.LatLng(33.49300696630641, 126.51221789708927),
-                    new kakao.maps.LatLng(33.49216558460701, 126.5149000719437),
-                    new kakao.maps.LatLng(33.499559979698255, 126.53116842010202),
-                    new kakao.maps.LatLng(33.51863686299385, 126.52031636910279)
+                    new kakao.maps.LatLng(33.45077649447139, 126.57058450450796),
+                    new kakao.maps.LatLng(33.45486592429174, 126.56529037096041)
                   ];
 
                   var polyline = new kakao.maps.Polyline({
                     path: linePath, // 선을 구성하는 좌표배열 입니다
                     strokeWeight: 5, // 선의 두께 입니다
-                    strokeColor: 'red', // 선의 색깔입니다
+                    strokeColor: '#4E71D9', // 선의 색깔입니다
                     strokeOpacity: 0.7, // 선의 불투명도 입니다 1에서 0 사이의 값이며 0에 가까울수록 투명합니다
                     strokeStyle: 'solid' // 선의 스타일입니다
                   });
@@ -628,6 +592,24 @@
                   // 마커 이미지의 이미지 주소입니다
                   var imageSrc = "https://i.ibb.co/t8n2DW7/map-pin-2.png";
 
+                  var iwRemoveable = true;
+
+                  var iwContent ='<div style="width: 350px">'+
+                          '<button type="button" id="mon" class="btn btn-danger btn-rounded btn-icon" style="background-color: red; border: 1px solid red">\n' +
+                          '월 </button>\n' +
+                          '<button type="button" id="tue" class="btn btn-danger btn-rounded btn-icon" style="background-color: #FF5D05 ; border: 1px solid #FF5D05" onclick="location.href=\'tue.html\'">\n' +
+                          '화 </button>\n' +
+                          '<button type="button" id="wed" class="btn btn-danger btn-rounded btn-icon" style="background-color: #4E71D9 ; border: 1px solid #4E71D9" onclick="location.href=\'wednes.html\'">\n' +
+                          '수 </button>\n' +
+                          '<button type="button" id="thu" class="btn btn-danger btn-rounded btn-icon" style="background-color: #5FA55A ; border: 1px solid #5FA55A">\n' +
+                          '목 </button>\n' +
+                          '<button type="button" id="fri" class="btn btn-danger btn-rounded btn-icon" style="background-color: #927A6D ; border: 1px solid #927A6D">\n' +
+                          '금 </button>\n' +
+                          '<button type="button" id="sat" class="btn btn-danger btn-rounded btn-icon" style="background-color: #BB85EA ; border: 1px solid #BB85EA">\n' +
+                          '토 </button>\n' +
+                          '<button type="button" id="sun" class="btn btn-danger btn-rounded btn-icon" style="background-color:#D98B84; border: 1px solid #D98B84">\n' +
+                          '일 </button>' +
+                          '</div>'
 
                   for (var i = 0; i < positions.length; i++) {
 
@@ -642,8 +624,22 @@
                       map: map, // 마커를 표시할 지도
                       position: positions[i].latlng, // 마커를 표시할 위치
                       title: positions[i].title, // 마커의 타이틀, 마커에 마우스를 올리면 타이틀이 표시됩니다
-                      image: markerImage // 마커 이미지
+                      image: markerImage, // 마커 이미지
+                      clickable: true
                     });
+                    // 인포윈도우를 생성합니다
+                    var infowindow = new kakao.maps.InfoWindow({
+                      content : iwContent,
+                      removable : iwRemoveable
+                    });
+
+                    kakao.maps.event.addListener(marker, 'click', makeOverListener(map, marker, infowindow));
+                  }
+
+                  function makeOverListener(map, marker, infowindow) {
+                    return function() {
+                      infowindow.open(map, marker);
+                    };
                   }
                 </script>
               </div>
