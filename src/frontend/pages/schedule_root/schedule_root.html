@@ -22,6 +22,7 @@
     <link rel="shortcut icon" href="../../images/favicon.png"/>
     <link rel="stylesheet" href="../../css/new.css">
 
+
 </head>
 
 <body>
@@ -29,7 +30,8 @@
     <!-- partial:partials/_navbar.html -->
     <nav class="navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
         <div class="text-center navbar-brand-wrapper d-flex align-items-center justify-content-center">
-            <a class="navbar-brand brand-logo mr-5" href="index.html"><img src="../../images/Week%20Route-logos_black.png" style="width: 100px;
+            <a class="navbar-brand brand-logo mr-5" href="index.html"><img
+                    src="../../images/Week%20Route-logos_black.png" style="width: 100px;
     height: 100px; margin-left: 50px;" class="mr-2" alt="logo"/></a>
             <a class="navbar-brand brand-logo-mini" href="index.html"><img src="../../images/logo-mini.svg" alt="logo"/></a>
         </div>
@@ -345,12 +347,13 @@
                     </a>
                     <div class="collapse" id="ui-basic">
                         <ul class="nav flex-column sub-menu">
-                            <li class="nav-item"><a class="nav-link" href="../week_schedule/week_schedule.html">요일별 일정</a>
+                            <li class="nav-item"><a class="nav-link" href="../week_schedule/week_schedule.html">요일별
+                                일정</a>
                             </li>
                             <li class="nav-item"><a class="nav-link" href="schedule_root.html">일정 경로</a>
                             </li>
-<!--                            <li class="nav-item"><a class="nav-link" href="pages/ui-features/typography.html">대중교통-->
-<!--                                안내</a></li>-->
+                            <!--                            <li class="nav-item"><a class="nav-link" href="pages/ui-features/typography.html">대중교통-->
+                            <!--                                안내</a></li>-->
                         </ul>
                     </div>
                 </li>
@@ -364,7 +367,8 @@
                     </a>
                     <div class="collapse" id="form-elements">
                         <ul class="nav flex-column sub-menu">
-                            <li class="nav-item"><a class="nav-link" href="../past_schedule/past_schedule.html">지난 일정 열람</a>
+                            <li class="nav-item"><a class="nav-link" href="../past_schedule/past_schedule.html">지난 일정
+                                열람</a>
                             </li>
                             <li class="nav-item"><a class="nav-link" href="pages/forms/basic_elements.html">SNS 공유</a>
                             </li>
@@ -460,8 +464,6 @@
                 <!--(끝)일정 경로 : 요일 선택하기-->
 
 
-
-
                 <!--일정 경로 : 그날 일정 보여주기-->
                 <div class="col-md-12 grid-margin stretch-card">
                     <div class="card">
@@ -482,33 +484,32 @@
                                     <tbody>
                                     <tr>
                                         <td>세탁소 들리기</td>
-                                        <td>크린토피아</td>
+                                        <td>제주 제주시 연삼로 218</td>
                                         <td>오전 11:00</td>
                                         <td>30분</td>
                                         <td class="font-weight-bold">1</td>
                                     </tr>
                                     <tr>
                                         <td>헬스장가기</td>
-                                        <td>헬스장</td>
+                                        <td>제주 제주시 연삼로 424</td>
                                         <td>오후 01:00</td>
                                         <td>1시간 30분</td>
                                         <td class="font-weight-bold">2</td>
                                     </tr>
                                     <tr>
                                         <td>강의 듣기</td>
-                                        <td>카페</td>
+                                        <td>제주 제주시 중앙로 236</td>
                                         <td>오후 03:00</td>
                                         <td>1시간</td>
                                         <td class="font-weight-bold">3</td>
                                     </tr>
                                     <tr>
                                         <td>장보기</td>
-                                        <td>이마트</td>
+                                        <td>제주 제주시 탑동로 38</td>
                                         <td>오후 05:00</td>
                                         <td>1시간</td>
                                         <td class="font-weight-bold">4</td>
                                     </tr>
-
 
 
                                     </tbody>
@@ -522,42 +523,102 @@
 
                 <!--일정 경로 : 지도 위 최단 거리 구해주기-->
                 <div class="row">
-                <div class="col-md-6 grid-margin stretch-card">
-                    <div class="card">
-                        <div class="card-body">
-                            <div class="d-flex justify-content-between">
-                                <p class="card-title">최단 일정 경로</p>
+                    <div class="col-md-6 grid-margin stretch-card">
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="d-flex justify-content-between">
+                                    <p class="card-title">최단 일정 경로</p>
                                 </div>
+                                <div id="map" style="width:100%;height:550px;"></div>
+                                <script type="text/javascript"
+                                        src="https://dapi.kakao.com/v2/maps/sdk.js?appkey=d33139d3a4306bea9928208736884b2f&libraries=drawing"></script>
+                                <script>
+                                    var mapContainer = document.getElementById('map'), // 지도를 표시할 div
+                                        mapOption = {
+                                            center: new kakao.maps.LatLng(33.49927523032624, 126.52983583833799), // 지도의 중심좌표
+                                            level: 5 // 지도의 확대 레벨
+                                        };
 
-                            <div id="map" style="width:600px;height:600px;">
+                                    var map = new kakao.maps.Map(mapContainer, mapOption); // 지도를 생성합니다
+
+                                    //회색마커
+                                    var positions = [
+                                        {
+                                            title: '카카오',
+                                            latlng: new kakao.maps.LatLng(33.51088772003216, 126.51325876616964)
+                                        },
+                                        {
+                                            title: '생태연못',
+                                            latlng: new kakao.maps.LatLng(33.505269764507176, 126.54377157476685)
+                                        },
+                                        {
+                                            title: '텃밭',
+                                            latlng: new kakao.maps.LatLng(33.5010712635577, 126.51927023143702)
+                                        },
+                                        {
+                                            title: '근린공원',
+                                            latlng: new kakao.maps.LatLng(33.49502795424776, 126.54784996095842)
+                                        }
+                                    ];
+
+                                    // 마커 이미지의 이미지 주소입니다
+                                    var imageSrc = "https://i.ibb.co/t8n2DW7/map-pin-2.png";
+
+
+                                    for (var i = 0; i < positions.length; i++) {
+
+                                        // 마커 이미지의 이미지 크기 입니다
+                                        var imageSize = new kakao.maps.Size(40, 55);
+
+                                        // 마커 이미지를 생성합니다
+                                        var markerImage = new kakao.maps.MarkerImage(imageSrc, imageSize);
+
+                                        // 마커를 생성합니다
+                                        var marker = new kakao.maps.Marker({
+                                            map: map, // 마커를 표시할 지도
+                                            position: positions[i].latlng, // 마커를 표시할 위치
+                                            title: positions[i].title, // 마커의 타이틀, 마커에 마우스를 올리면 타이틀이 표시됩니다
+                                            image: markerImage // 마커 이미지
+                                        });
+                                    }
+
+
+                                    var linePath = [
+                                        new kakao.maps.LatLng(33.49300696630641, 126.51221789708927),
+                                        new kakao.maps.LatLng(33.49216558460701, 126.5149000719437),
+                                        new kakao.maps.LatLng(33.499559979698255, 126.53116842010202),
+                                        new kakao.maps.LatLng(33.51863686299385, 126.52031636910279)
+
+                                    ];
+
+                                    // 지도에 표시할 선을 생성합니다
+                                    var polyline = new kakao.maps.Polyline({
+                                        path: linePath, // 선을 구성하는 좌표배열 입니다
+                                        strokeWeight: 5, // 선의 두께 입니다
+                                        strokeColor: 'red', // 선의 색깔입니다
+                                        strokeOpacity: 0.7, // 선의 불투명도 입니다 1에서 0 사이의 값이며 0에 가까울수록 투명합니다
+                                        strokeStyle: 'solid' // 선의 스타일입니다
+                                    });
+
+                                    // 지도에 선을 표시합니다
+                                    polyline.setMap(map);
+                                </script>
                             </div>
-                            <script type="text/javascript"
-                                    src="//dapi.kakao.com/v2/maps/sdk.js?appkey=d1048c35e643665be4a212b55b9d45b5&libraries=services,clusterer,drawing"></script>
-                            <script>
-                                var container = document.getElementById('map');
-                                var options = {
-                                    center: new kakao.maps.LatLng(33.450701, 126.570667),
-                                    level: 5
-                                };
+                        </div>
+                    </div>
+                    <!--(끝)일정 경로 : 지도 위 최단 거리 구해주기-->
 
-                                var map = new kakao.maps.Map(container, options);
-                            </script>
+                    <div class="col-md-6 grid-margin stretch-card">
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="d-flex justify-content-between">
+                                    <p class="card-title">대중교통 안내</p>
+                                </div>
+                                여기다가 대중교통 정보 사기 쳐서,,,,,,,,,,,,넣으면 될듯!!
+                            </div>
                         </div>
                     </div>
                 </div>
-                <!--(끝)일정 경로 : 지도 위 최단 거리 구해주기-->
-
-                <div class="col-md-6 grid-margin stretch-card">
-                    <div class="card">
-                        <div class="card-body">
-                            <div class="d-flex justify-content-between">
-                                <p class="card-title">대중교통 안내</p>
-                            </div>
-                            여기다가 대중교통 정보 사기 쳐서,,,,,,,,,,,,넣으면 될듯!!
-                        </div>
-                    </div>
-                </div>
-            </div>
             </div>
 
 
@@ -601,7 +662,8 @@
 <script src="../../js/dashboard.js"></script>
 <script src="../../js/Chart.roundedBarCharts.js"></script>
 <!-- End custom js for this page-->
-<script src="main.js"></script>
+
+<script src="../../customJS/schedule_root.js"/>
 </body>
 
 </html>
