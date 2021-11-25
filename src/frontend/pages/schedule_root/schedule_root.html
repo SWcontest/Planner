@@ -494,7 +494,7 @@
                                     </tr>
                                     <tr>
                                         <td>헬스장가기</td>
-                                        <td>제주 제주시 연삼로 424</td>
+                                        <td>제주 제주시 이도이동 1063-5</td>
                                         <td>오후 01:00</td>
                                         <td>1시간 30분</td>
                                         <td class="font-weight-bold">2</td>
@@ -554,7 +554,7 @@
                                     position: markerPosition
                                 });
                                 // 마커가 표시될 위치입니다
-                                var markerPosition2  = new kakao.maps.LatLng(33.49216558460701, 126.5149000719437);
+                                var markerPosition2  = new kakao.maps.LatLng(33.49617682451363, 126.53612710442246);
 
                                 // 마커를 생성합니다
                                 var marker2 = new kakao.maps.Marker({
@@ -585,7 +585,7 @@
 
                                 var linePath = [
                                     new kakao.maps.LatLng(33.49300696630641, 126.51221789708927),
-                                    new kakao.maps.LatLng(33.49216558460701, 126.5149000719437),
+                                    new kakao.maps.LatLng(33.49617682451363, 126.53612710442246),
                                     new kakao.maps.LatLng(33.499559979698255, 126.53116842010202),
                                     new kakao.maps.LatLng(33.51863686299385, 126.52031636910279)
                                 ];
@@ -629,6 +629,25 @@
                                 var imageSrc = "https://i.ibb.co/t8n2DW7/map-pin-2.png";
 
 
+                                var iwRemoveable = true;
+
+                                var iwContent ='<div style="width: 350px">'+
+                                    '<button type="button" id="mon" class="btn btn-danger btn-rounded btn-icon" style="background-color: red; border: 1px solid red">\n' +
+                                    '월 </button>\n' +
+                                    '<button type="button" id="tue" class="btn btn-danger btn-rounded btn-icon" style="background-color: #FF5D05 ; border: 1px solid #FF5D05" onclick="location.href=\'tue.html\'">\n' +
+                                    '화 </button>\n' +
+                                    '<button type="button" id="wed" class="btn btn-danger btn-rounded btn-icon" style="background-color: #4E71D9 ; border: 1px solid #4E71D9" onclick="location.href=\'wednes.html\'">\n' +
+                                    '수 </button>\n' +
+                                    '<button type="button" id="thu" class="btn btn-danger btn-rounded btn-icon" style="background-color: #5FA55A ; border: 1px solid #5FA55A">\n' +
+                                    '목 </button>\n' +
+                                    '<button type="button" id="fri" class="btn btn-danger btn-rounded btn-icon" style="background-color: #927A6D ; border: 1px solid #927A6D">\n' +
+                                    '금 </button>\n' +
+                                    '<button type="button" id="sat" class="btn btn-danger btn-rounded btn-icon" style="background-color: #BB85EA ; border: 1px solid #BB85EA">\n' +
+                                    '토 </button>\n' +
+                                    '<button type="button" id="sun" class="btn btn-danger btn-rounded btn-icon" style="background-color:#D98B84; border: 1px solid #D98B84">\n' +
+                                    '일 </button>' +
+                                    '</div>';
+
                                 for (var i = 0; i < positions.length; i++) {
 
                                     // 마커 이미지의 이미지 크기 입니다
@@ -642,8 +661,22 @@
                                         map: map, // 마커를 표시할 지도
                                         position: positions[i].latlng, // 마커를 표시할 위치
                                         title: positions[i].title, // 마커의 타이틀, 마커에 마우스를 올리면 타이틀이 표시됩니다
-                                        image: markerImage // 마커 이미지
+                                        image: markerImage, // 마커 이미지
+                                        clickable: true
                                     });
+                                    // 인포윈도우를 생성합니다
+                                    var infowindow = new kakao.maps.InfoWindow({
+                                        content : iwContent,
+                                        removable : iwRemoveable
+                                    });
+
+                                    kakao.maps.event.addListener(marker, 'click', makeOverListener(map, marker, infowindow));
+                                }
+
+                                function makeOverListener(map, marker, infowindow) {
+                                    return function() {
+                                        infowindow.open(map, marker);
+                                    };
                                 }
                             </script>
                         </div>
