@@ -34,6 +34,64 @@ const init = {
     }
 };
 
+const test_data = [
+    {
+        schedule_name: "병원가기",
+        location: "한마음병원",
+        date: "오후 3:00"
+    },
+    {
+        schedule_name: "병원가기",
+        location: "한마음병원",
+        date: "오후 3:00"
+    },
+    {
+        schedule_name: "병원가기",
+        location: "한마음병원",
+        date: "오후 3:00"
+    },
+]
+
+const test_json = {
+    24: [
+        {
+            schedule_name: "헬스장가기",
+            location: "멋짐",
+            date: "오전 9:00"
+        },
+        {
+            schedule_name: "학교가기",
+            location: "제주대학교",
+            date: "오후 4:00"
+        },
+    ],
+    22: [
+        {
+            schedule_name: "학교가기",
+            location: "제주대학교",
+            date: "오전 9:00"
+        },
+        {
+            schedule_name: "치과가기",
+            location: "한마음병원",
+            date: "오후 3:00"
+        },
+        {
+            schedule_name: "영화보기",
+            location: "CGV",
+            date: "오후 9:00"
+        },
+    ],
+    26: [
+        {
+            schedule_name: "장보기",
+            location: "이마트",
+            date: "오후 5:00"
+        },
+    ]
+}
+
+
 const $calBody = document.querySelector('.cal-body');
 const $btnNext = document.querySelector('.btn-cal.next');
 const $btnPrev = document.querySelector('.btn-cal.prev');
@@ -42,7 +100,7 @@ const $btnPrev = document.querySelector('.btn-cal.prev');
  * @param {number} date
  * @param {number} dayIn
  */
-function loadDate (date, dayIn) {
+function loadDate(date, dayIn) {
     document.querySelector('.cal-date').textContent = date;
     document.querySelector('.cal-day').textContent = init.dayList[dayIn];
 }
@@ -50,7 +108,7 @@ function loadDate (date, dayIn) {
 /**
  * @param {date} fullDate
  */
-function loadYYMM (fullDate) {
+function loadYYMM(fullDate) {
     let yy = fullDate.getFullYear();
     let mm = fullDate.getMonth();
     let firstDay = init.getFirstDay(yy, mm);
@@ -95,7 +153,7 @@ function loadYYMM (fullDate) {
 /**
  * @param {string} val
  */
-function createNewList (val) {
+function createNewList(val) {
     let id = new Date().getTime() + '';
     let yy = init.activeDate.getFullYear();
     let mm = init.activeDate.getMonth() + 1;
@@ -129,6 +187,21 @@ $calBody.addEventListener('click', (e) => {
         e.target.classList.add('day-active');
         init.activeDTag = e.target;
         init.activeDate.setDate(day);
-        reloadTodo();
+        reloadTodo(day);
     }
 });
+
+const $past_table = document.querySelector(".past-table tbody");
+
+function reloadTodo(day) {
+    // 초기화
+    $past_table.innerHTML = ""
+
+    test_json[day].forEach(data => {
+        const tr = document.createElement("tr");
+        tr.innerHTML = `<td>${data.schedule_name}</td><td>${data.location}</td><td>${data.date}</td>`
+        $past_table.appendChild(tr);
+    })
+}
+
+
