@@ -27,7 +27,6 @@ fetch(url, {
         'Content-Type': 'application/json',
         'Accept': 'application/json'
     },
-
 })
     .then(function(response) {
         return response.json();
