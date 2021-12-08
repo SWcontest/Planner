@@ -34,64 +34,6 @@ const init = {
     }
 };
 
-const test_data = [
-    {
-        schedule_name: "병원가기",
-        location: "한마음병원",
-        date: "오후 3:00"
-    },
-    {
-        schedule_name: "병원가기",
-        location: "한마음병원",
-        date: "오후 3:00"
-    },
-    {
-        schedule_name: "병원가기",
-        location: "한마음병원",
-        date: "오후 3:00"
-    },
-]
-
-const test_json = {
-    24: [
-        {
-            schedule_name: "헬스장가기",
-            location: "멋짐",
-            date: "오전 9:00"
-        },
-        {
-            schedule_name: "학교가기",
-            location: "제주대학교",
-            date: "오후 4:00"
-        },
-    ],
-    22: [
-        {
-            schedule_name: "학교가기",
-            location: "제주대학교",
-            date: "오전 9:00"
-        },
-        {
-            schedule_name: "치과가기",
-            location: "한마음병원",
-            date: "오후 3:00"
-        },
-        {
-            schedule_name: "영화보기",
-            location: "CGV",
-            date: "오후 9:00"
-        },
-    ],
-    26: [
-        {
-            schedule_name: "장보기",
-            location: "이마트",
-            date: "오후 5:00"
-        },
-    ]
-}
-
-
 const $calBody = document.querySelector('.cal-body');
 const $btnNext = document.querySelector('.btn-cal.next');
 const $btnPrev = document.querySelector('.btn-cal.prev');
@@ -187,19 +129,42 @@ $calBody.addEventListener('click', (e) => {
         e.target.classList.add('day-active');
         init.activeDTag = e.target;
         init.activeDate.setDate(day);
-        reloadTodo(day);
+        let plan_date = e.target.getAttribute('data-fdate')
+        plan_date = plan_date.split(".").join("-")
+        console.log(plan_date)
+        getPlanByDate(plan_date)
     }
 });
 
+function getPlanByDate(plan_date) {
+    const login_id = "root";
+    const url = `/api/v1/plan/${login_id}/${plan_date}`;
+
+    console.log(url)
+
+    fetch(url, {
+        headers: {
+            "Content-Type": "application/json",
+            'Accept': 'application/json'
+        }
+    }).then((res) => {
+            console.log(res);
+            res.json().then((data) => {
+                console.log(data);
+                reloadTodo(data)
+            });
+        })
+}
+
 const $past_table = document.querySelector(".past-table tbody");
 
-function reloadTodo(day) {
+function reloadTodo(plan_list) {
     // 초기화
     $past_table.innerHTML = ""
 
-    test_json[day].forEach(data => {
+    plan_list.forEach(data => {
         const tr = document.createElement("tr");
-        tr.innerHTML = `<td>${data.schedule_name}</td><td>${data.location}</td><td>${data.date}</td>`
+        tr.innerHTML = `<td>${data.title}</td><td>${data.place}</td><td>${data.start_time}</td>`
         $past_table.appendChild(tr);
     })
 }
