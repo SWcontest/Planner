@@ -406,7 +406,7 @@
                                     <h4 class="card-title">일정 등록하기</h4>
 
                                     <!--일정 이름-->
-                                    <form class="forms-sample"  action="submitschedule">
+                                    <form class="forms-sample"  action="plan/add_schedule_do">
                                         <div class="form-group">
                                             <input type="text" class="form-control" id="schedule-name"
                                                    placeholder="일정이름">
@@ -444,16 +444,16 @@
                                             <label for="expect-time">일정 소요 시간</label>
                                             <form id="expect-time">
                                                 <select autofocus id="total-time">
-                                                    <option>30분</option>
-                                                    <option>1시간</option>
-                                                    <option>1시간 30분</option>
-                                                    <option>2시간</option>
-                                                    <option>2시간 30분</option>
-                                                    <option>3시간</option>
-                                                    <option>3시간 30분</option>
-                                                    <option>4시간</option>
-                                                    <option>4시간 30분</option>
-                                                    <option>5시간</option>
+                                                    <option value="0:30">30분</option>
+                                                    <option value="1:00">1시간</option>
+                                                    <option value="1:30">1시간 30분</option>
+                                                    <option value="2:00">2시간</option>
+                                                    <option value="2:30">2시간 30분</option>
+                                                    <option value="3:00">3시간</option>
+                                                    <option value="3:30">3시간 30분</option>
+                                                    <option value="4:00">4시간</option>
+                                                    <option value="4:30">4시간 30분</option>
+                                                    <option value="5:00">5시간</option>
                                                 </select>
                                             </form>
                                         </div>

@@ -1,5 +1,6 @@
 
 
+
 // 버튼 눌렀을 때 실행
 const $submitBtn = document.getElementById("submit-button");
 
@@ -47,6 +48,7 @@ $submitBtn.addEventListener("click", () => {
         });
     console.log(params)
 })
+
 
 // //요소들 가져오기
 // const submitbtn = document.getElementById('submit-button');

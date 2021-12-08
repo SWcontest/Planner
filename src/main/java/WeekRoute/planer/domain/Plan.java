@@ -10,12 +10,12 @@ import java.util.Date;
 public class Plan {
     private int id;
     private String login_id;
-    private int day; // 0~7 0은 미정, 1~7은 일~토
+    private int day; // 1~7 0은 미정, 1~7은 일~토
     private String title;
-    private String contents;
     private String place;
-    private Date start_time;
-    private Date end_time;
-    private int total_time;
+    private String coordinate;
+    private Date plan_date;
+    private String start_time;
+    private String total_time;
     private boolean activate;
 }

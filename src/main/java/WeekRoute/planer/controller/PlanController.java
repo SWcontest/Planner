@@ -35,6 +35,8 @@ public class PlanController {
      * @param user
      * @param request
      * @return 일정 등록
+     * @return 일정추가페이지
+
      */
     @GetMapping("pages/add_schedule")
     public String add_schedule(@AuthenticationPrincipal UserPrincipal user, HttpServletRequest request) {
@@ -76,5 +78,17 @@ public class PlanController {
     public String schedule_root(@AuthenticationPrincipal UserPrincipal user, HttpServletRequest request) {
 
         return "pages/schedule_root/schedule_root.html";
+    }
+
+    /**
+     *
+     * @param user
+     * @param request
+     * @return 일정추가기능
+     */
+    @GetMapping("plan/add_schedule_do")
+    public String add_schedule_do(@AuthenticationPrincipal UserPrincipal user, HttpServletRequest request) {
+
+        return "pages/add_schedule/add_schedule.html";
     }
 }

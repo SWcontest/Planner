@@ -2,9 +2,13 @@ package WeekRoute.planer.service.Plan;
 
 import WeekRoute.planer.domain.Plan;
 import WeekRoute.planer.mapper.PlanMapper;
+import com.google.code.geocoder.Geocoder;
+import com.google.code.geocoder.GeocoderRequestBuilder;
+import com.google.code.geocoder.model.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.io.IOException;
 import java.util.*;
 
 @Service
@@ -32,7 +36,7 @@ public class PlanService {
         List<Plan> TimeExistPlan = planMapper.getPlanList(login_id, day, 1, "");
 
         if(TimeExistPlan.size() == 0){
-            firstPlace = Plan.get((int)Math.random()*(Plan.size()-0)).getPlace();
+            firstPlace = Plan.get((int)Math.random()*(Plan.size()-0)).getCoordinate();
             secondPlace = findMin(firstPlace, Plan, "");
             thirdPlace = findMin2(firstPlace, secondPlace, Plan);
             route = getRoute(firstPlace, secondPlace, thirdPlace);
@@ -43,7 +47,7 @@ public class PlanService {
             }};
             return resultList;
         } else if(TimeExistPlan.size() == 1){
-            firstPlace = TimeExistPlan.get(0).getPlace();
+            firstPlace = TimeExistPlan.get(0).getCoordinate();
             secondPlace = findMin(firstPlace, Plan, "");
             thirdPlace = findMin2(firstPlace, secondPlace, Plan);
             route = getRoute(firstPlace, secondPlace, thirdPlace);
@@ -54,8 +58,8 @@ public class PlanService {
             }};
             return resultList;
         } else if(TimeExistPlan.size() == 2){
-            firstPlace = TimeExistPlan.get(0).getPlace();
-            secondPlace = TimeExistPlan.get(1).getPlace();
+            firstPlace = TimeExistPlan.get(0).getCoordinate();
+            secondPlace = TimeExistPlan.get(1).getCoordinate();
             thirdPlace = findMin2(firstPlace, secondPlace, Plan);
             route = getRoute(firstPlace, secondPlace, thirdPlace);
             List<Plan> resultList = new ArrayList<Plan>(){{
@@ -68,16 +72,8 @@ public class PlanService {
             return TimeExistPlan;
         }
     }
-    
     /**
-     *  일정추가
-     */
-    public void addPlan(Plan plan) {
-        planMapper.addPlan(plan);
-    }
-
-    /**
-     *  1개가 정해졌을 때
+     *  시간이 1개가 정해졌을 때
      */
     public String findMin(String first, List<Plan> Plan, String except) {
         Haversine haver = new Haversine();
@@ -87,7 +83,7 @@ public class PlanService {
         double p1a = Double.parseDouble(first.split(",")[0]); // 위도
         double p1b = Double.parseDouble(first.split(",")[1]); // 경도
         for(int i=1; i<Plan.size(); i++){
-            String place2 = Plan.get(i).getPlace();
+            String place2 = Plan.get(i).getCoordinate();
             if(except == place2)
             {
                 continue;
@@ -110,7 +106,7 @@ public class PlanService {
     }
 
     /**
-     *  2개가 정해졌을 때
+     *  시간이 2개가 정해졌을 때
      */
     public String findMin2(String place1, String place2, List<Plan> Plan) {
         String place3 = findMin(place1, Plan, place2);
@@ -148,4 +144,34 @@ public class PlanService {
         }
     }
 
+    /**
+     *  일정추가
+     */
+    public void addPlan(Plan plan) {
+        Float[] coords = findGeoPoint(plan.getPlace());
+        plan.setCoordinate(coords[0]+","+coords[1]);
+        planMapper.addPlan(plan);
+    }
+
+
+
+    public static Float[] findGeoPoint(String location) {
+        if (location == null)
+            return null;
+        GeocoderRequest geocoderRequest = new GeocoderRequestBuilder().setAddress(location).setLanguage("ko").getGeocoderRequest();
+
+        Geocoder geocoder = new Geocoder();
+        GeocodeResponse geocoderResponse = geocoder.geocode(geocoderRequest);
+
+        if (geocoderResponse.getStatus() == GeocoderStatus.OK & !geocoderResponse.getResults().isEmpty()) {
+            GeocoderResult geocoderResult=geocoderResponse.getResults().iterator().next();
+            LatLng latitudeLongitude = geocoderResult.getGeometry().getLocation();
+
+            Float[] coords = new Float[2];
+            coords[0] = latitudeLongitude.getLat().floatValue();
+            coords[1] = latitudeLongitude.getLng().floatValue();
+            return coords;
+        }
+        return null;
+    }
 }
