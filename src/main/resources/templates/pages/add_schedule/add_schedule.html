@@ -324,7 +324,7 @@
         <nav class="sidebar sidebar-offcanvas" id="sidebar">
             <ul class="nav">
                 <li class="nav-item">
-                    <a class="nav-link" href="../../index.html">
+                    <a class="nav-link" href="main">
                         <i class="icon-grid menu-icon"></i>
                         <span class="menu-title">메인 페이지</span>
                     </a>
@@ -407,7 +407,7 @@
 
 
                                 <!--일정 이름-->
-                                <form class="forms-sample"  action="submitschedule">
+                                <form class="forms-sample">
                                     <div class="form-group">
                                         <input type="text" class="form-control" id="schedule-name"
                                                placeholder="일정이름">
@@ -429,10 +429,7 @@
                                     <!--요일 선택-->
                                     <div class="form-group" >
                                         <h6>날짜 선택</h6>
-                                        <input type="date">
-
-
-
+                                        <input type="date" id="plan-date">
                                     </div>
 
                                     <!--일정 시작 시간-->
@@ -448,16 +445,16 @@
                                         <label for="expect-time">일정 소요 시간</label>
                                         <form id="expect-time">
                                             <select autofocus id="total-time">
-                                                <option>30분</option>
-                                                <option>1시간</option>
-                                                <option>1시간 30분</option>
-                                                <option>2시간</option>
-                                                <option>2시간 30분</option>
-                                                <option>3시간</option>
-                                                <option>3시간 30분</option>
-                                                <option>4시간</option>
-                                                <option>4시간 30분</option>
-                                                <option>5시간</option>
+                                                <option>00:30</option>
+                                                <option>01:00</option>
+                                                <option>01:30</option>
+                                                <option>02:00</option>
+                                                <option>02:30</option>
+                                                <option>03:00</option>
+                                                <option>03:30</option>
+                                                <option>04:00</option>
+                                                <option>04:30</option>
+                                                <option>05:00</option>
                                             </select>
                                         </form>
                                     </div>

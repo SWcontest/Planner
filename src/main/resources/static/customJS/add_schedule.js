@@ -1,8 +1,5 @@
-
-
-
 // 버튼 눌렀을 때 실행
-const $submitBtn = document.getElementById("submit-button");
+const $submitBtn = document.getElementById('submit-button');
 
 $submitBtn.addEventListener("click", () => {
     console.log("서버에 일정 전송");
@@ -13,7 +10,7 @@ $submitBtn.addEventListener("click", () => {
             'Accept': 'application/json'
         },
         login_id: '',
-        day: null,
+        plan_date: '',
         title: '',
         contents: '',
         place: '',
@@ -22,7 +19,7 @@ $submitBtn.addEventListener("click", () => {
         total_time: 0,
         activate: false,
     };
-    params.day = null;
+    params.plan_date = document.getElementById('plan-date').value;
     params.title = document.getElementById('schedule-name').value;
     params.contents = '';
     params.place = document.getElementById('search-address').value;
@@ -32,6 +29,8 @@ $submitBtn.addEventListener("click", () => {
     params.total_time = selectOption.options[selectOption.selectedIndex].value;
 
     const url = "/api/v1/plan";
+    // const url = "plan/add_schedule_do";
+
     fetch(url, {
         method: "POST",
         headers: {
