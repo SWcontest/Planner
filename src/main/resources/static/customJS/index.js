@@ -25,8 +25,8 @@ $badge.forEach(el => {
 window.onload = function () {
     const login_id = "root";
     const today = new Date();
-    const day = `${today.getFullYear()}-${today.getMonth() + 1}-${today.getDate()}`;
-    const url = `/api/v1/plan/${login_id}/${day}`;
+    const plan_date = `${today.getFullYear()}-${today.getMonth() + 1}-${today.getDate()}`;
+    const url = `/api/v1/plan/${login_id}/${plan_date}`;
 
     console.log(url)
 
