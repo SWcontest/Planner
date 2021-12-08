@@ -31,8 +31,8 @@
             <if test=" loginId != null and loginId != '' ">
                 AND login_id = #{loginId}
             </if>
-            <if test=" day != null and !day.equals('') ">
-                AND day = #{day}
+            <if test=" plan_date != null and plan_date != '' ">
+                AND plan_date = #{plan_date}
             </if>
             <if test=" start_time != null and loginId != '' ">
                 AND start_time is not Null

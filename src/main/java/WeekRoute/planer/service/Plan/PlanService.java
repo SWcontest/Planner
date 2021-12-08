@@ -25,15 +25,15 @@ public class PlanService {
     /**
      *  오늘의 일정 조회
      */
-    public List<Plan> getPlanList(String login_id, int day) {
+    public List<Plan> getPlanList(String login_id, String plan_date) {
 
         String firstPlace, secondPlace, thirdPlace, route;
 
         int count = 0;
 
         // 시간이 정해진 걸 가져오고,
-        List<Plan> Plan = planMapper.getPlanList(login_id, day,"", "");
-        List<Plan> TimeExistPlan = planMapper.getPlanList(login_id, day, "1", "");
+        List<Plan> Plan = planMapper.getPlanList(login_id, plan_date,"", "");
+        List<Plan> TimeExistPlan = planMapper.getPlanList(login_id, plan_date, "1", "");
 
         if(Plan.size() == 0) {
             return null;
@@ -46,9 +46,9 @@ public class PlanService {
                 thirdPlace = findMin2(firstPlace, secondPlace, Plan);
                 route = getRoute(firstPlace, secondPlace, thirdPlace);
                 List<Plan> resultList = new ArrayList<Plan>() {{
-                    add(planMapper.getPlanList(login_id, day, "", route.split("-")[0]).get(0));
-                    add(planMapper.getPlanList(login_id, day, "", route.split("-")[1]).get(0));
-                    add(planMapper.getPlanList(login_id, day, "", route.split("-")[2]).get(0));
+                    add(planMapper.getPlanList(login_id, plan_date, "", route.split("-")[0]).get(0));
+                    add(planMapper.getPlanList(login_id, plan_date, "", route.split("-")[1]).get(0));
+                    add(planMapper.getPlanList(login_id, plan_date, "", route.split("-")[2]).get(0));
                 }};
                 return resultList;
             } else if (TimeExistPlan.size() == 1) {
@@ -57,9 +57,9 @@ public class PlanService {
                 thirdPlace = findMin2(firstPlace, secondPlace, Plan);
                 route = getRoute(firstPlace, secondPlace, thirdPlace);
                 List<Plan> resultList = new ArrayList<Plan>() {{
-                    add(planMapper.getPlanList(login_id, day, "", route.split("-")[0]).get(0));
-                    add(planMapper.getPlanList(login_id, day, "", route.split("-")[1]).get(0));
-                    add(planMapper.getPlanList(login_id, day, "", route.split("-")[2]).get(0));
+                    add(planMapper.getPlanList(login_id, plan_date, "", route.split("-")[0]).get(0));
+                    add(planMapper.getPlanList(login_id, plan_date, "", route.split("-")[1]).get(0));
+                    add(planMapper.getPlanList(login_id, plan_date, "", route.split("-")[2]).get(0));
                 }};
                 return resultList;
             } else if (TimeExistPlan.size() == 2) {
@@ -68,9 +68,9 @@ public class PlanService {
                 thirdPlace = findMin2(firstPlace, secondPlace, Plan);
                 route = getRoute(firstPlace, secondPlace, thirdPlace);
                 List<Plan> resultList = new ArrayList<Plan>() {{
-                    add(planMapper.getPlanList(login_id, day, "", route.split("-")[0]).get(0));
-                    add(planMapper.getPlanList(login_id, day, "", route.split("-")[1]).get(0));
-                    add(planMapper.getPlanList(login_id, day, "", route.split("-")[2]).get(0));
+                    add(planMapper.getPlanList(login_id, plan_date, "", route.split("-")[0]).get(0));
+                    add(planMapper.getPlanList(login_id, plan_date, "", route.split("-")[1]).get(0));
+                    add(planMapper.getPlanList(login_id, plan_date, "", route.split("-")[2]).get(0));
                 }};
                 return resultList;
             } else {

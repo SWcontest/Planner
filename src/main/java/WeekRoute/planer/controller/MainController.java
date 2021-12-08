@@ -11,6 +11,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import java.security.Principal;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.Calendar;
 import java.util.List;
 import java.util.logging.Logger;
@@ -26,9 +28,10 @@ public class MainController {
     public String getLoginPage(@AuthenticationPrincipal UserPrincipal user) {
         log.info("user: " + user.getId());
         Calendar cal = Calendar.getInstance();
-        int day = cal.get(Calendar.DAY_OF_WEEK);
-        List<Plan> planList = planService.getPlanList(user.getId(), day);
+        LocalDate now = LocalDate.now();
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+        String plan_date = now.format(formatter);
+        List<Plan> planList = planService.getPlanList(user.getId(), plan_date);
         return "index";
     }
-
 }

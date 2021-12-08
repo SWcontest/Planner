@@ -15,8 +15,8 @@ public class PlanApiController {
 
     // 일정 조회
     @GetMapping("/api/v1/plan/{login_id}/{day}")
-    public List<Plan> findByDay(@PathVariable String login_id, @PathVariable int day) {
-        return planService.getPlanList(login_id, day);
+    public List<Plan> findByDay(@PathVariable String login_id, @PathVariable String plan_date) {
+        return planService.getPlanList(login_id, plan_date);
     }
 
     // 일정 등록

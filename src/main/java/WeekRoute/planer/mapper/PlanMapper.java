@@ -12,7 +12,7 @@ import java.util.List;
 public interface PlanMapper {
 
     int getCurrentId();
-    List<Plan> getPlanList(@Param("loginId") String loginId, @Param("day") int day, @Param("start_time") String start_time, @Param("place") String place);
+    List<Plan> getPlanList(@Param("loginId") String loginId, @Param("plan_date") String plan_date, @Param("start_time") String start_time, @Param("place") String place);
     Plan addPlan(@Param("param") Plan param);
 
 }

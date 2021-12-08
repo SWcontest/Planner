@@ -17,7 +17,6 @@ public class PlanController {
     private PlanService planService;
 
     /**
-     *
      * @param user
      * @param request
      * @return 오늘의 일정페이지
@@ -25,13 +24,12 @@ public class PlanController {
     @GetMapping("pages/todaySchedule")
     public String all_schedule(@AuthenticationPrincipal UserPrincipal user, HttpServletRequest request) {
         String id = user.getId();
-        int day = Integer.parseInt(request.getParameter("day"));
-        List<Plan> route = planService.getPlanList(id, day);
+        String plan_date = request.getParameter("day");
+        List<Plan> route = planService.getPlanList(id, plan_date);
         return "";
     }
 
     /**
-     *
      * @param user
      * @param request
      * @return 일정 등록
@@ -45,7 +43,6 @@ public class PlanController {
     }
 
     /**
-     *
      * @param user
      * @param request
      * @return 요일별 일정
@@ -57,7 +54,6 @@ public class PlanController {
     }
 
     /**
-     *
      * @param user
      * @param request
      * @return 지난일정 페이지
@@ -69,7 +65,6 @@ public class PlanController {
     }
 
     /**
-     *
      * @param user
      * @param request
      * @return 일정경로 페이지
@@ -78,17 +73,5 @@ public class PlanController {
     public String schedule_root(@AuthenticationPrincipal UserPrincipal user, HttpServletRequest request) {
 
         return "pages/schedule_root/schedule_root.html";
-    }
-
-    /**
-     *
-     * @param user
-     * @param request
-     * @return 일정추가기능
-     */
-    @GetMapping("plan/add_schedule_do")
-    public String add_schedule_do(@AuthenticationPrincipal UserPrincipal user, HttpServletRequest request) {
-
-        return "pages/add_schedule/add_schedule.html";
     }
 }
