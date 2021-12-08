@@ -22,7 +22,7 @@ public class PlanController {
      * @param request
      * @return 오늘의 일정페이지
      */
-    @GetMapping("page/todaySchedule")
+    @GetMapping("pages/todaySchedule")
     public String all_schedule(@AuthenticationPrincipal UserPrincipal user, HttpServletRequest request) {
         String id = user.getId();
         int day = Integer.parseInt(request.getParameter("day"));
@@ -34,9 +34,11 @@ public class PlanController {
      *
      * @param user
      * @param request
+     * @return 일정 등록
      * @return 일정추가페이지
+
      */
-    @GetMapping("plan/add_schedule")
+    @GetMapping("pages/add_schedule")
     public String add_schedule(@AuthenticationPrincipal UserPrincipal user, HttpServletRequest request) {
 
         return "pages/add_schedule/add_schedule.html";
@@ -46,9 +48,9 @@ public class PlanController {
      *
      * @param user
      * @param request
-     * @return 전체일정 페이지
+     * @return 요일별 일정
      */
-    @GetMapping("plan/week_schedule")
+    @GetMapping("pages/week_schedule")
     public String week_schedule(@AuthenticationPrincipal UserPrincipal user, HttpServletRequest request) {
 
         return "pages/week_schedule/week_schedule.html";
@@ -60,7 +62,7 @@ public class PlanController {
      * @param request
      * @return 지난일정 페이지
      */
-    @GetMapping("plan/past_schedule")
+    @GetMapping("pages/past_schedule")
     public String past_schedule(@AuthenticationPrincipal UserPrincipal user, HttpServletRequest request) {
 
         return "pages/past_schedule/past_schedule.html";
@@ -72,7 +74,7 @@ public class PlanController {
      * @param request
      * @return 일정경로 페이지
      */
-    @GetMapping("plan/schedule_root")
+    @GetMapping("pages/schedule_root")
     public String schedule_root(@AuthenticationPrincipal UserPrincipal user, HttpServletRequest request) {
 
         return "pages/schedule_root/schedule_root.html";
