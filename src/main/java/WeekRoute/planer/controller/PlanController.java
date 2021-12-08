@@ -25,7 +25,7 @@ public class PlanController {
     public String all_schedule(@AuthenticationPrincipal UserPrincipal user, HttpServletRequest request) {
         String id = user.getId();
         String plan_date = request.getParameter("day");
-        List<Plan> route = planService.getPlanList(id, plan_date);
+        String[] route = planService.getRoute(id, plan_date);
         return "";
     }
 
