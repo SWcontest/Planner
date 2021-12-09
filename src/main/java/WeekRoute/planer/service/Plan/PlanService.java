@@ -28,7 +28,7 @@ public class PlanService {
 
 
     /**
-     *  루트 검색
+     *  루트 검색, 알고리즘 사용
      */
     public List<Coordinate> getRoute(String login_id, String plan_date) {
         String tmp;
@@ -58,84 +58,46 @@ public class PlanService {
                     coord.setLng(coordinate[1]);
                     answer.add(coord);
                     timeExistPlan.remove(0);
-                    Haversine haver = new Haversine();
-                    double distance = 999999;
-                    int removeIndex = 0;
-                    String returnCor = "";
-                    String removeSection="";
-                    double p1a = Double.parseDouble(tmp.split(",")[0]); // 위도
-                    double p1b = Double.parseDouble(tmp.split(",")[1]); // 경도
-                    for(int j=0; j<timeExistPlan.size(); j++) {
-                        double p2a = Double.parseDouble(timeExistPlan.get(j).getCoordinate().split(",")[0]); // 위도
-                        double p2b = Double.parseDouble(timeExistPlan.get(j).getCoordinate().split(",")[1]); // 경도
-                        if(distance > haver.haversine(p1a, p1b, p2a, p2b)){
-                            distance = haver.haversine(p1a, p1b, p2a, p2b);
-                            removeIndex = j;
-                            removeSection = "time";
-                            returnCor = timeExistPlan.get(j).getCoordinate();
-                        }
-                    }
-                    for(int k=0; k<nonTimeExistPlan.size(); k++) {
-                        double p2a = Double.parseDouble(nonTimeExistPlan.get(k).getCoordinate().split(",")[0]); // 위도
-                        double p2b = Double.parseDouble(nonTimeExistPlan.get(k).getCoordinate().split(",")[1]); // 경도
-                        if(distance > haver.haversine(p1a, p1b, p2a, p2b)){
-                            distance = haver.haversine(p1a, p1b, p2a, p2b);
-                            removeIndex = k;
-                            removeSection = "nonTime";
-                            returnCor = nonTimeExistPlan.get(k).getCoordinate();
-                        }
-                    }
-                    if(removeSection.equals("Time")){
-                        timeExistPlan.remove(removeIndex);
-                    } else {
-                        nonTimeExistPlan.remove(removeIndex);
-                    }
-                    coordinate = returnCor.split(",");
-                    coord = new Coordinate();
-                    coord.setLat(coordinate[0]);
-                    coord.setLng(coordinate[1]);
-                    answer.add(coord);
-                } else {
-                    tmp = answer.get(i).getLat()+","+answer.get(i).getLng();
-                    Haversine haver = new Haversine();
-                    double distance = 999999;
-                    int removeIndex = 0;
-                    String returnCor = "";
-                    String removeSection="";
-
-                    double p1a = Double.parseDouble(tmp.split(",")[0]); // 위도
-                    double p1b = Double.parseDouble(tmp.split(",")[1]); // 경도
-                    for(int j=0; j<timeExistPlan.size(); j++) {
-                        double p2a = Double.parseDouble(timeExistPlan.get(j).getCoordinate().split(",")[0]); // 위도
-                        double p2b = Double.parseDouble(timeExistPlan.get(j).getCoordinate().split(",")[1]); // 경도
-                        if(distance > haver.haversine(p1a, p1b, p2a, p2b)){
-                            distance = haver.haversine(p1a, p1b, p2a, p2b);
-                            removeIndex = j;
-                            removeSection = "time";
-                            returnCor = timeExistPlan.get(j).getCoordinate();
-                        }
-                    }
-                    for(int k=0; k<nonTimeExistPlan.size(); k++) {
-                        double p2a = Double.parseDouble(nonTimeExistPlan.get(k).getCoordinate().split(",")[0]); // 위도
-                        double p2b = Double.parseDouble(nonTimeExistPlan.get(k).getCoordinate().split(",")[1]); // 경도
-                        if(distance > haver.haversine(p1a, p1b, p2a, p2b)){
-                            distance = haver.haversine(p1a, p1b, p2a, p2b);
-                            removeIndex = k;
-                            removeSection = "nonTime";
-                            returnCor = nonTimeExistPlan.get(k).getCoordinate();
-                        }
-                    }
-                    if(removeSection.equals("Time")){
-                        timeExistPlan.remove(removeIndex);
-                    } else {
-                        nonTimeExistPlan.remove(removeIndex);
-                    }
-                    coordinate = returnCor.split(",");
-                    Coordinate coord = new Coordinate();
-                    coord.setLat(coordinate[0]);
-                    coord.setLng(coordinate[1]);
-                    answer.add(coord);
                 }
+                tmp = answer.get(i).getLat()+","+answer.get(i).getLng();
+                Haversine haver = new Haversine();
+                double distance = 999999;
+                int removeIndex = 0;
+                String returnCor = "";
+                String removeSection="";
+
+                double p1a = Double.parseDouble(tmp.split(",")[0]); // 위도
+                double p1b = Double.parseDouble(tmp.split(",")[1]); // 경도
+                for(int j=0; j<timeExistPlan.size(); j++) {
+                    double p2a = Double.parseDouble(timeExistPlan.get(j).getCoordinate().split(",")[0]); // 위도
+                    double p2b = Double.parseDouble(timeExistPlan.get(j).getCoordinate().split(",")[1]); // 경도
+                    if(distance > haver.haversine(p1a, p1b, p2a, p2b)){
+                        distance = haver.haversine(p1a, p1b, p2a, p2b);
+                        removeIndex = j;
+                        removeSection = "time";
+                        returnCor = timeExistPlan.get(j).getCoordinate();
+                    }
+                }
+                for(int k=0; k<nonTimeExistPlan.size(); k++) {
+                    double p2a = Double.parseDouble(nonTimeExistPlan.get(k).getCoordinate().split(",")[0]); // 위도
+                    double p2b = Double.parseDouble(nonTimeExistPlan.get(k).getCoordinate().split(",")[1]); // 경도
+                    if(distance > haver.haversine(p1a, p1b, p2a, p2b)){
+                        distance = haver.haversine(p1a, p1b, p2a, p2b);
+                        removeIndex = k;
+                        removeSection = "nonTime";
+                        returnCor = nonTimeExistPlan.get(k).getCoordinate();
+                    }
+                }
+                if(removeSection.equals("Time")){
+                    timeExistPlan.remove(removeIndex);
+                } else {
+                    nonTimeExistPlan.remove(removeIndex);
+                }
+                coordinate = returnCor.split(",");
+                Coordinate coord = new Coordinate();
+                coord.setLat(coordinate[0]);
+                coord.setLng(coordinate[1]);
+                answer.add(coord);
             }
             return answer;
         }
