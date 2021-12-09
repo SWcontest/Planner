@@ -1,7 +1,9 @@
-function getPlanByDay(login_id) {
+function getPlanByDay() {
 
     const week = getWeek();
     console.log(week);
+
+    const login_id = localStorage.getItem('user_id')
 
     week.forEach((plan_date, index) => {
         const url = `/api/v1/plan/${login_id}/${plan_date}`;
@@ -23,7 +25,6 @@ function getPlanByDay(login_id) {
             console.log(err)
         })
     })
-
 
 }
 
@@ -64,4 +65,4 @@ function getWeek() {
     return thisWeek;
 }
 
-getPlanByDay("root");
+getPlanByDay();
