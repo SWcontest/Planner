@@ -31,11 +31,12 @@ function getPlanByDay() {
 
 // 이번주 월-금 일정들 불러오기
 function showWeekSchedule(data, index) {
-    const week = ['mon-tbody', 'tue-tbody', 'wen-tbody', 'thu-tbody', 'fri-tbody', 'sat-tbody', 'sun-tbody']
+    const week = ['mon-tbody', 'tue-tbody', 'wen-tbody', 'thu-tbody', 'fri-tbody', 'sat-tbody', 'sun-tbody', 'none-tbody']
 
     data.forEach(plan_date => {
         const $tbody = document.getElementById(week[index]);
         const tr = document.createElement('tr');
+        console.log(data)
         tr.innerHTML = `<td style="font-size: smaller">${plan_date.title}</td><td style="font-size: smaller">${plan_date.place}</td>`
         $tbody.appendChild(tr)
     })
@@ -54,7 +55,7 @@ function getWeek() {
 
     const thisWeek = [];
 
-    for(let i=1; i<8; i++) {
+    for(let i=1; i<7; i++) {
         let resultDay = new Date(theYear, theMonth, theDate + (i - theDayOfWeek));
         let yyyy = resultDay.getFullYear();
         let mm = Number(resultDay.getMonth()) + 1;
@@ -65,7 +66,7 @@ function getWeek() {
 
         thisWeek[i - 1] = yyyy + '-' + mm + '-' + dd;
     }
-
+    thisWeek[7] = 'none';
     return thisWeek;
 }
 

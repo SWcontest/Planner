@@ -29,6 +29,10 @@ public class MainController {
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
         String plan_date = now.format(formatter);
         List<Coordinate> route = planService.getRoute(user.getId(), plan_date);
+//        for(int i=0; i<route.size(); i++){
+//            System.out.print("위도 : " + route.get(i).getLat() + " ");
+//            System.out.println("경도 : " + route.get(i).getLng());
+//        }
 
         return "index";
     }
