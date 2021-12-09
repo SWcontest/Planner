@@ -35,22 +35,38 @@ var map = new kakao.maps.Map(container, options); // 지도를 생성합니다
 
 
 // 루트
+let markers = [];
+let routes = [];
+let polyline = new kakao.maps.Polyline({
+    path: routes, // 선을 구성하는 좌표배열 입니다
+    strokeWeight: 5, // 선의 두께 입니다
+    strokeColor: 'red', // 선의 색깔입니다
+    strokeOpacity: 0.7, // 선의 불투명도 입니다 1에서 0 사이의 값이며 0에 가까울수록 투명합니다
+    strokeStyle: 'solid' // 선의 스타일입니다
+});
+
 function getRouteByDay(day) {
     const login_id = localStorage.getItem('user_id')
     const week = getWeek();
 
     const url = `/api/v1/plan_route/${login_id}/${week[day]}`;
 
+    markers.forEach(marker => marker.setMap(null));
+    markers = [];
+    polyline.setMap(null);
+    routes = [];
+
     fetch(url)
         .then((res) => {
             res.json().then(data => {
                 console.log(data);
                 data.forEach(pos => {
-                    drawMarker(pos.lat, pos.lng);
+                    setMarker(pos.lat, pos.lng);
                     setRoute(pos.lat, pos.lng);
                 })
             }).then(() => {
-                var polyline = new kakao.maps.Polyline({
+                drawMarker();
+                polyline = new kakao.maps.Polyline({
                     path: routes, // 선을 구성하는 좌표배열 입니다
                     strokeWeight: 5, // 선의 두께 입니다
                     strokeColor: 'red', // 선의 색깔입니다
@@ -65,73 +81,24 @@ function getRouteByDay(day) {
     })
 }
 
-function drawMarker(lat, lng) {
+
+
+function setMarker(lat, lng) {
     const markerPosition = new kakao.maps.LatLng(lat, lng);
     const marker = new kakao.maps.Marker({
         position: markerPosition
     })
-    marker.setMap(map);
+    markers.push(marker)
 }
 
-const routes = [];
+function drawMarker() {
+    markers.forEach(marker => marker.setMap(map));
+}
+
+
 function setRoute(lat, lng) {
     routes.push(new kakao.maps.LatLng(lat, lng))
 }
-
-
-// // 마커가 표시될 위치입니다
-// var markerPosition  = new kakao.maps.LatLng(33.49300696630641, 126.51221789708927);
-//
-// // 마커를 생성합니다
-// var marker = new kakao.maps.Marker({
-//     position: markerPosition
-// });
-// // 마커가 표시될 위치입니다
-// var markerPosition2  = new kakao.maps.LatLng(33.49617682451363, 126.53612710442246);
-//
-// // 마커를 생성합니다
-// var marker2 = new kakao.maps.Marker({
-//     position: markerPosition2
-// });
-//
-// // 마커가 표시될 위치입니다
-// var markerPosition3 = new kakao.maps.LatLng(33.499559979698255, 126.53116842010202);
-//
-// // 마커를 생성합니다
-// var marker3 = new kakao.maps.Marker({
-//     position: markerPosition3
-// });
-//
-// // 마커가 표시될 위치입니다
-// var markerPosition4 = new kakao.maps.LatLng(33.51863686299385, 126.52031636910279);
-//
-// // 마커를 생성합니다
-// var marker4 = new kakao.maps.Marker({
-//     position: markerPosition4
-// });
-//
-// // 마커가 지도 위에 표시되도록 설정합니다
-// marker.setMap(map);
-// marker2.setMap(map);
-// marker3.setMap(map);
-// marker4.setMap(map);
-//
-// var linePath = [
-//     new kakao.maps.LatLng(33.49300696630641, 126.51221789708927),
-//     new kakao.maps.LatLng(33.49617682451363, 126.53612710442246),
-//     new kakao.maps.LatLng(33.499559979698255, 126.53116842010202),
-//     new kakao.maps.LatLng(33.51863686299385, 126.52031636910279)
-// ];
-//
-// var polyline = new kakao.maps.Polyline({
-//     path: linePath, // 선을 구성하는 좌표배열 입니다
-//     strokeWeight: 5, // 선의 두께 입니다
-//     strokeColor: 'red', // 선의 색깔입니다
-//     strokeOpacity: 0.7, // 선의 불투명도 입니다 1에서 0 사이의 값이며 0에 가까울수록 투명합니다
-//     strokeStyle: 'solid' // 선의 스타일입니다
-// });
-//
-// polyline.setMap(map);
 
 var imageSrc = 'https://i.ibb.co/t8n2DW7/map-pin-2.png', // 마커이미지의 주소입니다
     imageSize = new kakao.maps.Size(40,55); // 마커이미지의 크기입니다
@@ -261,5 +228,4 @@ function mon_click() {
     table.rows[4]
 }
 
-const today = new Date();
 getRouteByDay(today.getDay());
