@@ -4,6 +4,7 @@ import WeekRoute.planer.domain.Plan;
 import WeekRoute.planer.service.Plan.PlanService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.ModelAndView;
 
 import java.util.List;
 
@@ -26,5 +27,11 @@ public class PlanApiController {
         System.out.println(">>>>>>>>>>>>>>>>>일정등록 완료>>>>>>>>>>>>>>>>>>>>>>>");
 
         return plan.getId();
+    }
+
+    @GetMapping("")
+    @ResponseBody
+    public String[] findRouteByDay (@PathVariable String login_id, @PathVariable String plan_date) throws Exception {
+        return planService.getRoute(login_id, plan_date);
     }
 }
