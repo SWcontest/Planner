@@ -6,6 +6,7 @@ import WeekRoute.planer.service.Plan.PlanService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
 import javax.servlet.http.HttpServletRequest;
@@ -37,8 +38,9 @@ public class PlanController {
 
      */
     @GetMapping("pages/add_schedule")
-    public String add_schedule(@AuthenticationPrincipal UserPrincipal user, HttpServletRequest request) {
-
+    public String add_schedule(@AuthenticationPrincipal UserPrincipal user, HttpServletRequest request, Model model) {
+        String id = user.getId();
+        model.addAttribute("user_id", id);
         return "pages/add_schedule/add_schedule.html";
     }
 
