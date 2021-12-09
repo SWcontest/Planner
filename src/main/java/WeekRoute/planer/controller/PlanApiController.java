@@ -27,4 +27,9 @@ public class PlanApiController {
 
         return plan.getId();
     }
+
+    @GetMapping("/api/v1/plan_route/{login_id}/{plan_date}")
+    public String[] findRouteByDay(@PathVariable String login_id, @PathVariable String plan_date) {
+        return planService.getRoute(login_id, plan_date);
+    }
 }

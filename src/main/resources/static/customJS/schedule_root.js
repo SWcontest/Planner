@@ -1,3 +1,4 @@
+// 일정
 function getWeek() {
 
     const currentDay = new Date();
@@ -26,7 +27,6 @@ function getWeek() {
 function getPlanByDay(day) {
 
     const week = getWeek();
-    console.log(week);
 
     const login_id = localStorage.getItem('user_id')
 
@@ -63,5 +63,23 @@ function showDaySchedule(plan_list) {
         $tbody.appendChild(tr);
     })
 }
+
+// 루트
+function getRouteByDay(day) {
+    const login_id = localStorage.getItem('user_id')
+    const week = getWeek();
+
+    const url = `/api/v1/plan_route/${login_id}/${week[day]}`;
+
+    fetch(url)
+        .then((res) => {
+            res.text().then(data => console.log(data))
+        }).catch(err => {
+        console.log(err)
+    })
+}
+
+// 초기값
 const today = new Date();
 getPlanByDay(today.getDay());
+getRouteByDay(today.getDay());

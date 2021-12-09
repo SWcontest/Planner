@@ -322,7 +322,7 @@
                                         id="mon"
                                         class="btn btn-danger btn-rounded btn-icon"
                                         style="background-color: red; border: 1px solid red"
-                                        onclick ="getPlanByDay(0)"
+                                        onclick ="getPlanByDay(0);getRouteByDay(0);"
 
                                 >
                                     월
@@ -332,7 +332,7 @@
                                         id="tue"
                                         class="btn btn-danger btn-rounded btn-icon"
                                         style="background-color: #FF5D05  ; border: 1px solid #FF5D05"
-                                        onclick ="getPlanByDay(1)"
+                                        onclick ="getPlanByDay(1);getRouteByDay(1)"
                                 >
                                     화
                                 </button>
@@ -341,7 +341,7 @@
                                         id="wed"
                                         class="btn btn-danger btn-rounded btn-icon"
                                         style="background-color: #4E71D9  ; border: 1px solid #4E71D9"
-                                        onclick ="getPlanByDay(2)"
+                                        onclick ="getPlanByDay(2);getRouteByDay(2);"
                                 >
                                     수
                                 </button>
@@ -350,7 +350,7 @@
                                         id="thu"
                                         class="btn btn-danger btn-rounded btn-icon"
                                         style="background-color: #5FA55A  ; border: 1px solid #5FA55A"
-                                        onclick ="getPlanByDay(3)"
+                                        onclick ="getPlanByDay(3);getRouteByDay(3);"
                                 >
                                     목
                                 </button>
@@ -359,7 +359,7 @@
                                         id="fri"
                                         class="btn btn-danger btn-rounded btn-icon"
                                         style="background-color: #927A6D ; border: 1px solid #927A6D"
-                                        onclick ="getPlanByDay(4)"
+                                        onclick ="getPlanByDay(4);getRouteByDay(4);"
                                 >
                                     금
                                 </button>
@@ -368,7 +368,7 @@
                                         id="sat"
                                         class="btn btn-danger btn-rounded btn-icon"
                                         style="background-color: #BB85EA ; border: 1px solid #BB85EA"
-                                        onclick ="getPlanByDay(5)"
+                                        onclick ="getPlanByDay(5);getRouteByDay(5);"
                                 >
                                     토
                                 </button>
@@ -377,7 +377,7 @@
                                         id="sun"
                                         class="btn btn-danger btn-rounded btn-icon"
                                         style="background-color:#D98B84; border: 1px solid #D98B84"
-                                        onclick ="getPlanByDay(6)"
+                                        onclick ="getPlanByDay(6);getRouteByDay(5);"
                                 >
                                     일
                                 </button>
@@ -407,34 +407,34 @@
                                     </thead>
                                     <!--표 내부는 이런식으로 하면 될 거 같아서 예시로 둠-->
                                     <tbody id="schedule-tbody">
-                                    <tr>
-                                        <td>세탁소 들리기</td>
-                                        <td>제주 제주시 연삼로 218</td>
-                                        <td>오전 11:00</td>
-                                        <td>30분</td>
-                                        <td class="font-weight-bold">1</td>
-                                    </tr>
-                                    <tr>
-                                        <td>헬스장가기</td>
-                                        <td>제주 제주시 이도이동 1063-5</td>
-                                        <td>오후 01:00</td>
-                                        <td>1시간 30분</td>
-                                        <td class="font-weight-bold">2</td>
-                                    </tr>
-                                    <tr>
-                                        <td>강의 듣기</td>
-                                        <td>제주 제주시 중앙로 236</td>
-                                        <td>오후 03:00</td>
-                                        <td>1시간</td>
-                                        <td class="font-weight-bold">3</td>
-                                    </tr>
-                                    <tr>
-                                        <td>장보기</td>
-                                        <td>제주 제주시 탑동로 38</td>
-                                        <td>오후 05:00</td>
-                                        <td>1시간</td>
-                                        <td class="font-weight-bold">4</td>
-                                    </tr>
+<!--                                    <tr>-->
+<!--                                        <td>세탁소 들리기</td>-->
+<!--                                        <td>제주 제주시 연삼로 218</td>-->
+<!--                                        <td>오전 11:00</td>-->
+<!--                                        <td>30분</td>-->
+<!--                                        <td class="font-weight-bold">1</td>-->
+<!--                                    </tr>-->
+<!--                                    <tr>-->
+<!--                                        <td>헬스장가기</td>-->
+<!--                                        <td>제주 제주시 이도이동 1063-5</td>-->
+<!--                                        <td>오후 01:00</td>-->
+<!--                                        <td>1시간 30분</td>-->
+<!--                                        <td class="font-weight-bold">2</td>-->
+<!--                                    </tr>-->
+<!--                                    <tr>-->
+<!--                                        <td>강의 듣기</td>-->
+<!--                                        <td>제주 제주시 중앙로 236</td>-->
+<!--                                        <td>오후 03:00</td>-->
+<!--                                        <td>1시간</td>-->
+<!--                                        <td class="font-weight-bold">3</td>-->
+<!--                                    </tr>-->
+<!--                                    <tr>-->
+<!--                                        <td>장보기</td>-->
+<!--                                        <td>제주 제주시 탑동로 38</td>-->
+<!--                                        <td>오후 05:00</td>-->
+<!--                                        <td>1시간</td>-->
+<!--                                        <td class="font-weight-bold">4</td>-->
+<!--                                    </tr>-->
 
 
                                     </tbody>
