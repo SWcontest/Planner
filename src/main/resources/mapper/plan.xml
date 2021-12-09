@@ -16,7 +16,7 @@
         <result property="activate" column="activate" />
     </resultMap>
 
-    <select id="getCurrentId" parameterType="int">
+    <select id="getCurrentId" resultType="int">
         select
             max(id) + 1 as id
         from plan
