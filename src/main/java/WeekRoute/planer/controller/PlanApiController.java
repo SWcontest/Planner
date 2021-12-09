@@ -1,10 +1,10 @@
 package WeekRoute.planer.controller;
 
 import WeekRoute.planer.domain.Plan;
+import WeekRoute.planer.domain.user.Coordinate;
 import WeekRoute.planer.service.Plan.PlanService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.servlet.ModelAndView;
 
 import java.util.List;
 
@@ -31,7 +31,7 @@ public class PlanApiController {
 
     @GetMapping("")
     @ResponseBody
-    public String[] findRouteByDay (@RequestBody String login_id, @RequestBody String plan_date) throws Exception {
+    public List<Coordinate> findRouteByDay (@RequestBody String login_id, @RequestBody String plan_date) throws Exception {
         return planService.getRoute(login_id, plan_date);
     }
 }

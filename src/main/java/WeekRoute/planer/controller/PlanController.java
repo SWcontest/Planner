@@ -1,7 +1,7 @@
 package WeekRoute.planer.controller;
 
-import WeekRoute.planer.domain.Plan;
 import WeekRoute.planer.domain.user.UserPrincipal;
+import WeekRoute.planer.domain.user.Coordinate;
 import WeekRoute.planer.service.Plan.PlanService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
@@ -26,7 +26,7 @@ public class PlanController {
     public String all_schedule(@AuthenticationPrincipal UserPrincipal user, HttpServletRequest request) {
         String id = user.getId();
         String plan_date = request.getParameter("day");
-        String[] route = planService.getRoute(id, plan_date);
+        List<Coordinate> route = planService.getRoute(id, plan_date);
         return "";
     }
 

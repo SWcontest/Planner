@@ -1,11 +1,8 @@
 package WeekRoute.planer.service.Plan;
 
 import WeekRoute.planer.domain.Plan;
+import WeekRoute.planer.domain.user.Coordinate;
 import WeekRoute.planer.mapper.PlanMapper;
-import com.google.code.geocoder.Geocoder;
-import com.google.code.geocoder.GeocoderRequestBuilder;
-import com.google.code.geocoder.model.*;
-import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -33,32 +30,39 @@ public class PlanService {
     /**
      *  루트 검색
      */
-    public String[] getRoute(String login_id, String plan_date) {
+    public List<Coordinate> getRoute(String login_id, String plan_date) {
         String tmp;
-        String[] answer;
-        List<Plan> timeExistPlan = planMapper.getPlanList(login_id, plan_date, "1", "");
-        List<Plan> nonTimeExistPlan = planMapper.getPlanList(login_id, plan_date, "", "");
+        List<Coordinate> answer;
+        String[] coordinate;
+        List<Plan> timeExistPlan = planMapper.getPlanList(login_id, plan_date, "exist", "");
+        List<Plan> nonTimeExistPlan = planMapper.getPlanList(login_id, plan_date, "non", "");
 
-
-        if (nonTimeExistPlan.isEmpty()) {
-            answer = new String[timeExistPlan.size()];
+        if (nonTimeExistPlan.size() == 0) {
+            answer = new ArrayList<>(timeExistPlan.size());
             for(int i=0; i<timeExistPlan.size(); i++) {
-                answer[i] = timeExistPlan.get(i).getCoordinate();
+                Coordinate coord = new Coordinate();
+                coordinate = timeExistPlan.get(i).getCoordinate().split(",");
+                coord.setLat(coordinate[0]);
+                coord.setLng(coordinate[1]);
+                answer.add(coord);
             }
             return answer;
         } else {
-            answer = new String[timeExistPlan.size()+nonTimeExistPlan.size()];
-            for(int i=0; i == answer.length-2; i++){
+            answer = new ArrayList<>(timeExistPlan.size()+nonTimeExistPlan.size());
+            for(int i=0; i < timeExistPlan.size()+nonTimeExistPlan.size()-1; i++){
                 if(i==0){
                     tmp = timeExistPlan.get(0).getCoordinate();
-                    answer[0] = timeExistPlan.get(0).getTitle();
+                    coordinate = timeExistPlan.get(0).getCoordinate().split(",");
+                    Coordinate coord = new Coordinate();
+                    coord.setLat(coordinate[0]);
+                    coord.setLng(coordinate[1]);
+                    answer.add(coord);
                     timeExistPlan.remove(0);
                     Haversine haver = new Haversine();
                     double distance = 999999;
                     int removeIndex = 0;
                     String returnCor = "";
                     String removeSection="";
-
                     double p1a = Double.parseDouble(tmp.split(",")[0]); // 위도
                     double p1b = Double.parseDouble(tmp.split(",")[1]); // 경도
                     for(int j=0; j<timeExistPlan.size(); j++) {
@@ -86,9 +90,13 @@ public class PlanService {
                     } else {
                         nonTimeExistPlan.remove(removeIndex);
                     }
-                    answer[i+1] = returnCor;
+                    coordinate = returnCor.split(",");
+                    coord = new Coordinate();
+                    coord.setLat(coordinate[0]);
+                    coord.setLng(coordinate[1]);
+                    answer.add(coord);
                 } else {
-                    tmp = answer[i];
+                    tmp = answer.get(i).getLat()+","+answer.get(i).getLng();
                     Haversine haver = new Haversine();
                     double distance = 999999;
                     int removeIndex = 0;
@@ -122,7 +130,11 @@ public class PlanService {
                     } else {
                         nonTimeExistPlan.remove(removeIndex);
                     }
-                    answer[i+1] = returnCor;
+                    coordinate = returnCor.split(",");
+                    Coordinate coord = new Coordinate();
+                    coord.setLat(coordinate[0]);
+                    coord.setLng(coordinate[1]);
+                    answer.add(coord);
                 }
             }
             return answer;
