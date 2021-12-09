@@ -131,28 +131,8 @@ public class PlanService {
 
 
     public void addPlan(Plan plan) {
-        Float[] coords = findGeoPoint(plan.getPlace());
-        plan.setCoordinate(coords[0]+","+coords[1]);
+        int id = planMapper.getCurrentId();
+        plan.setId(id);
         planMapper.addPlan(plan);
-    }
-
-    public static Float[] findGeoPoint(String location) {
-        if (location == null)
-            return null;
-        GeocoderRequest geocoderRequest = new GeocoderRequestBuilder().setAddress(location).setLanguage("ko").getGeocoderRequest();
-
-        Geocoder geocoder = new Geocoder();
-        GeocodeResponse geocoderResponse = geocoder.geocode(geocoderRequest);
-
-        if (geocoderResponse.getStatus() == GeocoderStatus.OK & !geocoderResponse.getResults().isEmpty()) {
-            GeocoderResult geocoderResult=geocoderResponse.getResults().iterator().next();
-            LatLng latitudeLongitude = geocoderResult.getGeometry().getLocation();
-
-            Float[] coords = new Float[2];
-            coords[0] = latitudeLongitude.getLat().floatValue();
-            coords[1] = latitudeLongitude.getLng().floatValue();
-            return coords;
-        }
-        return null;
     }
 }
