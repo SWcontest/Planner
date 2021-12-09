@@ -6,6 +6,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
+import java.util.Arrays;
 import java.util.List;
 
 @RequiredArgsConstructor
@@ -31,8 +32,8 @@ public class PlanApiController {
 
     @GetMapping("/api/v1/plan_route/{login_id}/{plan_date}")
     @ResponseBody
-    public String[] findRouteByDay(@PathVariable String login_id, @PathVariable String plan_date) {
+    public List<String> findRouteByDay(@PathVariable String login_id, @PathVariable String plan_date) {
 
-        return planService.getRoute(login_id, plan_date);
+        return Arrays.asList(planService.getRoute(login_id, plan_date));
     }
 }

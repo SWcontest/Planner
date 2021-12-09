@@ -24,6 +24,7 @@ function getWeek() {
     return thisWeek;
 }
 
+//오늘 날짜 기준으로 1주일 날짜 구하기
 function getPlanByDay(day) {
 
     const week = getWeek();
@@ -49,6 +50,7 @@ function getPlanByDay(day) {
     })
 }
 
+//해당 날짜 일정 불러오기
 function showDaySchedule(plan_list) {
     const $tbody = document.getElementById('schedule-tbody');
     $tbody.innerHTML = '';
@@ -64,22 +66,8 @@ function showDaySchedule(plan_list) {
     })
 }
 
-// 루트
-function getRouteByDay(day) {
-    const login_id = localStorage.getItem('user_id')
-    const week = getWeek();
 
-    const url = `/api/v1/plan_route/${login_id}/${week[day]}`;
-
-    fetch(url)
-        .then((res) => {
-            res.text().then(data => console.log(data))
-        }).catch(err => {
-        console.log(err)
-    })
-}
 
 // 초기값
 const today = new Date();
 getPlanByDay(today.getDay());
-getRouteByDay(today.getDay());

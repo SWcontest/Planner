@@ -115,7 +115,7 @@ $submitBtn.addEventListener("click", () => {
     console.log(params)
 })
 
-// 저장한 일정 보여주기
+// 저장한 일정이름 보여주기
 function show_saved_schedule(data) {
     const li = document.createElement('li');
     li.innerHTML = `
