@@ -31,7 +31,7 @@ public class PlanApiController {
 
     @GetMapping("")
     @ResponseBody
-    public String[] findRouteByDay (@PathVariable String login_id, @PathVariable String plan_date) throws Exception {
+    public String[] findRouteByDay (@RequestBody String login_id, @RequestBody String plan_date) throws Exception {
         return planService.getRoute(login_id, plan_date);
     }
 }
