@@ -22,6 +22,8 @@
     <link rel="shortcut icon" href="../../static/images/favicon.png"/>
     <link rel="stylesheet" type="text/css" href="../../static/css/new.css">
 
+    <script type="text/javascript"
+            src="https://dapi.kakao.com/v2/maps/sdk.js?appkey=d33139d3a4306bea9928208736884b2f&libraries=drawing"></script>
     <script type="text/javascript" src="../../static/customJS/schedule_root.js"></script>
 </head>
 
@@ -322,7 +324,7 @@
                                         id="mon"
                                         class="btn btn-danger btn-rounded btn-icon"
                                         style="background-color: red; border: 1px solid red"
-                                        onclick ="getPlanByDay(0)"
+                                        onclick ="getPlanByDay(0);getRouteByDay(0);"
 
                                 >
                                     월
@@ -332,7 +334,7 @@
                                         id="tue"
                                         class="btn btn-danger btn-rounded btn-icon"
                                         style="background-color: #FF5D05  ; border: 1px solid #FF5D05"
-                                        onclick ="getPlanByDay(1)"
+                                        onclick ="getPlanByDay(1);getRouteByDay(1)"
                                 >
                                     화
                                 </button>
@@ -341,7 +343,7 @@
                                         id="wed"
                                         class="btn btn-danger btn-rounded btn-icon"
                                         style="background-color: #4E71D9  ; border: 1px solid #4E71D9"
-                                        onclick ="getPlanByDay(2)"
+                                        onclick ="getPlanByDay(2);getRouteByDay(2);"
                                 >
                                     수
                                 </button>
@@ -350,7 +352,7 @@
                                         id="thu"
                                         class="btn btn-danger btn-rounded btn-icon"
                                         style="background-color: #5FA55A  ; border: 1px solid #5FA55A"
-                                        onclick ="getPlanByDay(3)"
+                                        onclick ="getPlanByDay(3);getRouteByDay(3);"
                                 >
                                     목
                                 </button>
@@ -359,7 +361,7 @@
                                         id="fri"
                                         class="btn btn-danger btn-rounded btn-icon"
                                         style="background-color: #927A6D ; border: 1px solid #927A6D"
-                                        onclick ="getPlanByDay(4)"
+                                        onclick ="getPlanByDay(4);getRouteByDay(4);"
                                 >
                                     금
                                 </button>
@@ -368,7 +370,7 @@
                                         id="sat"
                                         class="btn btn-danger btn-rounded btn-icon"
                                         style="background-color: #BB85EA ; border: 1px solid #BB85EA"
-                                        onclick ="getPlanByDay(5)"
+                                        onclick ="getPlanByDay(5);getRouteByDay(5);"
                                 >
                                     토
                                 </button>
@@ -377,7 +379,7 @@
                                         id="sun"
                                         class="btn btn-danger btn-rounded btn-icon"
                                         style="background-color:#D98B84; border: 1px solid #D98B84"
-                                        onclick ="getPlanByDay(6)"
+                                        onclick ="getPlanByDay(6);getRouteByDay(5);"
                                 >
                                     일
                                 </button>
@@ -406,38 +408,7 @@
                                     </tr>
                                     </thead>
                                     <!--표 내부는 이런식으로 하면 될 거 같아서 예시로 둠-->
-                                    <tbody id="schedule-tbody">
-                                    <tr>
-                                        <td>세탁소 들리기</td>
-                                        <td>제주 제주시 연삼로 218</td>
-                                        <td>오전 11:00</td>
-                                        <td>30분</td>
-                                        <td class="font-weight-bold">1</td>
-                                    </tr>
-                                    <tr>
-                                        <td>헬스장가기</td>
-                                        <td>제주 제주시 이도이동 1063-5</td>
-                                        <td>오후 01:00</td>
-                                        <td>1시간 30분</td>
-                                        <td class="font-weight-bold">2</td>
-                                    </tr>
-                                    <tr>
-                                        <td>강의 듣기</td>
-                                        <td>제주 제주시 중앙로 236</td>
-                                        <td>오후 03:00</td>
-                                        <td>1시간</td>
-                                        <td class="font-weight-bold">3</td>
-                                    </tr>
-                                    <tr>
-                                        <td>장보기</td>
-                                        <td>제주 제주시 탑동로 38</td>
-                                        <td>오후 05:00</td>
-                                        <td>1시간</td>
-                                        <td class="font-weight-bold">4</td>
-                                    </tr>
-
-
-                                    </tbody>
+                                    <tbody id="schedule-tbody"></tbody>
                                 </table>
                             </div>
                         </div>
@@ -455,203 +426,9 @@
                                     <p class="card-title">최단 일정 경로</p>
                                 </div>
                                 <div id="map" style="width:100%;height:600px;"></div>
-                                <script type="text/javascript"
-                                        src="https://dapi.kakao.com/v2/maps/sdk.js?appkey=d33139d3a4306bea9928208736884b2f&libraries=drawing"></script>
 
-
-                            <script>
-                                var container = document.getElementById('map');
-                                var options = {
-                                    center: new kakao.maps.LatLng(33.49927523032624, 126.52983583833799),
-                                    level: 6
-                                };
-
-                                var map = new kakao.maps.Map(container, options); // 지도를 생성합니다
-
-                                // 마커가 표시될 위치입니다
-                                var markerPosition  = new kakao.maps.LatLng(33.49300696630641, 126.51221789708927);
-
-                                // 마커를 생성합니다
-                                var marker = new kakao.maps.Marker({
-                                    position: markerPosition
-                                });
-                                // 마커가 표시될 위치입니다
-                                var markerPosition2  = new kakao.maps.LatLng(33.49617682451363, 126.53612710442246);
-
-                                // 마커를 생성합니다
-                                var marker2 = new kakao.maps.Marker({
-                                    position: markerPosition2
-                                });
-
-                                // 마커가 표시될 위치입니다
-                                var markerPosition3 = new kakao.maps.LatLng(33.499559979698255, 126.53116842010202);
-
-                                // 마커를 생성합니다
-                                var marker3 = new kakao.maps.Marker({
-                                    position: markerPosition3
-                                });
-
-                                // 마커가 표시될 위치입니다
-                                var markerPosition4 = new kakao.maps.LatLng(33.51863686299385, 126.52031636910279);
-
-                                // 마커를 생성합니다
-                                var marker4 = new kakao.maps.Marker({
-                                    position: markerPosition4
-                                });
-
-                                // 마커가 지도 위에 표시되도록 설정합니다
-                                marker.setMap(map);
-                                marker2.setMap(map);
-                                marker3.setMap(map);
-                                marker4.setMap(map);
-
-                                var linePath = [
-                                    new kakao.maps.LatLng(33.49300696630641, 126.51221789708927),
-                                    new kakao.maps.LatLng(33.49617682451363, 126.53612710442246),
-                                    new kakao.maps.LatLng(33.499559979698255, 126.53116842010202),
-                                    new kakao.maps.LatLng(33.51863686299385, 126.52031636910279)
-                                ];
-
-                                var polyline = new kakao.maps.Polyline({
-                                    path: linePath, // 선을 구성하는 좌표배열 입니다
-                                    strokeWeight: 5, // 선의 두께 입니다
-                                    strokeColor: 'red', // 선의 색깔입니다
-                                    strokeOpacity: 0.7, // 선의 불투명도 입니다 1에서 0 사이의 값이며 0에 가까울수록 투명합니다
-                                    strokeStyle: 'solid' // 선의 스타일입니다
-                                });
-
-                                polyline.setMap(map);
-
-                                var imageSrc = 'https://i.ibb.co/t8n2DW7/map-pin-2.png', // 마커이미지의 주소입니다
-                                    imageSize = new kakao.maps.Size(40,55); // 마커이미지의 크기입니다
-                                    imageOption = {offset: new kakao.maps.Point(27, 69)}; // 마커이미지의 옵션입니다. 마커의 좌표와 일치시킬 이미지 안에서의 좌표를 설정합니다.
-
-
-                                //회색마커
-                                var positions = [
-                                    {
-                                        title: '카카오',
-                                        latlng: new kakao.maps.LatLng(33.51088772003216, 126.51325876616964)
-                                    },
-                                    {
-                                        title: '생태연못',
-                                        latlng: new kakao.maps.LatLng(33.505269764507176, 126.54377157476685)
-                                    },
-                                    {
-                                        title: '텃밭',
-                                        latlng: new kakao.maps.LatLng(33.5010712635577, 126.51927023143702)
-                                    },
-                                    {
-                                        title: '근린공원',
-                                        latlng: new kakao.maps.LatLng(33.49502795424776, 126.54784996095842)
-                                    }
-                                ];
-
-                                // 마커 이미지의 이미지 주소입니다
-                                var imageSrc = "https://i.ibb.co/t8n2DW7/map-pin-2.png";
-
-
-                                var iwRemoveable = true;
-
-                                var iwContent ='<div style="width: 350px">'+
-                                    '<button type="button" id="mon" class="btn btn-danger btn-rounded btn-icon" onclick="mon_click()" style="background-color: red; border: 1px solid red">\n' +
-                                    '월 </button>\n' +
-                                    '<button type="button" id="tue" class="btn btn-danger btn-rounded btn-icon" style="background-color: #FF5D05 ; border: 1px solid #FF5D05" onclick="location.href=\'tue.html\'">\n' +
-                                    '화 </button>\n' +
-                                    '<button type="button" id="wed" class="btn btn-danger btn-rounded btn-icon" style="background-color: #4E71D9 ; border: 1px solid #4E71D9" onclick="location.href=\'wednes.html\'">\n' +
-                                    '수 </button>\n' +
-                                    '<button type="button" id="thu" class="btn btn-danger btn-rounded btn-icon" style="background-color: #5FA55A ; border: 1px solid #5FA55A">\n' +
-                                    '목 </button>\n' +
-                                    '<button type="button" id="fri" class="btn btn-danger btn-rounded btn-icon" style="background-color: #927A6D ; border: 1px solid #927A6D">\n' +
-                                    '금 </button>\n' +
-                                    '<button type="button" id="sat" class="btn btn-danger btn-rounded btn-icon" style="background-color: #BB85EA ; border: 1px solid #BB85EA">\n' +
-                                    '토 </button>\n' +
-                                    '<button type="button" id="sun" class="btn btn-danger btn-rounded btn-icon" style="background-color:#D98B84; border: 1px solid #D98B84">\n' +
-                                    '일 </button>' +
-                                    '</div>';
-
-                                for (var i = 0; i < positions.length; i++) {
-
-                                    // 마커 이미지의 이미지 크기 입니다
-                                    var imageSize = new kakao.maps.Size(40, 50);
-
-                                    // 마커 이미지를 생성합니다
-                                    var markerImage = new kakao.maps.MarkerImage(imageSrc, imageSize);
-
-                                    // 마커를 생성합니다
-                                    var marker = new kakao.maps.Marker({
-                                        map: map, // 마커를 표시할 지도
-                                        position: positions[i].latlng, // 마커를 표시할 위치
-                                        title: positions[i].title, // 마커의 타이틀, 마커에 마우스를 올리면 타이틀이 표시됩니다
-                                        image: markerImage, // 마커 이미지
-                                        clickable: true
-                                    });
-                                    // 인포윈도우를 생성합니다
-                                    var infowindow = new kakao.maps.InfoWindow({
-                                        content : iwContent,
-                                        removable : iwRemoveable
-                                    });
-
-                                    kakao.maps.event.addListener(marker, 'click', makeOverListener(map, marker, infowindow));
-                                }
-
-                                function makeOverListener(map, marker, infowindow) {
-                                    return function() {
-                                        infowindow.open(map, marker);
-                                    };
-                                }
-
-                                function mon_click() {
-                                    polyline.setMap(null);
-                                    marker.setMap(null);
-                                    // 마커가 표시될 위치입니다
-
-                                    var marker5 = new kakao.maps.Marker({
-                                        position: positions[3].latlng, // 마커를 표시할 위치
-                                    });
-
-
-                                    var linePath = [
-                                        new kakao.maps.LatLng(33.49300696630641, 126.51221789708927),
-                                        new kakao.maps.LatLng(33.49617682451363, 126.53612710442246),
-                                        new kakao.maps.LatLng(33.49502795424776, 126.54784996095842),
-                                        new kakao.maps.LatLng(33.499559979698255, 126.53116842010202),
-                                        new kakao.maps.LatLng(33.51863686299385, 126.52031636910279)
-                                    ];
-
-                                    var polyline5 = new kakao.maps.Polyline({
-                                        path: linePath, // 선을 구성하는 좌표배열 입니다
-                                        strokeWeight: 5, // 선의 두께 입니다
-                                        strokeColor: 'red', // 선의 색깔입니다
-                                        strokeOpacity: 0.7, // 선의 불투명도 입니다 1에서 0 사이의 값이며 0에 가까울수록 투명합니다
-                                        strokeStyle: 'solid' // 선의 스타일입니다
-                                    });
-                                    marker5.setMap(map);
-                                    polyline5.setMap(map);
-                                    infowindow.close();
-
-                                    var table = document.getElementById("plan_detail");
-                                    var newRow = table.insertRow(3);
-
-                                    // 새 행(Row)에 Cell 추가
-                                    var newCell1 = newRow.insertCell(0);
-                                    var newCell2 = newRow.insertCell(1);
-                                    var newCell3 = newRow.insertCell(2);
-                                    var newCell4 = newRow.insertCell(3);
-                                    var newCell5 = newRow.insertCell(4);
-
-                                    // Cell에 텍스트 추가
-                                    newCell1.innerText = '미정 일정';
-                                    newCell2.innerText = '한마음 병원';
-                                    newCell3.innerText = '미정';
-                                    newCell4.innerText = '1시간';
-                                    newCell5.innerText = '미정일정';
-
-                                    table.rows[4]
-                                }
-                           </script>
+                            </div>
                         </div>
-                    </div>
                     <!--(끝)일정 경로 : 지도 위 최단 거리 구해주기-->
 
 
@@ -769,7 +546,7 @@
     <script type="text/javascript" src="../../static/js/dashboard.js"></script>
     <script type="text/javascript" src="../../static/js/Chart.roundedBarCharts.js"></script>
     <!-- End custom js for this page-->
-
+    <script type="text/javascript" src="../../static/customJS/schedule_root_map.js"></script>
 </body>
 
 </html>

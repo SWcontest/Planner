@@ -6,6 +6,7 @@ import WeekRoute.planer.service.Plan.PlanService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Arrays;
 import java.util.List;
 
 @RequiredArgsConstructor
@@ -29,9 +30,9 @@ public class PlanApiController {
         return plan.getId();
     }
 
-    @GetMapping("")
+    @GetMapping("/api/v1/plan_route/{login_id}/{plan_date}")
     @ResponseBody
-    public List<Coordinate> findRouteByDay (@RequestBody String login_id, @RequestBody String plan_date) throws Exception {
+    public List<Coordinate> findRouteByDay (@PathVariable String login_id, @PathVariable String plan_date) throws Exception {
         return planService.getRoute(login_id, plan_date);
     }
 }

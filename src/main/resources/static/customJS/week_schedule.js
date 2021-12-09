@@ -1,3 +1,4 @@
+//요일별 일정 
 function getPlanByDay() {
 
     const week = getWeek();
@@ -28,6 +29,7 @@ function getPlanByDay() {
 
 }
 
+// 이번주 월-금 일정들 불러오기
 function showWeekSchedule(data, index) {
     const week = ['mon-tbody', 'tue-tbody', 'wen-tbody', 'thu-tbody', 'fri-tbody', 'sat-tbody', 'sun-tbody']
 
@@ -40,6 +42,8 @@ function showWeekSchedule(data, index) {
 
 }
 
+
+//오늘 날짜 기준으로 이번주의 월-일 날짜 구하기
 function getWeek() {
 
     const currentDay = new Date();

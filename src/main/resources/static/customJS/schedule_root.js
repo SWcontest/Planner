@@ -1,3 +1,4 @@
+// 일정
 function getWeek() {
 
     const currentDay = new Date();
@@ -23,10 +24,10 @@ function getWeek() {
     return thisWeek;
 }
 
+//오늘 날짜 기준으로 1주일 날짜 구하기
 function getPlanByDay(day) {
 
     const week = getWeek();
-    console.log(week);
 
     const login_id = localStorage.getItem('user_id')
 
@@ -49,6 +50,7 @@ function getPlanByDay(day) {
     })
 }
 
+//해당 날짜 일정 불러오기
 function showDaySchedule(plan_list) {
     const $tbody = document.getElementById('schedule-tbody');
     $tbody.innerHTML = '';
@@ -63,5 +65,9 @@ function showDaySchedule(plan_list) {
         $tbody.appendChild(tr);
     })
 }
+
+
+
+// 초기값
 const today = new Date();
 getPlanByDay(today.getDay());

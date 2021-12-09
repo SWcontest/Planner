@@ -1,8 +1,10 @@
 // ================================
-// START YOUR APP HERE
+// 달력 만들기
 // ================================
 const init = {
+    //월
     monList: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'],
+    //일
     dayList: ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'],
     today: new Date(),
     monForChange: new Date().getMonth(),
@@ -136,6 +138,7 @@ $calBody.addEventListener('click', (e) => {
     }
 });
 
+// 해당 날짜 클릭시 저장된 일정들 불러오기
 function getPlanByDate(plan_date) {
     const login_id = "root";
     const url = `/api/v1/plan/${login_id}/${plan_date}`;
@@ -159,7 +162,7 @@ function getPlanByDate(plan_date) {
 const $past_table = document.querySelector(".past-table tbody");
 
 function reloadTodo(plan_list) {
-    // 초기화
+    // 저장된 일정 불러오는 곳 초기화
     $past_table.innerHTML = ""
 
     plan_list.forEach(data => {
