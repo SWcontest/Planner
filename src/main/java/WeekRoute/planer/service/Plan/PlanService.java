@@ -40,7 +40,7 @@ public class PlanService {
         List<Plan> nonTimeExistPlan = planMapper.getPlanList(login_id, plan_date, "", "");
 
 
-        if (nonTimeExistPlan.size() == 0) {
+        if (nonTimeExistPlan.isEmpty()) {
             answer = new String[timeExistPlan.size()];
             for(int i=0; i<timeExistPlan.size(); i++) {
                 answer[i] = timeExistPlan.get(i).getCoordinate();
