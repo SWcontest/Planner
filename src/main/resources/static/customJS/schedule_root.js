@@ -1,5 +1,4 @@
-
-// 일정
+// 날짜 불러오기 - 해당 날짜를 기준으로 1주일 날짜
 function getWeek() {
 
     const currentDay = new Date();
@@ -25,7 +24,7 @@ function getWeek() {
     return thisWeek;
 }
 
-//오늘 날짜 기준으로 1주일 날짜 구하기
+//사용자의 일정을 가져오기, 일정이 없으면 일정 없음처리
 function getPlanByDay(day) {
 
     const week = getWeek();

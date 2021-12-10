@@ -62,12 +62,12 @@ function searchAddress() {
     }).open();
 }
 
-// 버튼 눌렀을 때 실행
+// 버튼 눌렀을 때 실행, 서버에 json 형태로 일정 내용 전송하기
 const $submitBtn = document.getElementById('submit-button');
 
 $submitBtn.addEventListener("click", () => {
     console.log("서버에 일정 전송");
-
+//데이터 형식
     let params = {
         headers: {
             'Content-Type': 'application/json',

@@ -1,6 +1,5 @@
-// ================================
 // 달력 만들기
-// ================================
+
 const init = {
     //월
     monList: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'],
@@ -121,6 +120,7 @@ loadDate(init.today.getDate(), init.today.getDay());
 $btnNext.addEventListener('click', () => loadYYMM(init.nextMonth()));
 $btnPrev.addEventListener('click', () => loadYYMM(init.prevMonth()));
 
+//요일 선택시 해당 요일 활성화시키기
 $calBody.addEventListener('click', (e) => {
     if (e.target.classList.contains('day')) {
         if (init.activeDTag) {
@@ -161,8 +161,9 @@ function getPlanByDate(plan_date) {
 
 const $past_table = document.querySelector(".past-table tbody");
 
+// 저장된 일정 불러오는 곳 초기화시키기
 function reloadTodo(plan_list) {
-    // 저장된 일정 불러오는 곳 초기화
+
     $past_table.innerHTML = ""
 
     plan_list.forEach(data => {

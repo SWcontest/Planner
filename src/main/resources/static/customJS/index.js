@@ -1,6 +1,4 @@
 // index.html js
-
-
 // 오늘 일정 조회
 // 오늘 날짜에 해당하는 일정 불러오기
 window.onload = function () {
