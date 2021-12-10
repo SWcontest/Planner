@@ -5,6 +5,9 @@ import lombok.Setter;
 
 import java.util.Date;
 
+/**
+ * Plan DTO
+ */
 @Getter
 @Setter
 public class Plan {

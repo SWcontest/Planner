@@ -18,11 +18,20 @@ public class UserController {
     @Autowired
     private UserService userService;
 
+    /**
+     * 로그인
+     * @param user
+     * @return
+     */
     @GetMapping(value = {"/", "login"})
     public String getLoginPage(@AuthenticationPrincipal UserPrincipal user) {
         return "login/loginForm";
     }
 
+    /**
+     * 회원가입
+     * @return
+     */
     @GetMapping("registration")
     public ModelAndView getRegistrationPage() {
         ModelAndView modelAndView = new ModelAndView();
@@ -32,7 +41,6 @@ public class UserController {
 
         return modelAndView;
     }
-
     @PostMapping("registration")
     public ModelAndView createNewUser(@Valid User user, BindingResult bindingResult) {
         ModelAndView modelAndView = new ModelAndView();
@@ -55,7 +63,10 @@ public class UserController {
         return modelAndView;
     }
 
-
+    /**
+     * EXCEPTION 처리
+     * @return
+     */
     @GetMapping("exception")
     public ModelAndView getUserPermissionExceptionPage() {
         ModelAndView mv = new ModelAndView();

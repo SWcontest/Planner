@@ -7,6 +7,9 @@ import lombok.ToString;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
+/**
+ * SPRING SECURITY관련
+ */
 @ToString
 @Getter
 public class UserPrincipal implements UserDetails {

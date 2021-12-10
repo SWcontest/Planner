@@ -21,6 +21,11 @@ public class MainController {
     @Autowired
     private PlanService planService;
 
+    /**
+     * 메인 페이지
+     * @param user
+     * @return
+     */
     @GetMapping("main")
     public String getLoginPage(@AuthenticationPrincipal UserPrincipal user) {
         log.info("user: " + user.getId());

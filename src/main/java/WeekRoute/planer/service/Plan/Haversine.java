@@ -1,6 +1,10 @@
 package WeekRoute.planer.service.Plan;
 
 // 참고 : http://sudahe.blogspot.com/2018/02/software-java.html
+
+/**
+ * 위도 경도 받아서 거리 계산
+ */
 public class Haversine {
     public static final double R = 6372.8; // In kilometers
     public static double haversine(double lat1, double lon1, double lat2, double lon2) {
