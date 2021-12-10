@@ -22,6 +22,17 @@
         from plan
     </select>
 
+    <select id="getNonePlanById" resultMap="Plan">
+        select
+           *
+        from plan
+        <where>
+            login_id = #{login_id}
+            AND id = #{plan_id}
+            AND plna_date is null
+        </where>
+    </select>
+
     <select id="getPlanList" resultMap="Plan">
         SELECT
             *

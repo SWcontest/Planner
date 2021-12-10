@@ -232,7 +232,7 @@ function mon_click() {
 }
 
 function searchBusLaneAJAX(slat, slng, elat, elng) {
-    const appkey = 'xzm+dv1+LZESXRkacw+Wot/SwZU38z9Ubd7tPsAt1eg';
+    const appkey = 'yKtViKSnZPoKlM5MW4ew%2BgOGFRdDSQjZ3QXzplm8pbE';
     var xhr = new XMLHttpRequest();
     let url = `https://api.odsay.com/v1/api/searchPubTransPath?SX=${slat}&SY=${slng}&EX=${elat}&EY=${elng}&OPT=1&apiKey=${appkey}`;
     console.log(url)

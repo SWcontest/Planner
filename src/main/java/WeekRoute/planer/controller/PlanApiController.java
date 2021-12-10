@@ -21,6 +21,7 @@ public class PlanApiController {
     public List<Plan> findByDay(@PathVariable String login_id, @PathVariable String plan_date) {
         return planService.getPlanListAll(login_id, plan_date);
     }
+
     // 일정 등록
     @PostMapping("/api/v1/plan")
     public int save(@RequestBody Plan plan) {
@@ -34,5 +35,11 @@ public class PlanApiController {
     @ResponseBody
     public List<Coordinate> findRouteByDay (@PathVariable String login_id, @PathVariable String plan_date) throws Exception {
         return planService.getRoute(login_id, plan_date);
+    }
+
+    @GetMapping("/api/v1/plan_route_none/{login_id}/{plan_date}/{plan_id}")
+    @ResponseBody
+    public List<Coordinate> findRouteByDayIncludeNone (@PathVariable String login_id, @PathVariable String plan_date, @PathVariable String plan_id) throws Exception {
+        return planService.getRoute(login_id, plan_date, plan_id);
     }
 }
