@@ -229,3 +229,9 @@ function mon_click() {
 }
 
 getRouteByDay(today.getDay());
+function getBusRoute() {
+    const url = '/api/v1/bus/33.51810581785266/126.52124868512283/33.47217551996734/126.55016704094149';
+    fetch(url)
+        .then(res => res.json().then(data => console.log(data)));
+}
+getBusRoute();
