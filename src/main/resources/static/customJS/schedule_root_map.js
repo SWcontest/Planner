@@ -65,6 +65,9 @@ function getRouteByDay(day) {
                     setMarker(pos.lat, pos.lng);
                     setRoute(pos.lat, pos.lng);
                 })
+                for (let i = 0; i < data.length - 1; i++) {
+                    getBusRoute(data[i].lat, data[i].lng, data[i + 1].lat, data[i + 1].lng)
+                }
             }).then(() => {
                 drawMarker();
                 polyline = new kakao.maps.Polyline({
@@ -232,8 +235,8 @@ function mon_click() {
 //테스트 데이터
 getRouteByDay(today.getDay());
 
-function getBusRoute() {
-    const url = '/api/v1/bus/33.51810581785266/126.52124868512283/33.47217551996734/126.55016704094149';
+function getBusRoute(sLat, sLng, eLat, eLng) {
+    const url = `/api/v1/bus/${sLat}/${sLng}/${eLng}/${eLng}`;
     fetch(url)
         .then((res) => {
             const contentType = res.headers.get("content-type");
@@ -250,4 +253,3 @@ function getBusRoute() {
             console.log(err)
         })
 }
-getBusRoute();
