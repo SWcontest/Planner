@@ -1,0 +1,785 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>WEEK ROUTE</title>
+    <!-- plugins:css -->
+    <link rel="stylesheet" href="../../vendors/feather/feather.css">
+    <link rel="stylesheet" href="../../vendors/ti-icons/css/themify-icons.css">
+    <link rel="stylesheet" href="../../vendors/css/vendor.bundle.base.css">
+    <!-- endinject -->
+    <!-- Plugin css for this page -->
+    <link rel="stylesheet" href="../../vendors/datatables.net-bs4/dataTables.bootstrap4.css">
+    <link rel="stylesheet" href="../../vendors/ti-icons/css/themify-icons.css">
+    <link rel="stylesheet" type="text/css" href="../../js/select.dataTables.min.css">
+    <!-- End plugin css for this page -->
+    <!-- inject:css -->
+    <link rel="stylesheet" href="../../css/vertical-layout-light/style.css">
+    <!-- endinject -->
+    <link rel="shortcut icon" href="../../images/favicon.png"/>
+    <link rel="stylesheet" href="../../css/new.css">
+
+
+</head>
+
+<body>
+<div class="container-scroller">
+    <!-- partial:partials/_navbar.html -->
+    <nav class="navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
+        <div class="text-center navbar-brand-wrapper d-flex align-items-center justify-content-center">
+            <a class="navbar-brand brand-logo mr-5" href="index.html"><img
+                    src="../../images/Week%20Route-logos_black.png" style="width: 100px;
+    height: 100px; margin-left: 50px;" class="mr-2" alt="logo"/></a>
+            <a class="navbar-brand brand-logo-mini" href="index.html"><img src="../../images/logo-mini.svg" alt="logo"/></a>
+        </div>
+        <div class="navbar-menu-wrapper d-flex align-items-center justify-content-end">
+            <button class="navbar-toggler navbar-toggler align-self-center" type="button" data-toggle="minimize">
+                <span class="icon-menu"></span>
+            </button>
+            <ul class="navbar-nav mr-lg-2">
+                <li class="nav-item nav-search d-none d-lg-block">
+                    <div class="input-group">
+                        <div class="input-group-prepend hover-cursor" id="navbar-search-icon">
+                <span class="input-group-text" id="search">
+                  <i class="icon-search"></i>
+                </span>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+            <ul class="navbar-nav navbar-nav-right">
+                <li class="nav-item dropdown">
+                    <a class="nav-link count-indicator dropdown-toggle" id="notificationDropdown" href="#"
+                       data-toggle="dropdown">
+                        <i class="icon-bell mx-0"></i>
+                        <span class="count"></span>
+                    </a>
+                    <div class="dropdown-menu dropdown-menu-right navbar-dropdown preview-list"
+                         aria-labelledby="notificationDropdown">
+                        <p class="mb-0 font-weight-normal float-left dropdown-header">Notifications</p>
+                        <a class="dropdown-item preview-item">
+                            <div class="preview-thumbnail">
+                                <div class="preview-icon bg-success">
+                                    <i class="ti-info-alt mx-0"></i>
+                                </div>
+                            </div>
+                            <div class="preview-item-content">
+                                <h6 class="preview-subject font-weight-normal">Application Error</h6>
+                                <p class="font-weight-light small-text mb-0 text-muted">
+                                    Just now
+                                </p>
+                            </div>
+                        </a>
+                        <a class="dropdown-item preview-item">
+                            <div class="preview-thumbnail">
+                                <div class="preview-icon bg-warning">
+                                    <i class="ti-settings mx-0"></i>
+                                </div>
+                            </div>
+                            <div class="preview-item-content">
+                                <h6 class="preview-subject font-weight-normal">Settings</h6>
+                                <p class="font-weight-light small-text mb-0 text-muted">
+                                    Private message
+                                </p>
+                            </div>
+                        </a>
+                        <a class="dropdown-item preview-item">
+                            <div class="preview-thumbnail">
+                                <div class="preview-icon bg-info">
+                                    <i class="ti-user mx-0"></i>
+                                </div>
+                            </div>
+                            <div class="preview-item-content">
+                                <h6 class="preview-subject font-weight-normal">New user registration</h6>
+                                <p class="font-weight-light small-text mb-0 text-muted">
+                                    2 days ago
+                                </p>
+                            </div>
+                        </a>
+                    </div>
+                </li>
+                <li class="nav-item nav-profile dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown" id="profileDropdown">
+                        <img src="../../images/faces/face28.jpg" alt="profile"/>
+                    </a>
+                    <div class="dropdown-menu dropdown-menu-right navbar-dropdown" aria-labelledby="profileDropdown">
+                        <a class="dropdown-item">
+                            <i class="ti-settings text-primary"></i>
+                            Settings
+                        </a>
+                        <a class="dropdown-item">
+                            <i class="ti-power-off text-primary"></i>
+                            Logout
+                        </a>
+                    </div>
+                </li>
+                <li class="nav-item nav-settings d-none d-lg-flex">
+                    <a class="nav-link" href="#">
+                        <i class="icon-ellipsis"></i>
+                    </a>
+                </li>
+            </ul>
+            <button class="navbar-toggler navbar-toggler-right d-lg-none align-self-center" type="button"
+                    data-toggle="offcanvas">
+                <span class="icon-menu"></span>
+            </button>
+        </div>
+    </nav>
+    <!-- partial -->
+    <div class="container-fluid page-body-wrapper">
+        <!-- partial:partials/_settings-panel.html -->
+        <div class="theme-setting-wrapper">
+            <div id="settings-trigger"><i class="ti-settings"></i></div>
+            <div id="theme-settings" class="settings-panel">
+                <i class="settings-close ti-close"></i>
+                <p class="settings-heading">SIDEBAR SKINS</p>
+                <div class="sidebar-bg-options selected" id="sidebar-light-theme">
+                    <div class="img-ss rounded-circle bg-light border mr-3"></div>
+                    Light
+                </div>
+                <div class="sidebar-bg-options" id="sidebar-dark-theme">
+                    <div class="img-ss rounded-circle bg-dark border mr-3"></div>
+                    Dark
+                </div>
+                <p class="settings-heading mt-2">HEADER SKINS</p>
+                <div class="color-tiles mx-0 px-4">
+                    <div class="tiles success"></div>
+                    <div class="tiles warning"></div>
+                    <div class="tiles danger"></div>
+                    <div class="tiles info"></div>
+                    <div class="tiles dark"></div>
+                    <div class="tiles default"></div>
+                </div>
+            </div>
+        </div>
+        <div id="right-sidebar" class="settings-panel">
+            <i class="settings-close ti-close"></i>
+            <ul class="nav nav-tabs border-top" id="setting-panel" role="tablist">
+                <li class="nav-item">
+                    <a class="nav-link active" id="todo-tab" data-toggle="tab" href="#todo-section" role="tab"
+                       aria-controls="todo-section" aria-expanded="true">TO DO LIST</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" id="chats-tab" data-toggle="tab" href="#chats-section" role="tab"
+                       aria-controls="chats-section">CHATS</a>
+                </li>
+            </ul>
+            <div class="tab-content" id="setting-content">
+                <div class="tab-pane fade show active scroll-wrapper" id="todo-section" role="tabpanel"
+                     aria-labelledby="todo-section">
+                    <div class="add-items d-flex px-3 mb-0">
+                        <form class="form w-100">
+                            <div class="form-group d-flex">
+                                <input type="text" class="form-control todo-list-input" placeholder="Add To-do">
+                                <button type="submit" class="add btn btn-
+
+
+                  primary todo-list-add-btn" id="add-task">Add
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="list-wrapper px-3">
+                        <ul class="d-flex flex-column-reverse todo-list">
+                            <li>
+                                <div class="form-check">
+                                    <label class="form-check-label">
+                                        <input class="checkbox" type="checkbox">
+                                        Team review meeting at 3.00 PM
+                                    </label>
+                                </div>
+                                <i class="remove ti-close"></i>
+                            </li>
+                            <li>
+                                <div class="form-check">
+                                    <label class="form-check-label">
+                                        <input class="checkbox" type="checkbox">
+                                        Prepare for presentation
+                                    </label>
+                                </div>
+                                <i class="remove ti-close"></i>
+                            </li>
+                            <li>
+                                <div class="form-check">
+                                    <label class="form-check-label">
+                                        <input class="checkbox" type="checkbox">
+                                        Resolve all the low priority tickets due today
+                                    </label>
+                                </div>
+                                <i class="remove ti-close"></i>
+                            </li>
+                            <li class="completed">
+                                <div class="form-check">
+                                    <label class="form-check-label">
+                                        <input class="checkbox" type="checkbox" checked>
+                                        Schedule meeting for next week
+                                    </label>
+                                </div>
+                                <i class="remove ti-close"></i>
+                            </li>
+                            <li class="completed">
+                                <div class="form-check">
+                                    <label class="form-check-label">
+                                        <input class="checkbox" type="checkbox" checked>
+                                        Project review
+                                    </label>
+                                </div>
+                                <i class="remove ti-close"></i>
+                            </li>
+                        </ul>
+                    </div>
+                    <h4 class="px-3 text-muted mt-5 font-weight-light mb-0">Events</h4>
+                    <div class="events pt-4 px-3">
+                        <div class="wrapper d-flex mb-2">
+                            <i class="ti-control-record text-primary mr-2"></i>
+                            <span>Feb 11 2018</span>
+                        </div>
+                        <p class="mb-0 font-weight-thin text-gray">Creating component page build a js</p>
+                        <p class="text-gray mb-0">The total number of sessions</p>
+                    </div>
+                    <div class="events pt-4 px-3">
+                        <div class="wrapper d-flex mb-2">
+                            <i class="ti-control-record text-primary mr-2"></i>
+                            <span>Feb 7 2018</span>
+                        </div>
+                        <p class="mb-0 font-weight-thin text-gray">Meeting with Alisa</p>
+                        <p class="text-gray mb-0 ">Call Sarah Graves</p>
+                    </div>
+                </div>
+                <!-- To do section tab ends -->
+                <div class="tab-pane fade" id="chats-section" role="tabpanel" aria-labelledby="chats-section">
+                    <div class="d-flex align-items-center justify-content-between border-bottom">
+                        <p class="settings-heading border-top-0 mb-3 pl-3 pt-0 border-bottom-0 pb-0">Friends</p>
+                        <small class="settings-heading border-top-0 mb-3 pt-0 border-bottom-0 pb-0 pr-3 font-weight-normal">See
+                            All</small>
+                    </div>
+                    <ul class="chat-list">
+                        <li class="list active">
+                            <div class="profile"><img src="../../images/faces/face1.jpg" alt="image"><span
+                                    class="online"></span></div>
+                            <div class="info">
+                                <p>Thomas Douglas</p>
+                                <p>Available</p>
+                            </div>
+                            <small class="text-muted my-auto">19 min</small>
+                        </li>
+                        <li class="list">
+                            <div class="profile"><img src="../../images/faces/face2.jpg" alt="image"><span
+                                    class="offline"></span></div>
+                            <div class="info">
+                                <div class="wrapper d-flex">
+                                    <p>Catherine</p>
+                                </div>
+                                <p>Away</p>
+                            </div>
+                            <div class="badge badge-success badge-pill my-auto mx-2">4</div>
+                            <small class="text-muted my-auto">23 min</small>
+                        </li>
+                        <li class="list">
+                            <div class="profile"><img src="../../images/faces/face3.jpg" alt="image"><span
+                                    class="online"></span></div>
+                            <div class="info">
+                                <p>Daniel Russell</p>
+                                <p>Available</p>
+                            </div>
+                            <small class="text-muted my-auto">14 min</small>
+                        </li>
+                        <li class="list">
+                            <div class="profile"><img src="../../images/faces/face4.jpg" alt="image"><span
+                                    class="offline"></span></div>
+                            <div class="info">
+                                <p>James Richardson</p>
+                                <p>Away</p>
+                            </div>
+                            <small class="text-muted my-auto">2 min</small>
+                        </li>
+                        <li class="list">
+                            <div class="profile"><img src="../../images/faces/face5.jpg" alt="image"><span
+                                    class="online"></span></div>
+                            <div class="info">
+                                <p>Madeline Kennedy</p>
+                                <p>Available</p>
+                            </div>
+                            <small class="text-muted my-auto">5 min</small>
+                        </li>
+                        <li class="list">
+                            <div class="profile"><img src="../../images/faces/face6.jpg" alt="image"><span
+                                    class="online"></span></div>
+                            <div class="info">
+                                <p>Sarah Graves</p>
+                                <p>Available</p>
+                            </div>
+                            <small class="text-muted my-auto">47 min</small>
+                        </li>
+                    </ul>
+                </div>
+                <!-- chat tab ends -->
+            </div>
+        </div>
+
+
+        <!-- partial -->
+        <!--    사이드바-->
+        <!-- partial:partials/_sidebar.html -->
+        <nav class="sidebar sidebar-offcanvas" id="sidebar">
+            <ul class="nav">
+                <li class="nav-item">
+                    <a class="nav-link" href="../../index.html">
+                        <i class="icon-grid menu-icon"></i>
+                        <span class="menu-title">메인 페이지</span>
+                    </a>
+                </li>
+                <li class="nav-item" href="#form-elements" aria-expanded="false" aria-controls="form-elements">
+                    <a class="nav-link" href="pages/add_schedule/add_schedule.html">
+                        <i class="icon-columns menu-icon"></i>
+                        <span class="menu-title">일정등록</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" data-toggle="collapse" href="#ui-basic" aria-expanded="false"
+                       aria-controls="ui-basic">
+                        <i class="icon-grid-2 menu-icon"></i>
+                        <span class="menu-title">전체 일정</span>
+                        <i class="menu-arrow"></i>
+                    </a>
+                    <div class="collapse" id="ui-basic">
+                        <ul class="nav flex-column sub-menu">
+                            <li class="nav-item"><a class="nav-link" href="../week_schedule/week_schedule.html">요일별
+                                일정</a>
+                            </li>
+                            <li class="nav-item"><a class="nav-link" href="schedule_root.html">일정 경로</a>
+                            </li>
+                            <!--                            <li class="nav-item"><a class="nav-link" href="pages/ui-features/typography.html">대중교통-->
+                            <!--                                안내</a></li>-->
+                        </ul>
+                    </div>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" data-toggle="collapse" href="#form-elements" aria-expanded="false"
+                       aria-controls="form-elements">
+                        <i class="icon-head menu-icon"></i>
+                        <span class="menu-title">마이페이지</span>
+                        <i class="menu-arrow"></i>
+                    </a>
+                    <div class="collapse" id="form-elements">
+                        <ul class="nav flex-column sub-menu">
+                            <li class="nav-item"><a class="nav-link" href="../past_schedule/past_schedule.html">지난 일정
+                                열람</a>
+                            </li>
+<!--                            <li class="nav-item"><a class="nav-link" href="pages/forms/basic_elements.html">SNS 공유</a>-->
+<!--                            </li>-->
+<!--                            <li class="nav-item"><a class="nav-link" href="pages/forms/basic_elements.html">저장된 추천-->
+<!--                                장소</a></li>-->
+<!--                            <li class="nav-item"><a class="nav-link" href="pages/forms/basic_elements.html">계정관리</a>-->
+<!--                            </li>-->
+                        </ul>
+                    </div>
+                </li>
+            </ul>
+        </nav>
+
+        <!-- partial -->
+
+        <!--일정 경로 : 첫 시작 & 요일 선택하기-->
+        <div class="main-panel">
+            <div class="content-wrapper">
+                <div class="col-md-12 grid-margin">
+                    <div class="row">
+                        <div class="col-12 col-xl-8 mb-4 mb-xl-0">
+                            <h3 class="font-weight-bold">일정 경로</h3>
+                            <h6 class="font-weight-normal mb-0">자세한 일정 보기</h6>
+                        </div>
+                        <div class="col-12 col-xl-4">
+                            <div class="justify-content-end d-flex">
+                                <div class="dropdown flex-md-grow-1 flex-xl-grow-0">
+                                </div>
+                            </div>
+                            <div class="chooseDate">
+                                <button
+                                        type="button"
+                                        id="mon"
+                                        class="btn btn-danger btn-rounded btn-icon"
+                                        style="background-color: red; border: 1px solid red"
+                                        onclick ="location.href='schedule_root.html'"
+
+                                >
+                                    월
+                                </button>
+                                <button
+                                        type="button"
+                                        id="tue"
+                                        class="btn btn-danger btn-rounded btn-icon"
+                                        style="background-color: #FF5D05  ; border: 1px solid #FF5D05"
+                                        onclick ="location.href='tue.html'"
+                                >
+                                    화
+                                </button>
+                                <button
+                                        type="button"
+                                        id="wed"
+                                        class="btn btn-danger btn-rounded btn-icon"
+                                        style="background-color: #4E71D9  ; border: 1px solid #4E71D9"
+                                        onclick ="location.href='wednes.html'"
+                                >
+                                    수
+                                </button>
+                                <button
+                                        type="button"
+                                        id="thu"
+                                        class="btn btn-danger btn-rounded btn-icon"
+                                        style="background-color: #5FA55A  ; border: 1px solid #5FA55A"
+                                >
+                                    목
+                                </button>
+                                <button
+                                        type="button"
+                                        id="fri"
+                                        class="btn btn-danger btn-rounded btn-icon"
+                                        style="background-color: #927A6D ; border: 1px solid #927A6D"
+                                >
+                                    금
+                                </button>
+                                <button
+                                        type="button"
+                                        id="sat"
+                                        class="btn btn-danger btn-rounded btn-icon"
+                                        style="background-color: #BB85EA ; border: 1px solid #BB85EA"
+                                >
+                                    토
+                                </button>
+                                <button
+                                        type="button"
+                                        id="sun"
+                                        class="btn btn-danger btn-rounded btn-icon"
+                                        style="background-color:#D98B84; border: 1px solid #D98B84"
+                                >
+                                    일
+                                </button>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+                <!--(끝)일정 경로 : 요일 선택하기-->
+
+
+                <!--일정 경로 : 그날 일정 보여주기-->
+                <div class="col-md-12 grid-margin stretch-card">
+                    <div class="card">
+                        <div class="card-body">
+                            <p class="card-title mb-0">일정 자세히 보기</p>
+                            <div class="table-responsive">
+                                <table class="table table-striped table-borderless">
+                                    <thead>
+                                    <tr>
+                                        <th>일정 이름</th>
+                                        <th>위치</th>
+                                        <th>시작 시간</th>
+                                        <th>예상 시간</th>
+                                        <th>순서</th>
+                                    </tr>
+                                    </thead>
+                                    <!--표 내부는 이런식으로 하면 될 거 같아서 예시로 둠-->
+                                    <tbody>
+                                    <tr>
+                                        <td>책 반납하기</td>
+                                        <td>제주 제주시 연삼로 218</td>
+                                        <td>오전 11:00</td>
+                                        <td>30분</td>
+                                        <td class="font-weight-bold">1</td>
+                                    </tr>
+                                    <tr>
+                                        <td>멀미약 사기</td>
+                                        <td>제주특별자치도 제주시 아라일동 제주대학로 102</td>
+                                        <td>미정</td>
+                                        <td>10분</td>
+                                        <td class="font-weight-bold">2</td>
+                                    </tr>
+                                    <tr>
+                                        <td>감기</td>
+                                        <td>제주특별자치도 제주시 아라이동 제주대학로 105-1</td>
+                                        <td>미정</td>
+                                        <td>1시간</td>
+                                        <td class="font-weight-bold">3</td>
+                                    </tr>
+                                    <tr>
+                                        <td>서울가기</td>
+                                        <td>제주특별자치도 제주시 공항로 2</td>
+                                        <td>오후 05:00</td>
+                                        <td>1시간</td>
+                                        <td class="font-weight-bold">4</td>
+                                    </tr>
+
+
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!--(끝)일정 경로 : 그날 일정 보여주기-->
+
+
+                <!--일정 경로 : 지도 위 최단 거리 구해주기-->
+                <div class="row">
+                    <div class="col-md-6 grid-margin stretch-card">
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="d-flex justify-content-between">
+                                    <p class="card-title">최단 일정 경로</p>
+                                </div>
+                                <div id="map" style="width:100%;height:600px;"></div>
+                                <script type="text/javascript"
+                                        src="https://dapi.kakao.com/v2/maps/sdk.js?appkey=d33139d3a4306bea9928208736884b2f&libraries=drawing"></script>
+
+
+                                <script>
+                                    var container = document.getElementById('map');
+                                    var options = {
+                                        center: new kakao.maps.LatLng(33.48210002528953, 126.52661128239373),
+                                        level: 7
+                                    };
+
+                                    var map = new kakao.maps.Map(container, options); // 지도를 생성합니다
+
+                                    // 마커가 표시될 위치입니다
+                                    var markerPosition  = new kakao.maps.LatLng(33.45740959255173, 126.56023838303933);
+
+                                    // 마커를 생성합니다
+                                    var marker = new kakao.maps.Marker({
+                                        position: markerPosition
+                                    });
+                                    // 마커가 표시될 위치입니다
+                                    var markerPosition2  = new kakao.maps.LatLng(33.46022086189557, 126.56119111695283);
+
+                                    // 마커를 생성합니다
+                                    var marker2 = new kakao.maps.Marker({
+                                        position: markerPosition2
+                                    });
+
+                                    // 마커가 표시될 위치입니다
+                                    var markerPosition3 = new kakao.maps.LatLng(33.466952523048214, 126.54528631746679);
+
+                                    // 마커를 생성합니다
+                                    var marker3 = new kakao.maps.Marker({
+                                        position: markerPosition3
+                                    });
+
+                                    // 마커가 표시될 위치입니다
+                                    var markerPosition4 = new kakao.maps.LatLng(33.50679045802733, 126.49298418174813);
+
+                                    // 마커를 생성합니다
+                                    var marker4 = new kakao.maps.Marker({
+                                        position: markerPosition4
+                                    });
+
+                                    // 마커가 지도 위에 표시되도록 설정합니다
+                                    marker.setMap(map);
+                                    marker2.setMap(map);
+                                    marker3.setMap(map);
+                                    marker4.setMap(map);
+
+                                    var linePath = [
+                                        new kakao.maps.LatLng(33.45740959255173, 126.56023838303933),
+                                        new kakao.maps.LatLng(33.46022086189557, 126.56119111695283),
+                                        new kakao.maps.LatLng(33.466952523048214, 126.54528631746679),
+                                        new kakao.maps.LatLng(33.50679045802733, 126.49298418174813)
+                                    ];
+
+                                    var polyline = new kakao.maps.Polyline({
+                                        path: linePath, // 선을 구성하는 좌표배열 입니다
+                                        strokeWeight: 5, // 선의 두께 입니다
+                                        strokeColor: '#FF5D05', // 선의 색깔입니다
+                                        strokeOpacity: 0.7, // 선의 불투명도 입니다 1에서 0 사이의 값이며 0에 가까울수록 투명합니다
+                                        strokeStyle: 'solid' // 선의 스타일입니다
+                                    });
+
+                                    polyline.setMap(map);
+
+                                    var imageSrc = 'https://i.ibb.co/t8n2DW7/map-pin-2.png', // 마커이미지의 주소입니다
+                                        imageSize = new kakao.maps.Size(40,55); // 마커이미지의 크기입니다
+                                    imageOption = {offset: new kakao.maps.Point(27, 69)}; // 마커이미지의 옵션입니다. 마커의 좌표와 일치시킬 이미지 안에서의 좌표를 설정합니다.
+
+
+                                    //회색마커
+                                    var positions = [
+                                        {
+                                            title: '카카오',
+                                            latlng: new kakao.maps.LatLng(33.51088772003216, 126.51325876616964)
+                                        },
+                                        {
+                                            title: '생태연못',
+                                            latlng: new kakao.maps.LatLng(33.505269764507176, 126.54377157476685)
+                                        },
+                                        {
+                                            title: '텃밭',
+                                            latlng: new kakao.maps.LatLng(33.5010712635577, 126.51927023143702)
+                                        },
+                                        {
+                                            title: '근린공원',
+                                            latlng: new kakao.maps.LatLng(33.49502795424776, 126.54784996095842)
+                                        }
+                                    ];
+
+                                    // 마커 이미지의 이미지 주소입니다
+                                    var imageSrc = "https://i.ibb.co/t8n2DW7/map-pin-2.png";
+
+                                    var iwRemoveable = true;
+
+                                    var iwContent ='<div style="width: 350px">'+
+                                        '<button type="button" id="mon" class="btn btn-danger btn-rounded btn-icon" style="background-color: red; border: 1px solid red">\n' +
+                                        '월 </button>\n' +
+                                        '<button type="button" id="tue" class="btn btn-danger btn-rounded btn-icon" style="background-color: #FF5D05 ; border: 1px solid #FF5D05" onclick="location.href=\'tue.html\'">\n' +
+                                        '화 </button>\n' +
+                                        '<button type="button" id="wed" class="btn btn-danger btn-rounded btn-icon" style="background-color: #4E71D9 ; border: 1px solid #4E71D9" onclick="location.href=\'wednes.html\'">\n' +
+                                        '수 </button>\n' +
+                                        '<button type="button" id="thu" class="btn btn-danger btn-rounded btn-icon" style="background-color: #5FA55A ; border: 1px solid #5FA55A">\n' +
+                                        '목 </button>\n' +
+                                        '<button type="button" id="fri" class="btn btn-danger btn-rounded btn-icon" style="background-color: #927A6D ; border: 1px solid #927A6D">\n' +
+                                        '금 </button>\n' +
+                                        '<button type="button" id="sat" class="btn btn-danger btn-rounded btn-icon" style="background-color: #BB85EA ; border: 1px solid #BB85EA">\n' +
+                                        '토 </button>\n' +
+                                        '<button type="button" id="sun" class="btn btn-danger btn-rounded btn-icon" style="background-color:#D98B84; border: 1px solid #D98B84">\n' +
+                                        '일 </button>' +
+                                        '</div>';
+
+                                    for (var i = 0; i < positions.length; i++) {
+
+                                        // 마커 이미지의 이미지 크기 입니다
+                                        var imageSize = new kakao.maps.Size(40, 50);
+
+                                        // 마커 이미지를 생성합니다
+                                        var markerImage = new kakao.maps.MarkerImage(imageSrc, imageSize);
+
+                                        // 마커를 생성합니다
+                                        var marker = new kakao.maps.Marker({
+                                            map: map, // 마커를 표시할 지도
+                                            position: positions[i].latlng, // 마커를 표시할 위치
+                                            title: positions[i].title, // 마커의 타이틀, 마커에 마우스를 올리면 타이틀이 표시됩니다
+                                            image: markerImage, // 마커 이미지
+                                            clickable: true
+                                        });
+                                        // 인포윈도우를 생성합니다
+                                        var infowindow = new kakao.maps.InfoWindow({
+                                            content : iwContent,
+                                            removable : iwRemoveable
+                                        });
+
+                                        kakao.maps.event.addListener(marker, 'click', makeOverListener(map, marker, infowindow));
+                                    }
+
+                                    function makeOverListener(map, marker, infowindow) {
+                                        return function() {
+                                            infowindow.open(map, marker);
+                                        };
+                                    }
+
+                                </script>
+                            </div>
+                        </div>
+                        <!--(끝)일정 경로 : 지도 위 최단 거리 구해주기-->
+
+                        <div class="col-md-10 grid-margin stretch-card">
+                            <div class="card">
+                                <div class="card-body">
+                                    <div class="d-flex justify-content-between">
+                                        <p class="card-title">대중교통 안내</p>
+                                    </div>
+                                    <div class="topmenu">
+                                        <button type="button"class="btn btn-inverse-info btn-fw" style="margin-left: 5px">전체 10</button>
+                                        <button type="button"class="btn btn-outline-info btn-fw" style="margin-left: 5px">지하철 0</button>
+                                        <button type="button"class="btn btn-outline-info btn-fw">버스 8</button>
+
+                                    </div>
+                                    <hr>
+                                    <div class="container row justify-content-between">
+                                        <div class="buscard-time"><span style="color: mediumturquoise; font-size: larger"><b>35</b></span>분 | 8.4km </div>
+                                        <div class="buscost" style="font-size: small"><span style="color: red" >1150</span>원</div>
+                                    </div>
+
+                                    <div class="walk" style="font-size: x-small;margin-bottom: 10px">도보 10분, 환승 0회</div>
+
+                                    <div class="busroute"><img src="../../images/사본 -bus-marker (1).png" style="width: 25px;height: 25px">오라1동 정류장 </div>
+                                    <div class="updown" style="margin-left: 12px;border-left: 2px dotted grey; height: 30px;"></div>
+                                    <div class="nextbusroute" style="margin-bottom: 10px"><img src="../../images/사본 -bus-marker (1).png" style="width: 25px;height: 25px"> 제주대학교 정류장</div>
+                                    <div class="busno" style="font-size: larger; color: grey "><b>356, 356-1</b></div>
+                                    <hr>
+
+
+
+                                    <div class="walk" style="font-size: x-small;margin-bottom: 10px">도보 10분, 환승 0회</div>
+
+
+                                    <hr>
+                                    <div class="container row justify-content-between">
+                                        <div class="buscard-time"><span style="color: mediumturquoise; font-size: larger"><b>36</b></span>분 | 11.4km </div>
+                                        <div class="buscost" style="font-size: small"><span style="color: red" >1150</span>원</div>
+                                    </div>
+                                    <div class="walk" style="font-size: x-small;margin-bottom: 10px">도보 7분, 환승 0회</div>
+
+                                    <div class="busroute"><img src="../../images/사본 -bus-marker (1).png" style="width: 25px;height: 25px">
+                                        제주대학교 정류장 </div>
+                                    <div class="updown" style="margin-left: 12px;border-left: 2px dotted grey; height: 30px;"></div>
+                                    <div class="nextbusroute" style="margin-bottom: 10px"><img src="../../images/사본 -bus-marker (1).png" style="width: 25px;height: 25px">
+                                        제주국제공항 정류장</div>
+                                    <div class="busno" style="font-size: larger; color: grey "><b>455</b></div>
+                                    <hr>
+
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+                <!-- partial:partials/_footer.html -->
+                <footer class="footer">
+                    <div class="d-sm-flex justify-content-center justify-content-sm-between">
+                        <span class="text-muted text-center text-sm-left d-block d-sm-inline-block">Copyright © 2021.  Premium <a
+                                href="https://www.bootstrapdash.com/" target="_blank">WeekRoute</a> All rights reserved.</span>
+                    </div>
+                    <div class="d-sm-flex justify-content-center justify-content-sm-between">
+                        <span class="text-muted text-center text-sm-left d-block d-sm-inline-block">Distributed by <a
+                                href="https://www.themewagon.com/" target="_blank">컴퓨터공학전공 유은지, 컴퓨터공학전공 김민석</a></span>
+                    </div>
+                </footer>
+                <!-- partial -->
+                <!-- main-panel ends -->
+            </div>
+            <!-- page-body-wrapper ends -->
+        </div>
+        <!-- container-scroller -->
+    </div>
+
+    <!-- plugins:js -->
+    <script src="../../vendors/js/vendor.bundle.base.js"></script>
+    <!-- endinject -->
+    <!-- Plugin js for this page -->
+    <script src="../../vendors/chart.js/Chart.min.js"></script>
+    <script src="../../vendors/datatables.net/jquery.dataTables.js"></script>
+    <script src="../../vendors/datatables.net-bs4/dataTables.bootstrap4.js"></script>
+    <script src="../../js/dataTables.select.min.js"></script>
+
+    <!-- End plugin js for this page -->
+    <!-- inject:js -->
+    <script src="../../js/off-canvas.js"></script>
+    <script src="../../js/hoverable-collapse.js"></script>
+    <script src="../../js/template.js"></script>
+    <script src="../../js/settings.js"></script>
+    <script src="../../js/todolist.js"></script>
+    <!-- endinject -->
+    <!-- Custom js for this page-->
+    <script src="../../js/dashboard.js"></script>
+    <script src="../../js/Chart.roundedBarCharts.js"></script>
+    <!-- End custom js for this page-->
+
+    <script src="../../customJS/schedule_root.js"/>
+</body>
+
+</html>
+

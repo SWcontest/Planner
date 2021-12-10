@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>WEEK ROUTE</title>
+    <!-- plugins:css -->
+    <link rel="stylesheet" type="text/css" href="../../static/vendors/feather/feather.css">
+    <link rel="stylesheet" type="text/css" href="../../static/vendors/ti-icons/css/themify-icons.css">
+    <link rel="stylesheet" type="text/css" href="../../static/vendors/css/vendor.bundle.base.css">
+    <!-- endinject -->
+    <!-- Plugin css for this page -->
+    <link rel="stylesheet" type="text/css" href="../../static/vendors/datatables.net-bs4/dataTables.bootstrap4.css">
+    <link rel="stylesheet" type="text/css" href="../../static/vendors/ti-icons/css/themify-icons.css">
+    <link rel="stylesheet" type="text/css" href="../../static/js/select.dataTables.min.css">
+    <!-- End plugin css for this page -->
+    <!-- inject:css -->
+    <link rel="stylesheet" type="text/css" href="../../static/css/vertical-layout-light/style.css">
+    <!-- endinject -->
+    <link rel="shortcut icon" href="../../static/images/favicon.png"/>
+    <link rel="stylesheet" type="text/css" href="../../static/css/new.css">
+
+    <script type="text/javascript"
+            src="https://dapi.kakao.com/v2/maps/sdk.js?appkey=d33139d3a4306bea9928208736884b2f&libraries=drawing"></script>
+    <script type="text/javascript" src="../../static/customJS/schedule_root.js"></script>
+</head>
+
+<body>
+<div class="container-scroller">
+    <!-- partial:partials/_navbar.html -->
+    <nav class="navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
+        <div class="text-center navbar-brand-wrapper d-flex align-items-center justify-content-center">
+            <a class="navbar-brand brand-logo mr-5" href="main"><img
+                    src="/static/images/Week%20Route-logos_black.png" style="width: 100px;
+    height: 100px; margin-left: 50px;" class="mr-2" alt="logo"/></a>
+            <a class="navbar-brand brand-logo-mini" href="main"><img src="/static/images/logo-mini.svg" alt="logo"/></a>
+        </div>
+        <div class="navbar-menu-wrapper d-flex align-items-center justify-content-end">
+            <button class="navbar-toggler navbar-toggler align-self-center" type="button" data-toggle="minimize">
+                <span class="icon-menu"></span>
+            </button>
+
+            <button class="navbar-toggler navbar-toggler-right d-lg-none align-self-center" type="button"
+                    data-toggle="offcanvas">
+                <span class="icon-menu"></span>
+            </button>
+        </div>
+    </nav>
+    <!-- partial -->
+    <div class="container-fluid page-body-wrapper">
+        <!-- partial:partials/_settings-panel.html -->
+        <div class="theme-setting-wrapper">
+            <div id="settings-trigger"><i class="ti-settings"></i></div>
+            <div id="theme-settings" class="settings-panel">
+                <i class="settings-close ti-close"></i>
+                <p class="settings-heading">SIDEBAR SKINS</p>
+                <div class="sidebar-bg-options selected" id="sidebar-light-theme">
+                    <div class="img-ss rounded-circle bg-light border mr-3"></div>
+                    Light
+                </div>
+                <div class="sidebar-bg-options" id="sidebar-dark-theme">
+                    <div class="img-ss rounded-circle bg-dark border mr-3"></div>
+                    Dark
+                </div>
+                <p class="settings-heading mt-2">HEADER SKINS</p>
+                <div class="color-tiles mx-0 px-4">
+                    <div class="tiles success"></div>
+                    <div class="tiles warning"></div>
+                    <div class="tiles danger"></div>
+                    <div class="tiles info"></div>
+                    <div class="tiles dark"></div>
+                    <div class="tiles default"></div>
+                </div>
+            </div>
+        </div>
+        <div id="right-sidebar" class="settings-panel">
+            <i class="settings-close ti-close"></i>
+            <ul class="nav nav-tabs border-top" id="setting-panel" role="tablist">
+                <li class="nav-item">
+                    <a class="nav-link active" id="todo-tab" data-toggle="tab" href="#todo-section" role="tab"
+                       aria-controls="todo-section" aria-expanded="true">TO DO LIST</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" id="chats-tab" data-toggle="tab" href="#chats-section" role="tab"
+                       aria-controls="chats-section">CHATS</a>
+                </li>
+            </ul>
+
+        </div>
+
+
+
+        <!-- 사이드바-->
+        <nav class="sidebar sidebar-offcanvas" id="sidebar">
+            <ul class="nav">
+                <li class="nav-item">
+                    <a class="nav-link" href="main">
+                        <i class="icon-grid menu-icon"></i>
+                        <span class="menu-title">메인 페이지</span>
+                    </a>
+                </li>
+                <li class="nav-item" href="#form-elements" aria-expanded="false" aria-controls="form-elements">
+                    <a class="nav-link" href="add_schedule">
+                        <i class="icon-columns menu-icon"></i>
+                        <span class="menu-title">일정등록</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" data-toggle="collapse" href="#ui-basic" aria-expanded="false"
+                       aria-controls="ui-basic">
+                        <i class="icon-grid-2 menu-icon"></i>
+                        <span class="menu-title">전체 일정</span>
+                        <i class="menu-arrow"></i>
+                    </a>
+                    <div class="collapse" id="ui-basic">
+                        <ul class="nav flex-column sub-menu">
+                            <li class="nav-item"><a class="nav-link" href="week_schedule">요일별
+                                일정</a>
+                            </li>
+                            <li class="nav-item"><a class="nav-link" href="schedule_root">일정 경로</a>
+                            </li>
+                        </ul>
+                    </div>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" data-toggle="collapse" href="#form-elements" aria-expanded="false"
+                       aria-controls="form-elements">
+                        <i class="icon-head menu-icon"></i>
+                        <span class="menu-title">마이페이지</span>
+                        <i class="menu-arrow"></i>
+                    </a>
+                    <div class="collapse" id="form-elements">
+                        <ul class="nav flex-column sub-menu">
+                            <li class="nav-item"><a class="nav-link" href="past_schedule">지난 일정
+                                열람</a>
+                            </li>
+                        </ul>
+                    </div>
+                </li>
+            </ul>
+        </nav>
+
+        <!-- partial -->
+
+        <!--일정 경로 : 첫 시작 & 요일 선택하기-->
+        <div class="main-panel">
+            <div class="content-wrapper">
+                <div class="col-md-12 grid-margin">
+                    <div class="row">
+                        <div class="col-12 col-xl-8 mb-4 mb-xl-0">
+                            <h3 class="font-weight-bold">일정 경로</h3>
+                            <h6 class="font-weight-normal mb-0">자세한 일정 보기</h6>
+                        </div>
+                        <div class="col-12 col-xl-4">
+                            <div class="justify-content-end d-flex">
+                                <div class="dropdown flex-md-grow-1 flex-xl-grow-0">
+                                </div>
+                            </div>
+                            <div class="chooseDate">
+                                <button
+                                        type="button"
+                                        id="mon"
+                                        class="btn btn-danger btn-rounded btn-icon"
+                                        style="background-color: red; border: 1px solid red"
+                                        onclick="getPlanByDay(0);getRouteByDay(0);"
+
+                                >
+                                    월
+                                </button>
+                                <button
+                                        type="button"
+                                        id="tue"
+                                        class="btn btn-danger btn-rounded btn-icon"
+                                        style="background-color: #FF5D05  ; border: 1px solid #FF5D05"
+                                        onclick="getPlanByDay(1);getRouteByDay(1)"
+                                >
+                                    화
+                                </button>
+                                <button
+                                        type="button"
+                                        id="wed"
+                                        class="btn btn-danger btn-rounded btn-icon"
+                                        style="background-color: #4E71D9  ; border: 1px solid #4E71D9"
+                                        onclick="getPlanByDay(2);getRouteByDay(2);"
+                                >
+                                    수
+                                </button>
+                                <button
+                                        type="button"
+                                        id="thu"
+                                        class="btn btn-danger btn-rounded btn-icon"
+                                        style="background-color: #5FA55A  ; border: 1px solid #5FA55A"
+                                        onclick="getPlanByDay(3);getRouteByDay(3);"
+                                >
+                                    목
+                                </button>
+                                <button
+                                        type="button"
+                                        id="fri"
+                                        class="btn btn-danger btn-rounded btn-icon"
+                                        style="background-color: #927A6D ; border: 1px solid #927A6D"
+                                        onclick="getPlanByDay(4);getRouteByDay(4);"
+                                >
+                                    금
+                                </button>
+                                <button
+                                        type="button"
+                                        id="sat"
+                                        class="btn btn-danger btn-rounded btn-icon"
+                                        style="background-color: #BB85EA ; border: 1px solid #BB85EA"
+                                        onclick="getPlanByDay(5);getRouteByDay(5);"
+                                >
+                                    토
+                                </button>
+                                <button
+                                        type="button"
+                                        id="sun"
+                                        class="btn btn-danger btn-rounded btn-icon"
+                                        style="background-color:#D98B84; border: 1px solid #D98B84"
+                                        onclick="getPlanByDay(6);getRouteByDay(5);"
+                                >
+                                    일
+                                </button>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+                <!--(끝)일정 경로 : 요일 선택하기-->
+
+
+                <!--일정 경로 : 그날 일정 보여주기-->
+                <div class="col-md-12 grid-margin stretch-card">
+                    <div class="card">
+                        <div class="card-body">
+                            <p class="card-title mb-0">일정 자세히 보기</p>
+                            <div class="table-responsive">
+                                <table class="table table-striped table-borderless" id="plan_detail">
+                                    <thead>
+                                    <tr>
+                                        <th>일정 이름</th>
+                                        <th>위치</th>
+                                        <th>시작 시간</th>
+                                        <th>예상 시간</th>
+                                        <th>순서</th>
+                                    </tr>
+                                    </thead>
+                                    <!--표 내부는 이런식으로 하면 될 거 같아서 예시로 둠-->
+                                    <tbody id="schedule-tbody"></tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!--(끝)일정 경로 : 그날 일정 보여주기-->
+
+
+                <!--일정 경로 : 지도 위 최단 거리 구해주기-->
+                <div class="row">
+                    <div class="col-md-6 grid-margin stretch-card">
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="d-flex justify-content-between">
+                                    <p class="card-title">최단 일정 경로</p>
+                                </div>
+                                <div id="map" style="width:100%;height:600px;"></div>
+
+                            </div>
+                        </div>
+                        <!--(끝)일정 경로 : 지도 위 최단 거리 구해주기-->
+
+
+                        <!--대중교통 안내-->
+                        <div class="col-md-10 grid-margin stretch-card">
+                            <div class="card">
+                                <div class="card-body">
+                                    <div class="d-flex justify-content-between">
+                                        <p class="card-title">대중교통 안내</p></div>
+
+
+                                    <div class="topmenu">
+                                        <button type="button" class="btn btn-inverse-info btn-fw"
+                                                style="margin-left: 5px">전체 8
+                                        </button>
+                                        <button type="button" class="btn btn-outline-info btn-fw"
+                                                style="margin-left: 5px">지하철 0
+                                        </button>
+                                        <button type="button" class="btn btn-outline-info btn-fw">버스 8</button>
+
+                                    </div>
+                                    <hr>
+                                    <div class="busInfoContainer" style="padding: 5px; border-bottom: solid 2px gray">
+                                        <div class="totalTime"></div>
+                                        <span class="totalWalk"></span>
+                                        <span class="bar"></span>
+                                        <span class="payment"></span>
+                                        <span class="bar"></span>
+                                        <span class="totalDistance"></span>
+                                    </div>
+                                    <div class="busInfo" style="display: flex;">
+                                        <div class="busstopInfoContainer">
+                                            <div class="walk">
+                                                <div class="startPoint"><img src="../../static/images/사본 -bus-marker (1).png" style="width: 25px;height: 25px">
+                                                    출발지
+                                                </div>
+                                                <div class="firstwalkdistance" style="font-size: 1rem; color: rgba(0,0,0,0.71); padding-left: 7px;"></div>
+                                            </div>
+
+                                            <div class="bus">
+                                                <div class="firstStartStation"></div>
+                                                <div class="busNo" style="font-size: 1rem; color: rgba(39,85,168,0.93); padding-left: 7px;"></div>
+                                                <div class="howManyStation"></div>
+                                                <div class="stationName collapse" style="font-size: 1rem; color: rgba(0,0,0,0.71); padding-left: 7px;"></div>
+                                                <div class="lastEndStation"></div>
+                                            </div>
+
+                                            <div class="walk">
+                                                <div class="secondtwalkdistance" style="font-size: 1rem; color: rgba(0,0,0,0.71); padding-left: 7px;"></div>
+                                                <div class="endPoint">
+                                                    <img src="../../static/images/사본 -bus-marker (1).png" style="width: 25px;height: 25px">
+                                                    도착지</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+
+                    <footer class="footer">
+                        <div class="d-sm-flex justify-content-center justify-content-sm-between">
+                        <span class="text-muted text-center text-sm-left d-block d-sm-inline-block">Copyright © 2021.  Premium <a
+                                href="https://www.bootstrapdash.com/" target="_blank">WeekRoute</a> All rights reserved.</span>
+                        </div>
+                        <div class="d-sm-flex justify-content-center justify-content-sm-between">
+                        <span class="text-muted text-center text-sm-left d-block d-sm-inline-block">Distributed by <a
+                                href="https://www.themewagon.com/" target="_blank">컴퓨터공학전공 유은지, 컴퓨터공학전공 김민석</a></span>
+                        </div>
+                    </footer>
+                    <!-- (끝) 푸터-->
+                </div>
+                <!-- page-body-wrapper ends -->
+            </div>
+            <!-- container-scroller -->
+        </div>
+
+        <!-- plugins:js -->
+        <script type="text/javascript" src="../../static/vendors/js/vendor.bundle.base.js"></script>
+        <!-- endinject -->
+        <!-- Plugin js for this page -->
+        <script type="text/javascript" src="../../static/vendors/chart.js/Chart.min.js"></script>
+        <script type="text/javascript" src="../../static/vendors/datatables.net/jquery.dataTables.js"></script>
+        <script type="text/javascript" src="../../static/vendors/datatables.net-bs4/dataTables.bootstrap4.js"></script>
+        <script type="text/javascript" src="../../static/js/dataTables.select.min.js"></script>
+
+        <!-- End plugin js for this page -->
+        <!-- inject:js -->
+        <script type="text/javascript" src="../../static/js/off-canvas.js"></script>
+        <script type="text/javascript" src="../../static/js/hoverable-collapse.js"></script>
+        <script type="text/javascript" src="../../static/js/template.js"></script>
+        <script type="text/javascript" src="../../static/js/settings.js"></script>
+        <script type="text/javascript" src="../../static/js/todolist.js"></script>
+        <!-- endinject -->
+        <!-- Custom js for this page-->
+        <script type="text/javascript" src="../../static/js/dashboard.js"></script>
+        <script type="text/javascript" src="../../static/js/Chart.roundedBarCharts.js"></script>
+        <!-- End custom js for this page-->
+        <script type="text/javascript" src="../../static/customJS/schedule_root_map.js"></script>
+
+</body>
+
+</html>
+

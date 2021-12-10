@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>WEEK ROUTE</title>
+    <!-- plugins:css -->
+    <link rel="stylesheet" href="/static/vendors/feather/feather.css">
+    <link rel="stylesheet" href="/static/vendors/ti-icons/css/themify-icons.css">
+    <link rel="stylesheet" href="/static/vendors/css/vendor.bundle.base.css">
+    <!-- endinject -->
+    <!-- Plugin css for this page -->
+    <link rel="stylesheet" href="/static/vendors/datatables.net-bs4/dataTables.bootstrap4.css">
+    <link rel="stylesheet" href="/static/vendors/ti-icons/css/themify-icons.css">
+    <link rel="stylesheet" type="text/css" href="/static/js/select.dataTables.min.css">
+    <!-- End plugin css for this page -->
+    <!-- inject:css -->
+    <link rel="stylesheet" href="/static/css/vertical-layout-light/style.css">
+    <!-- endinject -->
+    <link rel="shortcut icon" href="/static/images/favicon.png"/>
+    <link rel="stylesheet" href="/static/css/calendar.css">
+    <link rel="stylesheet" href="/static/css/new.css">
+
+
+</head>
+
+<body>
+<div class="container-scroller">
+    <!-- partial:partials/_navbar.html -->
+    <nav class="navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
+        <div class="text-center navbar-brand-wrapper d-flex align-items-center justify-content-center">
+            <a class="navbar-brand brand-logo mr-5" href="/main"><img src="/static/images/Week%20Route-logos_black.png" style="width: 100px;
+    height: 100px; margin-left: 50px;" class="mr-2" alt="logo"/></a>
+            <a class="navbar-brand brand-logo-mini" href="/main"><img src="/static/images/logo-mini.svg" alt="logo"/></a>
+        </div>
+        <div class="navbar-menu-wrapper d-flex align-items-center justify-content-end">
+            <button class="navbar-toggler navbar-toggler align-self-center" type="button" data-toggle="minimize">
+                <span class="icon-menu"></span>
+            </button>
+
+            <button class="navbar-toggler navbar-toggler-right d-lg-none align-self-center" type="button"
+                    data-toggle="offcanvas">
+                <span class="icon-menu"></span>
+            </button>
+        </div>
+    </nav>
+    <!-- partial -->
+    <div class="container-fluid page-body-wrapper">
+        <!-- partial:partials/_settings-panel.html -->
+        <div class="theme-setting-wrapper">
+            <div id="settings-trigger"><i class="ti-settings"></i></div>
+            <div id="theme-settings" class="settings-panel">
+                <i class="settings-close ti-close"></i>
+                <p class="settings-heading">SIDEBAR SKINS</p>
+                <div class="sidebar-bg-options selected" id="sidebar-light-theme">
+                    <div class="img-ss rounded-circle bg-light border mr-3"></div>
+                    Light
+                </div>
+                <div class="sidebar-bg-options" id="sidebar-dark-theme">
+                    <div class="img-ss rounded-circle bg-dark border mr-3"></div>
+                    Dark
+                </div>
+                <p class="settings-heading mt-2">HEADER SKINS</p>
+                <div class="color-tiles mx-0 px-4">
+                    <div class="tiles success"></div>
+                    <div class="tiles warning"></div>
+                    <div class="tiles danger"></div>
+                    <div class="tiles info"></div>
+                    <div class="tiles dark"></div>
+                    <div class="tiles default"></div>
+                </div>
+            </div>
+        </div>
+        <div id="right-sidebar" class="settings-panel">
+            <i class="settings-close ti-close"></i>
+            <ul class="nav nav-tabs border-top" id="setting-panel" role="tablist">
+                <li class="nav-item">
+                    <a class="nav-link active" id="todo-tab" data-toggle="tab" href="#todo-section" role="tab"
+                       aria-controls="todo-section" aria-expanded="true">TO DO LIST</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" id="chats-tab" data-toggle="tab" href="#chats-section" role="tab"
+                       aria-controls="chats-section">CHATS</a>
+                </li>
+            </ul>
+        </div>
+
+
+        <!-- partial -->
+        <!--    사이드바-->
+        <!-- partial:partials/_sidebar.html -->
+        <nav class="sidebar sidebar-offcanvas" id="sidebar">
+            <ul class="nav">
+                <li class="nav-item">
+                    <a class="nav-link" href="main">
+                        <i class="icon-grid menu-icon"></i>
+                        <span class="menu-title">메인 페이지</span>
+                    </a>
+                </li>
+                <li class="nav-item" href="#form-elements" aria-expanded="false" aria-controls="form-elements">
+                    <a class="nav-link" href="add_schedule">
+                        <i class="icon-columns menu-icon"></i>
+                        <span class="menu-title">일정등록</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" data-toggle="collapse" href="#ui-basic" aria-expanded="false"
+                       aria-controls="ui-basic">
+                        <i class="icon-grid-2 menu-icon"></i>
+                        <span class="menu-title">전체 일정</span>
+                        <i class="menu-arrow"></i>
+                    </a>
+                    <div class="collapse" id="ui-basic">
+                        <ul class="nav flex-column sub-menu">
+                            <li class="nav-item"><a class="nav-link" href="week_schedule">요일별
+                                일정</a>
+                            </li>
+                            <li class="nav-item"><a class="nav-link" href="schedule_root">일정
+                                경로</a>
+                            </li>
+                            <li class="nav-item"><a class="nav-link" href="/static/ui-features">대중교통
+                                안내</a></li>
+                        </ul>
+                    </div>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" data-toggle="collapse" href="#form-elements" aria-expanded="false"
+                       aria-controls="form-elements">
+                        <i class="icon-head menu-icon"></i>
+                        <span class="menu-title">마이페이지</span>
+                        <i class="menu-arrow"></i>
+                    </a>
+                    <div class="collapse" id="form-elements">
+                        <ul class="nav flex-column sub-menu">
+                            <li class="nav-item"><a class="nav-link" href="past_schedule">지난 일정 열람</a>
+                            </li>
+
+
+                        </ul>
+                    </div>
+                </li>
+            </ul>
+        </nav>
+
+        <!--(끝)사이드바-->
+
+        <!--마이페이지 : 지난 일정 열람 : 페이지 이름 넣기-->
+        <div class="main-panel">
+            <div class="content-wrapper">
+                <div class="col-md-12 grid-margin">
+                    <div class="row">
+                        <div class="col-12 col-xl-8 mb-4 mb-xl-0">
+                            <h3 class="font-weight-bold">지난 일정 열람</h3>
+                        </div>
+                        <div class="col-12 col-xl-4">
+                            <div class="justify-content-end d-flex">
+                                <div class="dropdown flex-md-grow-1 flex-xl-grow-0">
+                                </div>
+                            </div>
+
+                        </div>
+
+                    </div>
+                </div>
+                <!--(끝)마이페이지 : 지난 일정 열람 : 페이지 이름 넣기-->
+
+
+                <!--지난 일정 열람 : 지난 일정 보여주기-->
+                <div class="col-md-8 grid-margin stretch-card">
+                    <div class="card">
+                        <div class="card-body">
+                            <h4 class="card-title">지난 일정 열람</h4>
+                                <!-- 지난 일정 열람 : 달력 시작-->
+                                <div class="calender-container">
+                                    <div class="my-calendar clearfix">
+                                        <div class="clicked-date">
+                                            <div class="cal-day"></div>
+                                            <div class="cal-date"></div>
+                                        </div>
+                                        <div class="calendar-box">
+                                            <div class="ctr-box clearfix">
+                                                <button type="button" title="prev" class="btn-cal prev">
+                                                </button>
+                                                <span class="cal-month"></span>
+                                                <span class="cal-year"></span>
+                                                <button type="button" title="next" class="btn-cal next">
+                                                </button>
+                                            </div>
+                                            <table class="cal-table">
+                                                <thead>
+                                                <tr>
+                                                    <th>S</th>
+                                                    <th>M</th>
+                                                    <th>T</th>
+                                                    <th>W</th>
+                                                    <th>T</th>
+                                                    <th>F</th>
+                                                    <th>S</th>
+                                                </tr>
+                                                </thead>
+                                                <tbody class="cal-body"></tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                    </div>
+                        <!--(끝)지난 일정 열람 : 달력 시작-->
+                        <div class="col-md-7 grid-margin stretch-card" >
+                            <div class="card">
+                                <div class="card-body">
+                                    <h4 class="card-title">해당 날짜 일정</h4>
+                                    <div class="table-responsive">
+                                        <table class="table past-table">
+                                            <thead>
+                                            <tr>
+                                                <th>일정이름</th>
+                                                <th>위치</th>
+                                                <th>시간</th>
+                                            </tr>
+                                            </thead>
+                                            <tbody>
+                                            <tr>
+                                                <td>장보기</td>
+                                                <td>이마트</td>
+                                                <td>오후 05:00</td>
+                                            </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!--지난 일정 열람 : 해당 날짜의 일정 보여주기-->
+
+
+                </div>
+                <!--지난 일정 열람 : 지난 일정 보여주기-->
+
+
+            </div>
+
+
+            <!-- partial:partials/_footer.html -->
+            <footer class="footer">
+                <div class="d-sm-flex justify-content-center justify-content-sm-between">
+                        <span class="text-muted text-center text-sm-left d-block d-sm-inline-block">Copyright © 2021.  Premium <a
+                                href="https://www.bootstrapdash.com/" target="_blank">WeekRoute</a> All rights reserved.</span>
+                </div>
+                <div class="d-sm-flex justify-content-center justify-content-sm-between">
+                        <span class="text-muted text-center text-sm-left d-block d-sm-inline-block">Distributed by <a
+                                href="https://www.themewagon.com/" target="_blank">컴퓨터공학전공 유은지, 컴퓨터공학전공 김민석</a></span>
+                </div>
+            </footer>
+            <!-- partial -->
+            <!-- main-panel ends -->
+        </div>
+        <!-- page-body-wrapper ends -->
+    </div>
+    <!-- container-scroller -->
+</div>
+
+<!-- plugins:js -->
+<script src="/static/vendors/js/vendor.bundle.base.js"></script>
+<!-- endinject -->
+<!-- Plugin js for this page -->
+<script src="/static/vendors/chart.js/Chart.min.js"></script>
+<script src="/static/vendors/datatables.net/jquery.dataTables.js"></script>
+<script src="/static/vendors/datatables.net-bs4/dataTables.bootstrap4.js"></script>
+<script src="/static/js/dataTables.select.min.js"></script>
+
+<!-- End plugin js for this page -->
+<!-- inject:js -->
+<script src="/static/js/off-canvas.js"></script>
+<script src="/static/js/hoverable-collapse.js"></script>
+<script src="/static/js/template.js"></script>
+<script src="/static/js/settings.js"></script>
+<script src="/static/js/todolist.js"></script>
+<!-- endinject -->
+<!-- Custom js for this page-->
+<script src="/static/js/dashboard.js"></script>
+<script src="/static/js/Chart.roundedBarCharts.js"></script>
+<!-- End custom js for this page-->
+<script src="/static/customJS/past_schedule.js"></script>
+
+</body>
+
+</html>
+

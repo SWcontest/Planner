@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="WeekRoute.planer.mapper.PlanMapper">
+    <resultMap id="Plan" type="WeekRoute.planer.domain.Plan">
+        <result property="id" column="id" />
+        <result property="login_id" column="login_id" />
+        <result property="day" column="day" />
+        <result property="title" column="title" />
+        <result property="place" column="place" />
+        <result property="coordinate" column="coordinate" />
+        <result property="plan_date" column="plan_date" />
+        <result property="start_time" column="start_time" />
+        <result property="total_time" column="total_time" />
+        <result property="activate" column="activate" />
+    </resultMap>
+
+    <select id="getCurrentId" resultType="int">
+        select
+            max(id) + 1 as id
+        from plan
+    </select>
+
+    <select id="getNonePlanById" resultMap="Plan">
+        select
+           *
+        from plan
+        <where>
+            login_id = #{login_id}
+            AND id = #{plan_id}
+            AND plna_date is null
+        </where>
+    </select>
+
+    <select id="getPlanList" resultMap="Plan">
+        SELECT
+            *
+        FROM
+            plan
+        <where>
+            login_id = #{loginId}
+            <if test=" plan_date != null and plan_date != '' ">
+                <choose>
+                    <when test=" plan_date == 'none' ">
+                        AND plan_date is null
+                    </when>
+                    <otherwise>
+                        AND plan_date = #{plan_date}
+                    </otherwise>
+                </choose>
+            </if>
+            <if test=" start_time == 'exist'">
+                AND start_time != ''
+            </if>
+            <if test=" start_time == 'non'">
+                AND start_time = ''
+            </if>
+            <if test=" place != null and place != '' ">
+                AND place = #{place}
+            </if>
+        </where>
+        order by start_time
+    </select>
+
+    <insert id="addPlan" parameterType="map" keyProperty="param.id">
+        INSERT INTO plan
+        (
+            id, login_id, day, title, place, coordinate, plan_date, start_time, total_time, activate
+        )
+        VALUES
+            (
+                #{param.id}, #{param.login_id}, #{param.day}, #{param.title}, #{param.place}, #{param.coordinate}, #{param.plan_date}, #{param.start_time}, #{param.total_time}, #{param.activate}
+            )
+    </insert>
+</mapper>

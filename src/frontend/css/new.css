@@ -1,0 +1,8 @@
+.chooseDate{
+    display: flex;
+    justify-content: space-around;
+}
+
+.expect-time{
+    padding: 0 0 20px 0;
+}

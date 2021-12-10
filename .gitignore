@@ -5,6 +5,9 @@ build/
 !**/src/main/**/build/
 !**/src/test/**/build/
 
+src/frontend/node_modules
+pacakage-lock.json
+pacakage.json
 ### STS ###
 .apt_generated
 .classpath
