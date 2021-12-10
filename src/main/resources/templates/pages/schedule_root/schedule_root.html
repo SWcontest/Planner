@@ -290,12 +290,12 @@
                             <li class="nav-item"><a class="nav-link" href="past_schedule">지난 일정
                                 열람</a>
                             </li>
-<!--                            <li class="nav-item"><a class="nav-link" href="pages/forms/basic_elements.html">SNS 공유</a>-->
-<!--                            </li>-->
-<!--                            <li class="nav-item"><a class="nav-link" href="pages/forms/basic_elements.html">저장된 추천-->
-<!--                                장소</a></li>-->
-<!--                            <li class="nav-item"><a class="nav-link" href="pages/forms/basic_elements.html">계정관리</a>-->
-<!--                            </li>-->
+                            <!--                            <li class="nav-item"><a class="nav-link" href="pages/forms/basic_elements.html">SNS 공유</a>-->
+                            <!--                            </li>-->
+                            <!--                            <li class="nav-item"><a class="nav-link" href="pages/forms/basic_elements.html">저장된 추천-->
+                            <!--                                장소</a></li>-->
+                            <!--                            <li class="nav-item"><a class="nav-link" href="pages/forms/basic_elements.html">계정관리</a>-->
+                            <!--                            </li>-->
                         </ul>
                     </div>
                 </li>
@@ -324,7 +324,7 @@
                                         id="mon"
                                         class="btn btn-danger btn-rounded btn-icon"
                                         style="background-color: red; border: 1px solid red"
-                                        onclick ="getPlanByDay(0);getRouteByDay(0);"
+                                        onclick="getPlanByDay(0);getRouteByDay(0);"
 
                                 >
                                     월
@@ -334,7 +334,7 @@
                                         id="tue"
                                         class="btn btn-danger btn-rounded btn-icon"
                                         style="background-color: #FF5D05  ; border: 1px solid #FF5D05"
-                                        onclick ="getPlanByDay(1);getRouteByDay(1)"
+                                        onclick="getPlanByDay(1);getRouteByDay(1)"
                                 >
                                     화
                                 </button>
@@ -343,7 +343,7 @@
                                         id="wed"
                                         class="btn btn-danger btn-rounded btn-icon"
                                         style="background-color: #4E71D9  ; border: 1px solid #4E71D9"
-                                        onclick ="getPlanByDay(2);getRouteByDay(2);"
+                                        onclick="getPlanByDay(2);getRouteByDay(2);"
                                 >
                                     수
                                 </button>
@@ -352,7 +352,7 @@
                                         id="thu"
                                         class="btn btn-danger btn-rounded btn-icon"
                                         style="background-color: #5FA55A  ; border: 1px solid #5FA55A"
-                                        onclick ="getPlanByDay(3);getRouteByDay(3);"
+                                        onclick="getPlanByDay(3);getRouteByDay(3);"
                                 >
                                     목
                                 </button>
@@ -361,7 +361,7 @@
                                         id="fri"
                                         class="btn btn-danger btn-rounded btn-icon"
                                         style="background-color: #927A6D ; border: 1px solid #927A6D"
-                                        onclick ="getPlanByDay(4);getRouteByDay(4);"
+                                        onclick="getPlanByDay(4);getRouteByDay(4);"
                                 >
                                     금
                                 </button>
@@ -370,7 +370,7 @@
                                         id="sat"
                                         class="btn btn-danger btn-rounded btn-icon"
                                         style="background-color: #BB85EA ; border: 1px solid #BB85EA"
-                                        onclick ="getPlanByDay(5);getRouteByDay(5);"
+                                        onclick="getPlanByDay(5);getRouteByDay(5);"
                                 >
                                     토
                                 </button>
@@ -379,7 +379,7 @@
                                         id="sun"
                                         class="btn btn-danger btn-rounded btn-icon"
                                         style="background-color:#D98B84; border: 1px solid #D98B84"
-                                        onclick ="getPlanByDay(6);getRouteByDay(5);"
+                                        onclick="getPlanByDay(6);getRouteByDay(5);"
                                 >
                                     일
                                 </button>
@@ -429,124 +429,126 @@
 
                             </div>
                         </div>
-                    <!--(끝)일정 경로 : 지도 위 최단 거리 구해주기-->
+                        <!--(끝)일정 경로 : 지도 위 최단 거리 구해주기-->
 
 
+                        <!--대중교통 안내-->
+                        <div class="col-md-10 grid-margin stretch-card">
+                            <div class="card">
+                                <div class="card-body">
+                                    <div class="d-flex justify-content-between">
+                                        <p class="card-title">대중교통 안내</p></div>
 
 
+                                    <div class="topmenu">
+                                        <button type="button" class="btn btn-inverse-info btn-fw"
+                                                style="margin-left: 5px">전체 8
+                                        </button>
+                                        <button type="button" class="btn btn-outline-info btn-fw"
+                                                style="margin-left: 5px">지하철 0
+                                        </button>
+                                        <button type="button" class="btn btn-outline-info btn-fw">버스 8</button>
 
-                    <!--대중교통 안내-->
-                    <div class="col-md-10 grid-margin stretch-card">
-                        <div class="card">
-                            <div class="card-body">
-                                <div class="d-flex justify-content-between">
-                                    <p class="card-title">대중교통 안내</p></div>
+                                    </div>
+                                    <hr>
+                                    <div class="busInfoContainer" style="padding: 5px; border-bottom: solid 2px gray">
+                                        <div class="totalTime"></div>
+                                        <span class="totalWalk"></span>
+                                        <span class="bar"></span>
+                                        <span class="payment"></span>
+                                        <span class="bar"></span>
+                                        <span class="totalDistance"></span>
+                                    </div>
+                                    <div class="busInfo" style="display: flex;">
+                                        <div class="busstopInfoContainer">
+                                            <div class="walk">
+                                                <div class="startPoint"><img src="../../static/images/사본 -bus-marker (1).png" style="width: 25px;height: 25px">
+                                                    출발지
+                                                </div>
+                                                <div class="firstwalkdistance" style="font-size: 1rem; color: rgba(0,0,0,0.71); padding-left: 7px;"></div>
+                                            </div>
 
+                                            <div class="bus">
+                                                <div class="firstStartStation"></div>
+                                                <div class="busNo" style="font-size: 1rem; color: rgba(39,85,168,0.93); padding-left: 7px;"></div>
+                                                <div class="howManyStation"></div>
+                                                <div class="stationName collapse" style="font-size: 1rem; color: rgba(0,0,0,0.71); padding-left: 7px;"></div>
+                                                <div class="lastEndStation"></div>
+                                            </div>
 
-                                <div class="topmenu">
-                                    <button type="button"class="btn btn-inverse-info btn-fw" style="margin-left: 5px">전체 8</button>
-                                    <button type="button"class="btn btn-outline-info btn-fw" style="margin-left: 5px">지하철 0</button>
-                                    <button type="button"class="btn btn-outline-info btn-fw">버스 8</button>
+                                            <div class="walk">
+                                                <div class="secondtwalkdistance" style="font-size: 1rem; color: rgba(0,0,0,0.71); padding-left: 7px;"></div>
+                                                <div class="endPoint">
+                                                    <img src="../../static/images/사본 -bus-marker (1).png" style="width: 25px;height: 25px">
+                                                    도착지</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!--                                <div class="container row justify-content-between">-->
+                                    <!--                                    <div class="buscard-time"><span class="totalTime"style="color: mediumturquoise; font-size: larger; font-weight: bold"></span> | <span class="totalDistance"></span></div>-->
+                                    <!--                                    <div class="buscost" style="font-size: small"><span class="payment" style="color: red" ></span>원</div>-->
+                                    <!--                                </div>-->
+
+                                    <!--                                <div class="totalWalk" style="font-size: x-small;margin-bottom: 10px"></div>-->
+
+                                    <!--                                <div class="busroute"><img src="../../images/사본 -bus-marker (1).png" style="width: 25px;height: 25px">-->
+                                    <!--                                    크린업24 제주 오라점 </div>-->
+                                    <!--                                <div class="updown" style="margin-left: 12px;border-left: 2px dotted grey; height: 30px;"></div>-->
+                                    <!--                                <div class="nextbusroute" style="margin-bottom: 10px"><img src="../../images/사본 -bus-marker (1).png" style="width: 25px;height: 25px">-->
+                                    <!--                                    오라1동 </div>-->
+                                    <!--                                <div class="busno" style="font-size: larger; color: grey ">-->
+                                    <!--                                    <b>311(신사동), 312(신사동)</b></div>-->
+                                    <!--                                <hr>-->
+
 
                                 </div>
-                                <hr>
-                                <div class="container row justify-content-between">
-                                    <div class="buscard-time"><span style="color: mediumturquoise; font-size: larger"><b>16</b></span>분 | 2.19km </div>
-                                    <div class="buscost" style="font-size: small"><span style="color: red" >1150</span>원</div>
-                                </div>
-
-                                <div class="walk" style="font-size: x-small;margin-bottom: 10px">도보 7분, 환승 0회</div>
-
-                                <div class="busroute"><img src="../../images/사본 -bus-marker (1).png" style="width: 25px;height: 25px">
-                                    크린업24 제주 오라점 </div>
-                                <div class="updown" style="margin-left: 12px;border-left: 2px dotted grey; height: 30px;"></div>
-                                <div class="nextbusroute" style="margin-bottom: 10px"><img src="../../images/사본 -bus-marker (1).png" style="width: 25px;height: 25px">
-                                    오라1동 </div>
-                                <div class="busno" style="font-size: larger; color: grey ">
-                                    <b>311(신사동), 312(신사동)</b></div>
-                                <hr>
-
-
-                                <div class="container row justify-content-between">
-                                    <div class="buscard-time"><span style="color: mediumturquoise; font-size: larger"><b>8</b></span>분 | 1.0km </div>
-                                    <div class="buscost" style="font-size: small"><span style="color: red" >2000</span>원</div>
-                                </div>
-
-                                <div class="walk" style="font-size: x-small;margin-bottom: 10px">도보 5분, 환승 0회</div>
-
-                                <div class="busroute"><img src="../../images/사본 -bus-marker (1).png" style="width: 25px;height: 25px">
-                                    이도2동행정복지센터 정류장 </div>
-                                <div class="updown" style="margin-left: 12px;border-left: 2px dotted grey; height: 30px;"></div>
-                                <div class="nextbusroute" style="margin-bottom: 10px"><img src="../../images/사본 -bus-marker (1).png" style="width: 25px;height: 25px">
-                                   제주시청(광양방면)</div>
-                                <div class="busno" style="font-size: larger; color: grey ">
-                                    <b>331,343</b></div>
-                                <hr>
-
-
-                                <div class="container row justify-content-between">
-                                    <div class="buscard-time"><span style="color: mediumturquoise; font-size: larger"><b>21</b></span>분 | 3.6km </div>
-                                    <div class="buscost" style="font-size: small"><span style="color: red" >2000</span>원</div>
-                                </div>
-
-                                <div class="walk" style="font-size: x-small;margin-bottom: 10px">도보 7분, 환승 0회</div>
-
-                                <div class="busroute"><img src="../../images/사본 -bus-marker (1).png" style="width: 25px;height: 25px">
-                                    제주시청(광양방면) </div>
-                                <div class="updown" style="margin-left: 12px;border-left: 2px dotted grey; height: 30px;"></div>
-                                <div class="nextbusroute" style="margin-bottom: 10px"><img src="../../images/사본 -bus-marker (1).png" style="width: 25px;height: 25px">
-                                    라마다 프라자 제주호텔 정류장</div>
-                                <div class="busno" style="font-size: larger; color: grey ">
-                                    <b>411</b></div>
                             </div>
-
                         </div>
                     </div>
-                </div>
-            </div>
 
 
-            <!-- partial:partials/_footer.html -->
-            <footer class="footer">
-                <div class="d-sm-flex justify-content-center justify-content-sm-between">
+                    <!-- partial:partials/_footer.html -->
+                    <footer class="footer">
+                        <div class="d-sm-flex justify-content-center justify-content-sm-between">
                         <span class="text-muted text-center text-sm-left d-block d-sm-inline-block">Copyright © 2021.  Premium <a
                                 href="https://www.bootstrapdash.com/" target="_blank">WeekRoute</a> All rights reserved.</span>
-                </div>
-                <div class="d-sm-flex justify-content-center justify-content-sm-between">
+                        </div>
+                        <div class="d-sm-flex justify-content-center justify-content-sm-between">
                         <span class="text-muted text-center text-sm-left d-block d-sm-inline-block">Distributed by <a
                                 href="https://www.themewagon.com/" target="_blank">컴퓨터공학전공 유은지, 컴퓨터공학전공 김민석</a></span>
+                        </div>
+                    </footer>
+                    <!-- partial -->
+                    <!-- main-panel ends -->
                 </div>
-            </footer>
-            <!-- partial -->
-            <!-- main-panel ends -->
+                <!-- page-body-wrapper ends -->
+            </div>
+            <!-- container-scroller -->
         </div>
-        <!-- page-body-wrapper ends -->
-    </div>
-    <!-- container-scroller -->
-</div>
 
-    <!-- plugins:js -->
-    <script type="text/javascript" src="../../static/vendors/js/vendor.bundle.base.js"></script>
-    <!-- endinject -->
-    <!-- Plugin js for this page -->
-    <script type="text/javascript" src="../../static/vendors/chart.js/Chart.min.js"></script>
-    <script type="text/javascript" src="../../static/vendors/datatables.net/jquery.dataTables.js"></script>
-    <script type="text/javascript" src="../../static/vendors/datatables.net-bs4/dataTables.bootstrap4.js"></script>
-    <script type="text/javascript" src="../../static/js/dataTables.select.min.js"></script>
+        <!-- plugins:js -->
+        <script type="text/javascript" src="../../static/vendors/js/vendor.bundle.base.js"></script>
+        <!-- endinject -->
+        <!-- Plugin js for this page -->
+        <script type="text/javascript" src="../../static/vendors/chart.js/Chart.min.js"></script>
+        <script type="text/javascript" src="../../static/vendors/datatables.net/jquery.dataTables.js"></script>
+        <script type="text/javascript" src="../../static/vendors/datatables.net-bs4/dataTables.bootstrap4.js"></script>
+        <script type="text/javascript" src="../../static/js/dataTables.select.min.js"></script>
 
-    <!-- End plugin js for this page -->
-    <!-- inject:js -->
-    <script type="text/javascript" src="../../static/js/off-canvas.js"></script>
-    <script type="text/javascript" src="../../static/js/hoverable-collapse.js"></script>
-    <script type="text/javascript" src="../../static/js/template.js"></script>
-    <script type="text/javascript" src="../../static/js/settings.js"></script>
-    <script type="text/javascript" src="../../static/js/todolist.js"></script>
-    <!-- endinject -->
-    <!-- Custom js for this page-->
-    <script type="text/javascript" src="../../static/js/dashboard.js"></script>
-    <script type="text/javascript" src="../../static/js/Chart.roundedBarCharts.js"></script>
-    <!-- End custom js for this page-->
-    <script type="text/javascript" src="../../static/customJS/schedule_root_map.js"></script>
+        <!-- End plugin js for this page -->
+        <!-- inject:js -->
+        <script type="text/javascript" src="../../static/js/off-canvas.js"></script>
+        <script type="text/javascript" src="../../static/js/hoverable-collapse.js"></script>
+        <script type="text/javascript" src="../../static/js/template.js"></script>
+        <script type="text/javascript" src="../../static/js/settings.js"></script>
+        <script type="text/javascript" src="../../static/js/todolist.js"></script>
+        <!-- endinject -->
+        <!-- Custom js for this page-->
+        <script type="text/javascript" src="../../static/js/dashboard.js"></script>
+        <script type="text/javascript" src="../../static/js/Chart.roundedBarCharts.js"></script>
+        <!-- End custom js for this page-->
+        <script type="text/javascript" src="../../static/customJS/schedule_root_map.js"></script>
+
 </body>
 
 </html>

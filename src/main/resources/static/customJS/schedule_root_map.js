@@ -64,6 +64,9 @@ function getRouteByDay(day) {
                     setMarker(pos.lat, pos.lng);
                     setRoute(pos.lat, pos.lng);
                 })
+                for(let i = 0; i < data.length - 1; i++){
+                    searchBusLaneAJAX(data[i].lat, data[i].lng, data[i+1].lat, data[i+1].lng);
+                }
             }).then(() => {
                 drawMarker();
                 polyline = new kakao.maps.Polyline({
@@ -99,10 +102,10 @@ function drawMarker() {
 function setRoute(lat, lng) {
     routes.push(new kakao.maps.LatLng(lat, lng))
 }
-
-var imageSrc = 'https://i.ibb.co/t8n2DW7/map-pin-2.png', // 마커이미지의 주소입니다
-    imageSize = new kakao.maps.Size(40,55); // 마커이미지의 크기입니다
-imageOption = {offset: new kakao.maps.Point(27, 69)}; // 마커이미지의 옵션입니다. 마커의 좌표와 일치시킬 이미지 안에서의 좌표를 설정합니다.
+//
+// var imageSrc = 'https://i.ibb.co/t8n2DW7/map-pin-2.png', // 마커이미지의 주소입니다
+//     imageSize = new kakao.maps.Size(40,55), // 마커이미지의 크기입니다
+//     imageOption = {offset: new kakao.maps.Point(27, 69)}; // 마커이미지의 옵션입니다. 마커의 좌표와 일치시킬 이미지 안에서의 좌표를 설정합니다.
 
 
 //회색마커
@@ -226,6 +229,21 @@ function mon_click() {
     newCell5.innerText = '미정일정';
 
     table.rows[4]
+}
+
+function searchBusLaneAJAX(slat, slng, elat, elng) {
+    const appkey = 'xzm+dv1+LZESXRkacw+Wot/SwZU38z9Ubd7tPsAt1eg';
+    var xhr = new XMLHttpRequest();
+    let url = `https://api.odsay.com/v1/api/searchPubTransPath?SX=${slat}&SY=${slng}&EX=${elat}&EY=${elng}&OPT=1&apiKey=${appkey}`;
+    console.log(url)
+    xhr.open("GET", url, true);
+    xhr.send();
+    xhr.onreadystatechange = function() {
+
+        if (xhr.readyState == 4 && xhr.status == 200) {
+            console.log( xhr.responseText ); // <- xhr.responseText 로 결과를 가져올 수 있음
+        }
+    }
 }
 
 getRouteByDay(today.getDay());
