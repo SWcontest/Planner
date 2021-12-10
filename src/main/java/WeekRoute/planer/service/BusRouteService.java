@@ -11,8 +11,8 @@ import java.net.URL;
 public class BusRouteService {
 
     public void getBusRoute(double sLat, double sLng, double eLat, double eLng) {
-        String appkey = "xzm+dv1+LZESXRkacw+Wot/SwZU38z9Ubd7tPsAt1eg";
-        String apiUrl = "https://api.odsay.com/v1/api/searchPubTransPath?SX=" + sLat + "&SY=" + sLng + "&EX=" + eLat + "&EY=" + eLng + "&OPT=1&apiKey=" + appkey;
+        String appkey = "yKtViKSnZPoKlM5MW4ew%2BgOGFRdDSQjZ3QXzplm8pbE";
+        String apiUrl = "https://api.odsay.com/v1/api/searchPubTransPath?SX=" + sLng + "&SY=" + sLat + "&EX=" + eLng + "&EY=" + eLat + "&OPT=1&apiKey=" + appkey;
         try {
             URL url = new URL(apiUrl);
             HttpURLConnection con = (HttpURLConnection) url.openConnection();
@@ -37,3 +37,8 @@ public class BusRouteService {
         }
     }
 }
+
+
+
+
+
