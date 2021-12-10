@@ -29,7 +29,7 @@ function getPlanByDay() {
 
 }
 
-// 이번주 월-금 일정들 불러오기
+// 이번주 월-금, 미정 일정들 불러오기, 불러온후 foreach문 사용해 출력하기
 function showWeekSchedule(data, index) {
     const week = ['mon-tbody', 'tue-tbody', 'wen-tbody', 'thu-tbody', 'fri-tbody', 'sat-tbody', 'sun-tbody', 'none-tbody']
 

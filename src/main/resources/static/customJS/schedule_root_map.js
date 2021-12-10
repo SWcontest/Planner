@@ -24,7 +24,7 @@ function getWeek() {
     return thisWeek;
 }
 
-// 지도
+//카카오 지도 생성
 var container = document.getElementById('map');
 var options = {
     center: new kakao.maps.LatLng(33.49927523032624, 126.52983583833799),
@@ -45,6 +45,7 @@ let polyline = new kakao.maps.Polyline({
     strokeStyle: 'solid' // 선의 스타일입니다
 });
 
+//일정을 불러오고 일정의 위도, 경도를 기준으로 길찾기 후 리스트 순서대로 두개씩 짝지어 위도, 경도를 통해 길찾기 선 긋기
 function getRouteByDay(day) {
     const login_id = localStorage.getItem('user_id')
     const week = getWeek();
@@ -64,8 +65,8 @@ function getRouteByDay(day) {
                     setMarker(pos.lat, pos.lng);
                     setRoute(pos.lat, pos.lng);
                 })
-                for(let i = 0; i < data.length - 1; i++){
-                    searchBusLaneAJAX(data[i].lat, data[i].lng, data[i+1].lat, data[i+1].lng);
+                for (let i = 0; i < data.length - 1; i++) {
+                    getBusRoute(data[i].lat, data[i].lng, data[i + 1].lat, data[i + 1].lng)
                 }
             }).then(() => {
                 drawMarker();
@@ -85,7 +86,7 @@ function getRouteByDay(day) {
 }
 
 
-
+//마커 생성되는 지도로 기준점 옮기기
 function setMarker(lat, lng) {
     const markerPosition = new kakao.maps.LatLng(lat, lng);
     const marker = new kakao.maps.Marker({
@@ -93,7 +94,7 @@ function setMarker(lat, lng) {
     })
     markers.push(marker)
 }
-
+//마커그리기
 function drawMarker() {
     markers.forEach(marker => marker.setMap(map));
 }
@@ -102,10 +103,6 @@ function drawMarker() {
 function setRoute(lat, lng) {
     routes.push(new kakao.maps.LatLng(lat, lng))
 }
-//
-// var imageSrc = 'https://i.ibb.co/t8n2DW7/map-pin-2.png', // 마커이미지의 주소입니다
-//     imageSize = new kakao.maps.Size(40,55), // 마커이미지의 크기입니다
-//     imageOption = {offset: new kakao.maps.Point(27, 69)}; // 마커이미지의 옵션입니다. 마커의 좌표와 일치시킬 이미지 안에서의 좌표를 설정합니다.
 
 
 //회색마커
@@ -231,25 +228,28 @@ function mon_click() {
     table.rows[4]
 }
 
-function searchBusLaneAJAX(slat, slng, elat, elng) {
-    const appkey = 'yKtViKSnZPoKlM5MW4ew%2BgOGFRdDSQjZ3QXzplm8pbE';
-    var xhr = new XMLHttpRequest();
-    let url = `https://api.odsay.com/v1/api/searchPubTransPath?SX=${slat}&SY=${slng}&EX=${elat}&EY=${elng}&OPT=1&apiKey=${appkey}`;
-    console.log(url)
-    xhr.open("GET", url, true);
-    xhr.send();
-    xhr.onreadystatechange = function() {
 
-        if (xhr.readyState == 4 && xhr.status == 200) {
-            console.log( xhr.responseText ); // <- xhr.responseText 로 결과를 가져올 수 있음
-        }
-    }
-}
 
+
+
+//테스트 데이터
 getRouteByDay(today.getDay());
-function getBusRoute() {
-    const url = '/api/v1/bus/33.51810581785266/126.52124868512283/33.47217551996734/126.55016704094149';
+
+function getBusRoute(sLat, sLng, eLat, eLng) {
+    const url = `/api/v1/bus/${sLat}/${sLng}/${eLng}/${eLng}`;
     fetch(url)
-        .then(res => res.json().then(data => console.log(data)));
+        .then((res) => {
+            const contentType = res.headers.get("content-type");
+            if(contentType && contentType.indexOf("application/json") !== -1) {
+                return res.json().then((data) => {
+                    console.log(data)
+                });
+            }
+            else {
+                console.log("일정 없음 ")
+            }
+        })
+        .catch(err => {
+            console.log(err)
+        })
 }
-getBusRoute();

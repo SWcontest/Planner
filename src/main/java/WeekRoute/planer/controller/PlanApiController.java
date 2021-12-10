@@ -17,6 +17,7 @@ public class PlanApiController {
 
     /**
      * 일정조회
+     *
      * @param login_id
      * @param plan_date
      * @return
@@ -29,6 +30,7 @@ public class PlanApiController {
 
     /**
      * 일정등록
+     *
      * @param plan
      * @return
      */
@@ -42,6 +44,7 @@ public class PlanApiController {
 
     /**
      * 루트생성
+     *
      * @param login_id
      * @param plan_date
      * @return
@@ -49,9 +52,10 @@ public class PlanApiController {
      */
     @GetMapping("/api/v1/plan_route/{login_id}/{plan_date}")
     @ResponseBody
-    public List<Coordinate> findRouteByDay (@PathVariable String login_id, @PathVariable String plan_date) throws Exception {
+    public List<Coordinate> findRouteByDay(@PathVariable String login_id, @PathVariable String plan_date) throws Exception {
         return planService.getRoute(login_id, plan_date);
     }
+
     /**
      * 미정일정추가해서 루트 생성
      * @param login_id
@@ -61,7 +65,8 @@ public class PlanApiController {
      */
     @GetMapping("/api/v1/plan_route_none/{login_id}/{plan_date}/{plan_id}")
     @ResponseBody
-    public List<Coordinate> findRouteByDayIncludeNone (@PathVariable String login_id, @PathVariable String plan_date, @PathVariable String plan_id) throws Exception {
+
+    public List<Coordinate> findRouteByDayIncludeNone(@PathVariable String login_id, @PathVariable String plan_date, @PathVariable String plan_id) throws Exception {
         return planService.getRoute(login_id, plan_date, plan_id);
     }
 }

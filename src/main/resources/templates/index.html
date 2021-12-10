@@ -14,8 +14,6 @@
     <!-- Plugin css for this page -->
     <link rel="stylesheet" type="text/css" href="../static/vendors/datatables.net-bs4/dataTables.bootstrap4.css">
     <link rel="stylesheet" type="text/css" href="../static/vendors/ti-icons/css/themify-icons.css">
-<!--    <link rel="stylesheet" type="text/css" href="../static/js/select.dataTables.min.css">-->
-    <!-- End plugin css for this page -->
     <!-- inject:css -->
     <link rel="stylesheet" type="text/css" href="../static/css/vertical-layout-light/style.css">
     <!-- endinject -->
@@ -82,8 +80,7 @@
             </ul>
         </div>
 
-        <!-- partial -->
-        <!-- partial:partials/_sidebar.html -->
+        <!--사이드바 -->
         <nav class="sidebar sidebar-offcanvas" id="sidebar">
             <ul class="nav">
                 <li class="nav-item">
@@ -111,8 +108,6 @@
                             </li>
                             <li class="nav-item"><a class="nav-link" href="pages/schedule_root">일정 경로</a>
                             </li>
-<!--                            <li class="nav-item"><a class="nav-link" href="pages/u/ui-features">대중교통-->
-<!--                                안내</a></li>-->
                         </ul>
                     </div>
                 </li>
@@ -140,7 +135,9 @@
             </ul>
         </nav>
 
-        <!-- partial -->
+        <!-- (끝) 사이드바 -->
+
+        <!-- 오늘의 일정 : 오늘의 일정 확인 시작 -->
         <div class="main-panel">
             <div class="content-wrapper">
                 <div class="col-md-12 grid-margin">
@@ -157,8 +154,6 @@
                         </div>
                     </div>
                 </div>
-
-                <!--(끝)오늘의 일정 : 요일 선택하기-->
 
 
                 <!--오늘의 일정 : 오늘의 일정 보여주기-->
@@ -189,7 +184,7 @@
                 <!--(끝)오늘의 일정 : 오늘의 일정 보여주기-->
 
 
-                <!--오늘의 일정 : 대중교통 경로 보여주기-->
+                <!--오늘의 일정 : 최단거리 보여주기-->
                 <div class="col-md-12 grid-margin stretch-card">
                     <div class="card">
                         <div class="card-body">
@@ -212,8 +207,10 @@
                     </div>
                 </div>
 
+                <!--(끝) 오늘의 일정 : 최단거리 보여주기-->
 
-                <!-- partial:partials/_footer.html -->
+
+                <!--푸터 시작 -->
                 <footer class="footer">
                     <div class="d-sm-flex justify-content-center justify-content-sm-between">
                         <span class="text-muted text-center text-sm-left d-block d-sm-inline-block">Copyright © 2021.  Premium <a
@@ -224,8 +221,8 @@
                                 href="https://www.themewagon.com/" target="_blank">컴퓨터공학전공 유은지, 컴퓨터공학전공 김민석</a></span>
                     </div>
                 </footer>
-                <!-- partial -->
-            </div>
+                <!--(끝) 푸터 시작 -->
+              </div>
             <!-- main-panel ends -->
         </div>
         <!-- page-body-wrapper ends -->
