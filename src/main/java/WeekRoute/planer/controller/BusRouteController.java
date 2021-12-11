@@ -10,6 +10,7 @@ public class BusRouteController {
 
     private final BusRouteService busRouteService;
 
+    // 위도 경도로 버스 정보 요청
     @GetMapping("/api/v1/bus/{sLat}/{sLng}/{eLat}/{eLng}")
     @ResponseBody
     public BusRouteResponseDto getBusRoute(

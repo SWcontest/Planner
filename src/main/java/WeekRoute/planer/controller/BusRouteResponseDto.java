@@ -12,6 +12,7 @@ public class BusRouteResponseDto {
     private String firstStartStation;
     private String lastEndStation;
 
+    // 버스 정보
     public BusRouteResponseDto(int totalWalk, int totalTime, int payment, int totalDistance, String firstStartStation, String lastEndStation) {
         this.totalWalk = totalWalk;
         this.totalTime = totalTime;

@@ -19,6 +19,7 @@ public class BusRouteService {
         String apiUrl = "https://api.odsay.com/v1/api/searchPubTransPath?SX=" + sLng + "&SY=" + sLat + "&EX=" + eLng + "&EY=" + eLat + "&OPT=1&apiKey=" + appkey;
         BusRouteResponseDto dto = null;
         try {
+            // 대중교통 api
             URL url = new URL(apiUrl);
             HttpURLConnection con = (HttpURLConnection) url.openConnection();
             con.setRequestMethod("GET");
@@ -36,6 +37,7 @@ public class BusRouteService {
             }
             br.close();
 
+            // json 파싱
             JsonParser parser = new JsonParser();
             Object obj = parser.parse(response.toString());
             JsonObject jsonObject = (JsonObject) obj;
@@ -44,7 +46,8 @@ public class BusRouteService {
             JsonObject path1 = path.get(0).getAsJsonObject();
             JsonObject info = path1.getAsJsonObject("info");
 
-             dto = new BusRouteResponseDto(
+            // dto 생성
+            dto = new BusRouteResponseDto(
                             info.get("totalWalk").getAsInt(),
                             info.get("totalTime").getAsInt(),
                             info.get("payment").getAsInt(),
